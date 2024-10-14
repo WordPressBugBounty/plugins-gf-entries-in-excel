@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af
+class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
 {
     public static $prefixLengthsPsr4 = array (
         'G' => 
@@ -48,7 +48,6 @@ class ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af
         'GFExcel\\Exception\\Exception' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Exception/Exception.php',
         'GFExcel\\Exception\\WrongValueException' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Exception/WrongValueException.php',
         'GFExcel\\Field\\AbstractField' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Field/AbstractField.php',
-        'GFExcel\\Field\\AddressField' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Field/AddressField.php',
         'GFExcel\\Field\\BaseField' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Field/BaseField.php',
         'GFExcel\\Field\\CheckboxField' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Field/CheckboxField.php',
         'GFExcel\\Field\\DateField' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Field/DateField.php',
@@ -80,7 +79,6 @@ class ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af
         'GFExcel\\Migration\\Exception\\MigrationException' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Migration/Exception/MigrationException.php',
         'GFExcel\\Migration\\Exception\\NonBreakingMigrationException' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Migration/Exception/NonBreakingMigrationException.php',
         'GFExcel\\Migration\\Manager\\MigrationManager' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Migration/Manager/MigrationManager.php',
-        'GFExcel\\Migration\\Migration' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Migration/Migration.php',
         'GFExcel\\Migration\\Migration\\Migration' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Migration/Migration/Migration.php',
         'GFExcel\\Migration\\Migration\\SingleFeedMigration' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Migration/Migration/SingleFeedMigration.php',
         'GFExcel\\Migration\\Repository\\FileSystemMigrationRepository' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Migration/Repository/FileSystemMigrationRepository.php',
@@ -385,14 +383,12 @@ class ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Collection\\Memory' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Collection/Memory.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Comment' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Comment.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\DefinedName' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/DefinedName.php',
-        'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\DocumentGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/DocumentGenerator.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Document\\Properties' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Document/Properties.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Document\\Security' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Document/Security.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Exception' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Exception.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\HashTable' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/HashTable.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Helper\\Dimension' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Helper/Dimension.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Helper\\Html' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Helper/Html.php',
-        'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Helper\\Migrator' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Helper/Migrator.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Helper\\Sample' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Helper/Sample.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\Helper\\Size' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/Helper/Size.php',
         'GFExcel\\Vendor\\PhpOffice\\PhpSpreadsheet\\IComparable' => __DIR__ . '/../..' . '/vendor_prefixed/phpoffice/phpspreadsheet/src/PhpSpreadsheet/IComparable.php',
@@ -625,6 +621,7 @@ class ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af
         'GFExcel\\Vendor\\Psr\\SimpleCache\\CacheException' => __DIR__ . '/../..' . '/vendor_prefixed/psr/simple-cache/src/CacheException.php',
         'GFExcel\\Vendor\\Psr\\SimpleCache\\CacheInterface' => __DIR__ . '/../..' . '/vendor_prefixed/psr/simple-cache/src/CacheInterface.php',
         'GFExcel\\Vendor\\Psr\\SimpleCache\\InvalidArgumentException' => __DIR__ . '/../..' . '/vendor_prefixed/psr/simple-cache/src/InvalidArgumentException.php',
+        'GFExcel\\Vendor\\Symfony\\Polyfill\\Iconv\\Iconv' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-iconv/Iconv.php',
         'GFExcel\\Vendor\\Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-mbstring/Mbstring.php',
         'GFExcel\\Vendor\\ZipStream\\Bigint' => __DIR__ . '/../..' . '/vendor_prefixed/maennchen/zipstream-php/src/Bigint.php',
         'GFExcel\\Vendor\\ZipStream\\DeflateStream' => __DIR__ . '/../..' . '/vendor_prefixed/maennchen/zipstream-php/src/DeflateStream.php',
@@ -883,9 +880,9 @@ class ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2c5f4619ef6ccb01fe6972386eacc7af::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253::$classMap;
 
         }, null, ClassLoader::class);
     }

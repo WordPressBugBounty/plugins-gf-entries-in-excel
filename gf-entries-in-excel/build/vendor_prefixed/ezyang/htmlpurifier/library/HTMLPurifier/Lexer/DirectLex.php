@@ -11,7 +11,7 @@
  * @todo Reread XML spec and document differences.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_Lexer_DirectLex extends GFExcel_VendorHTMLPurifier_Lexer

@@ -4,7 +4,7 @@
  * Validates a Percentage as defined by the CSS spec.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_AttrDef_CSS_Percentage extends GFExcel_VendorHTMLPurifier_AttrDef

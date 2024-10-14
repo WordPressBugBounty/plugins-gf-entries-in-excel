@@ -4,7 +4,7 @@
  * Abstract class of a tag token (start, end or empty), and its behavior.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 abstract class GFExcel_VendorHTMLPurifier_Token_Tag extends GFExcel_VendorHTMLPurifier_Token

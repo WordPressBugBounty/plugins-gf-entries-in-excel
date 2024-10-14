@@ -10,7 +10,7 @@
  * This transform is controlled by %HTML.TargetNoreferrer.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_AttrTransform_TargetNoreferrer extends GFExcel_VendorHTMLPurifier_AttrTransform

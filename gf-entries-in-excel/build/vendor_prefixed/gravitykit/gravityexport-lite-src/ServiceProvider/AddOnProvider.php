@@ -2,7 +2,7 @@
 /**
  * @license proprietary?
  *
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -26,7 +26,9 @@ use GFExcel\Notification\Manager\NotificationManager;
 use GFExcel\Notification\Repository\NotificationRepository;
 use GFExcel\Notification\Repository\NotificationRepositoryInterface;
 use GFExcel\Shortcode\DownloadUrl;
+use GFExcel\Vendor\League\Container\Container;
 use GFExcel\Vendor\League\Container\Definition\DefinitionInterface;
+use GFExcel\Vendor\Psr\Container\ContainerInterface;
 
 /**
  * Service provider for the gravity forms add-on.
@@ -108,5 +110,19 @@ class AddOnProvider extends AbstractServiceProvider {
 		$this->addAction( DownloadUrlResetAction::class )->addArgument( HashGeneratorInterface::class );
 		$this->addAction( DownloadUrlDisableAction::class );
 		$this->addAction( DownloadCountResetAction::class );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * Overwritten to ensure proper container type.
+	 * @since 2.3.2
+	 * @return Container
+	 */
+	public function getContainer(): ContainerInterface {
+		if ( ! $this->container instanceof Container ) {
+			throw new \InvalidArgumentException( 'Wrong container type provided.' );
+		}
+
+		return $this->container;
 	}
 }

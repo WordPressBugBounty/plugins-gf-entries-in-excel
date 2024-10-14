@@ -2,7 +2,7 @@
 /**
  * @license proprietary?
  *
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 
@@ -65,42 +65,41 @@ class PHPExcelRenderer extends AbstractPHPExcelRenderer
      * @param string $title
      * @return PHPExcelRenderer
      */
-    private function setTitle($title)
-    {
-        $title = gf_apply_filters(
-            [
-                'gfexcel_renderer_title',
-                $this->form['id'],
-            ],
-            $title,
-            $this->form
-        );
+	private function setTitle( $title ) {
+		$title = gf_apply_filters(
+			[
+				'gfexcel_renderer_title',
+				$this->form['id'],
+			],
+			$title,
+			$this->form
+		);
 
-        $this->setWorksheetTitle($this->worksheet, $this->form);
-        $this->spreadsheet->getProperties()->setTitle($title);
+		$this->setWorksheetTitle( $this->worksheet, $this->form );
+		$this->spreadsheet->getProperties()->setTitle( (string) $title );
 
-        return $this;
-    }
+		return $this;
+	}
 
     /**
      * Fluent setter for file subject.
      * @param string $title
      * @return PHPExcelRenderer
      */
-    private function setSubject($title)
-    {
-        $title = gf_apply_filters(
-            [
-                'gfexcel_renderer_subject',
-                $this->form['id'],
-            ],
-            $title,
-            $this->form
-        );
+	private function setSubject( $title ) {
+		$title = gf_apply_filters(
+			[
+				'gfexcel_renderer_subject',
+				$this->form['id'],
+			],
+			$title,
+			$this->form
+		);
 
-        $this->spreadsheet->getProperties()->setSubject($title);
-        return $this;
-    }
+		$this->spreadsheet->getProperties()->setSubject( (string) $title );
+
+		return $this;
+	}
 
     /**
      * Fluent setter for properties
@@ -137,8 +136,8 @@ class PHPExcelRenderer extends AbstractPHPExcelRenderer
             $this->form
         );
 
-        $this->spreadsheet->getProperties()
-            ->setDescription($description);
+	    $this->spreadsheet->getProperties()->setDescription( (string) $description );
+
         return $this;
     }
 }

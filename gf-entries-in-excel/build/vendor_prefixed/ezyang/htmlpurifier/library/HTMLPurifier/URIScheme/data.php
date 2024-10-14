@@ -4,7 +4,7 @@
  * Implements data: URI for base64 encoded images supported by GD.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_URIScheme_data extends GFExcel_VendorHTMLPurifier_URIScheme

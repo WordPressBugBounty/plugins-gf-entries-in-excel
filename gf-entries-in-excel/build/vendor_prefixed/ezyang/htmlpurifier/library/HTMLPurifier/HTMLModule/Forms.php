@@ -4,7 +4,7 @@
  * XHTML 1.1 Forms module, defines all form-related elements found in HTML 4.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_HTMLModule_Forms extends GFExcel_VendorHTMLPurifier_HTMLModule

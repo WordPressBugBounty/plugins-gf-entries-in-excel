@@ -4,7 +4,7 @@
  * Injector that displays the URL of an anchor instead of linking to it, in addition to showing the text of the link.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 05-July-2024 using Strauss.
+ * Modified by GravityKit on 14-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_Injector_DisplayLinkURI extends GFExcel_VendorHTMLPurifier_Injector
