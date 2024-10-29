@@ -12,7 +12,7 @@
  *        and shouldn't report an error to the user [TagClosedAuto].
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 14-October-2024 using Strauss.
+ * Modified by GravityKit on 29-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_Strategy_MakeWellFormed extends GFExcel_VendorHTMLPurifier_Strategy

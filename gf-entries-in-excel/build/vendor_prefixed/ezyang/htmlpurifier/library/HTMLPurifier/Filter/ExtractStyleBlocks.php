@@ -23,7 +23,7 @@ function htmlpurifier_filter_extractstyleblocks_muteerrorhandler()
  *      call GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks->cleanCSS()
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 14-October-2024 using Strauss.
+ * Modified by GravityKit on 29-October-2024 using Strauss.
  * @see https://github.com/BrianHenryIE/strauss
  */
 class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_VendorHTMLPurifier_Filter
