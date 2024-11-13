@@ -4,10 +4,9 @@
  * Name is deprecated, but allowed in strict doctypes, so onl
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
-class GFExcel_VendorHTMLPurifier_HTMLModule_Tidy_Name extends HTMLPurifier_HTMLModule_Tidy
+class GFExcel_VendorHTMLPurifier_HTMLModule_Tidy_Name extends GFExcel_VendorHTMLPurifier_HTMLModule_Tidy
 {
     /**
      * @type string

@@ -2,8 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -127,7 +126,7 @@ class ContentTypes extends WriterPart
             $extension = '';
             $mimeType = '';
 
-            if ($this->getParentWriter()->getDrawingHashTable()->getByIndex($i) instanceof \PhpOffice\PhpSpreadsheet\Worksheet\Drawing) {
+            if ($this->getParentWriter()->getDrawingHashTable()->getByIndex($i) instanceof \GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Worksheet\Drawing) {
                 $extension = strtolower($this->getParentWriter()->getDrawingHashTable()->getByIndex($i)->getExtension());
                 $mimeType = $this->getImageMimeType($this->getParentWriter()->getDrawingHashTable()->getByIndex($i)->getPath());
             } elseif ($this->getParentWriter()->getDrawingHashTable()->getByIndex($i) instanceof MemoryDrawing) {

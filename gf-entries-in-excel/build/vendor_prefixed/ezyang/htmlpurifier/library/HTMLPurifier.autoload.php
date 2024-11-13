@@ -6,8 +6,7 @@
  * It also does some sanity checks.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 if (function_exists('spl_autoload_register') && function_exists('spl_autoload_unregister')) {
@@ -18,7 +17,7 @@ if (function_exists('spl_autoload_register') && function_exists('spl_autoload_un
         spl_autoload_register('__autoload');
     }
 } elseif (!function_exists('__autoload')) {
-    require dirname(__FILE__) . '/HTMLPurifier.autoload-legacy.php';
+    require dirname(__FILE__) . '/GFExcel_VendorHTMLPurifier.autoload-legacy.php';
 }
 
 // phpcs:ignore PHPCompatibility.IniDirectives.RemovedIniDirectives.zend_ze1_compatibility_modeRemoved

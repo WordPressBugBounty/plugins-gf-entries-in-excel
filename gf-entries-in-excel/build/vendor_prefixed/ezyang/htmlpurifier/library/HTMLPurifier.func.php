@@ -3,21 +3,24 @@
 /**
  * @file
  * Defines a function wrapper for HTML Purifier for quick use.
- * @note ''HTMLPurifier()'' is NOT the same as ''new HTMLPurifier()''
+ * @note ''GFExcel_VendorHTMLPurifier()'' is NOT the same as ''new GFExcel_VendorHTMLPurifier()''
+ *
+ * @license LGPL-2.1-or-later
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 /**
  * Purify HTML.
  * @param string $html String HTML to purify
  * @param mixed $config Configuration to use, can be any value accepted by
- *        HTMLPurifier_Config::create()
+ *        GFExcel_VendorHTMLPurifier_Config::create()
  * @return string
  */
-function HTMLPurifier($html, $config = null)
+function GFExcel_VendorHTMLPurifier($html, $config = null)
 {
     static $purifier = false;
     if (!$purifier) {
-        $purifier = new HTMLPurifier();
+        $purifier = new GFExcel_VendorHTMLPurifier();
     }
     return $purifier->purify($html, $config);
 }

@@ -12,15 +12,14 @@
  *       filtering solution.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_AttrDef_CSS extends GFExcel_VendorHTMLPurifier_AttrDef
 {
 
     /**
      * @param string $css
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool|string
      */
@@ -31,6 +30,13 @@ class GFExcel_VendorHTMLPurifier_AttrDef_CSS extends GFExcel_VendorHTMLPurifier_
         $definition = $config->getCSSDefinition();
         $allow_duplicates = $config->get("CSS.AllowDuplicates");
 
+        $universal_attrdef = new GFExcel_VendorHTMLPurifier_AttrDef_Enum(
+            array(
+                'initial',
+                'inherit',
+                'unset',
+            )
+        );
 
         // According to the CSS2.1 spec, the places where a
         // non-delimiting semicolon can appear are in strings
@@ -100,16 +106,13 @@ class GFExcel_VendorHTMLPurifier_AttrDef_CSS extends GFExcel_VendorHTMLPurifier_
             if (!$ok) {
                 continue;
             }
-            // inefficient call, since the validator will do this again
-            if (strtolower(trim($value)) !== 'inherit') {
-                // inherit works for everything (but only on the base property)
+            $result = $universal_attrdef->validate($value, $config, $context);
+            if ($result === false) {
                 $result = $definition->info[$property]->validate(
                     $value,
                     $config,
                     $context
                 );
-            } else {
-                $result = 'inherit';
             }
             if ($result === false) {
                 continue;

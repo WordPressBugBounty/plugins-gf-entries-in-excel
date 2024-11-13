@@ -4,8 +4,7 @@
  * Registry for retrieving specific URI scheme validator objects.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_URISchemeRegistry
 {
@@ -38,14 +37,14 @@ class GFExcel_VendorHTMLPurifier_URISchemeRegistry
     /**
      * Retrieves a scheme validator object
      * @param string $scheme String scheme name like http or mailto
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return GFExcel_VendorHTMLPurifier_URIScheme
      */
     public function getScheme($scheme, $config, $context)
     {
         if (!$config) {
-            $config = HTMLPurifier_Config::createDefault();
+            $config = GFExcel_VendorHTMLPurifier_Config::createDefault();
         }
 
         // important, otherwise attacker could include arbitrary file

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
+class ComposerStaticInit6a15003838b28368c483e75ec1d382a2
 {
     public static $prefixLengthsPsr4 = array (
         'G' => 
@@ -641,6 +641,7 @@ class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
         'GFExcel\\Vendor\\ZipStream\\ZipStream' => __DIR__ . '/../..' . '/vendor_prefixed/maennchen/zipstream-php/src/ZipStream.php',
         'GFExcel_VendorHTML5' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Lexer/PH5P.php',
         'GFExcel_VendorHTML5TreeConstructer' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Lexer/PH5P.php',
+        'GFExcel_VendorHTMLPurifier' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier.php',
         'GFExcel_VendorHTMLPurifier_Arborize' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Arborize.php',
         'GFExcel_VendorHTMLPurifier_AttrCollections' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrCollections.php',
         'GFExcel_VendorHTMLPurifier_AttrDef' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef.php',
@@ -662,6 +663,7 @@ class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
         'GFExcel_VendorHTMLPurifier_AttrDef_CSS_Multiple' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Multiple.php',
         'GFExcel_VendorHTMLPurifier_AttrDef_CSS_Number' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Number.php',
         'GFExcel_VendorHTMLPurifier_AttrDef_CSS_Percentage' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Percentage.php',
+        'GFExcel_VendorHTMLPurifier_AttrDef_CSS_Ratio' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/Ratio.php',
         'GFExcel_VendorHTMLPurifier_AttrDef_CSS_TextDecoration' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/TextDecoration.php',
         'GFExcel_VendorHTMLPurifier_AttrDef_CSS_URI' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/CSS/URI.php',
         'GFExcel_VendorHTMLPurifier_AttrDef_Clone' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/AttrDef/Clone.php',
@@ -723,6 +725,8 @@ class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
         'GFExcel_VendorHTMLPurifier_ChildDef_Required' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ChildDef/Required.php',
         'GFExcel_VendorHTMLPurifier_ChildDef_StrictBlockquote' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ChildDef/StrictBlockquote.php',
         'GFExcel_VendorHTMLPurifier_ChildDef_Table' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ChildDef/Table.php',
+        'GFExcel_VendorHTMLPurifier_Config' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Config.php',
+        'GFExcel_VendorHTMLPurifier_ConfigSchema' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ConfigSchema.php',
         'GFExcel_VendorHTMLPurifier_ConfigSchema_Builder_ConfigSchema' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ConfigSchema/Builder/ConfigSchema.php',
         'GFExcel_VendorHTMLPurifier_ConfigSchema_Builder_Xml' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ConfigSchema/Builder/Xml.php',
         'GFExcel_VendorHTMLPurifier_ConfigSchema_Exception' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ConfigSchema/Exception.php',
@@ -785,6 +789,7 @@ class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
         'GFExcel_VendorHTMLPurifier_HTMLModule_TargetNoopener' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/TargetNoopener.php',
         'GFExcel_VendorHTMLPurifier_HTMLModule_TargetNoreferrer' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/TargetNoreferrer.php',
         'GFExcel_VendorHTMLPurifier_HTMLModule_Text' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/Text.php',
+        'GFExcel_VendorHTMLPurifier_HTMLModule_Tidy' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/Tidy.php',
         'GFExcel_VendorHTMLPurifier_HTMLModule_Tidy_Name' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/Tidy/Name.php',
         'GFExcel_VendorHTMLPurifier_HTMLModule_Tidy_Proprietary' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/Tidy/Proprietary.php',
         'GFExcel_VendorHTMLPurifier_HTMLModule_Tidy_Strict' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/Tidy/Strict.php',
@@ -815,6 +820,10 @@ class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
         'GFExcel_VendorHTMLPurifier_PercentEncoder' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/PercentEncoder.php',
         'GFExcel_VendorHTMLPurifier_Printer' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer.php',
         'GFExcel_VendorHTMLPurifier_Printer_CSSDefinition' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/CSSDefinition.php',
+        'GFExcel_VendorHTMLPurifier_Printer_ConfigForm' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
+        'GFExcel_VendorHTMLPurifier_Printer_ConfigForm_NullDecorator' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
+        'GFExcel_VendorHTMLPurifier_Printer_ConfigForm_bool' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
+        'GFExcel_VendorHTMLPurifier_Printer_ConfigForm_default' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
         'GFExcel_VendorHTMLPurifier_Printer_HTMLDefinition' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/HTMLDefinition.php',
         'GFExcel_VendorHTMLPurifier_PropertyList' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/PropertyList.php',
         'GFExcel_VendorHTMLPurifier_PropertyListIterator' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/PropertyListIterator.php',
@@ -867,22 +876,14 @@ class ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253
         'GFExcel_VendorHTMLPurifier_VarParser_Flexible' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Flexible.php',
         'GFExcel_VendorHTMLPurifier_VarParser_Native' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
         'GFExcel_VendorHTMLPurifier_Zipper' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
-        'HTMLPurifier' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier.php',
-        'HTMLPurifier_Config' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Config.php',
-        'HTMLPurifier_ConfigSchema' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/ConfigSchema.php',
-        'HTMLPurifier_HTMLModule_Tidy' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/HTMLModule/Tidy.php',
-        'HTMLPurifier_Printer_ConfigForm' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
-        'HTMLPurifier_Printer_ConfigForm_NullDecorator' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
-        'HTMLPurifier_Printer_ConfigForm_bool' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
-        'HTMLPurifier_Printer_ConfigForm_default' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Printer/ConfigForm.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2d385b34cbe2a16c60fd130c1c50d253::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6a15003838b28368c483e75ec1d382a2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6a15003838b28368c483e75ec1d382a2::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6a15003838b28368c483e75ec1d382a2::$classMap;
 
         }, null, ClassLoader::class);
     }

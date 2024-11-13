@@ -9,8 +9,7 @@
  * and then any number of digits and x'es.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 class GFExcel_VendorHTMLPurifier_URIScheme_tel extends GFExcel_VendorHTMLPurifier_URIScheme
@@ -27,7 +26,7 @@ class GFExcel_VendorHTMLPurifier_URIScheme_tel extends GFExcel_VendorHTMLPurifie
 
     /**
      * @param GFExcel_VendorHTMLPurifier_URI $uri
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool
      */

@@ -2,13 +2,12 @@
 /**
  * @license MIT
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Writer;
 
-use HTMLPurifier;
+use GFExcel_VendorHTMLPurifier as HTMLPurifier;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Calculation;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Cell\Cell;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Cell\Coordinate;

@@ -2,8 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Worksheet\AutoFilter;
@@ -39,8 +38,8 @@ class Column
     ];
 
     // Multiple Rule Connections
-    const AUTOFILTER_COLUMN_JOIN_AND = 'GFExcel\Vendor\and';
-    const AUTOFILTER_COLUMN_JOIN_OR = 'GFExcel\Vendor\or';
+    const AUTOFILTER_COLUMN_JOIN_AND = 'and';
+    const AUTOFILTER_COLUMN_JOIN_OR = 'or';
 
     /**
      * Join options for autofilter rules.

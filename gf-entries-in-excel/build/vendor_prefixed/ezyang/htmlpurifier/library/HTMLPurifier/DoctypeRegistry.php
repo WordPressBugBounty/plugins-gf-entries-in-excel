@@ -2,8 +2,7 @@
 /**
  * @license LGPL-2.1-or-later
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 class GFExcel_VendorHTMLPurifier_DoctypeRegistry
@@ -106,7 +105,7 @@ class GFExcel_VendorHTMLPurifier_DoctypeRegistry
      *       can hold on to (this is necessary in order to tell
      *       Generator whether or not the current document is XML
      *       based or not).
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return GFExcel_VendorHTMLPurifier_Doctype
      */
     public function make($config)
@@ -116,7 +115,7 @@ class GFExcel_VendorHTMLPurifier_DoctypeRegistry
 
     /**
      * Retrieves the doctype from the configuration object
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return string
      */
     public function getDoctypeFromConfig($config)

@@ -4,8 +4,7 @@
  * Abstract class of a tag token (start, end or empty), and its behavior.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 abstract class GFExcel_VendorHTMLPurifier_Token_Tag extends GFExcel_VendorHTMLPurifier_Token
 {
@@ -48,7 +47,7 @@ abstract class GFExcel_VendorHTMLPurifier_Token_Tag extends GFExcel_VendorHTMLPu
         $this->name = ctype_lower($name) ? $name : strtolower($name);
         foreach ($attr as $key => $value) {
             // normalization only necessary when key is not lowercase
-            if (!ctype_lower($key)) {
+            if (!ctype_lower((string)$key)) {
                 $new_key = strtolower($key);
                 if (!isset($attr[$new_key])) {
                     $attr[$new_key] = $attr[$key];

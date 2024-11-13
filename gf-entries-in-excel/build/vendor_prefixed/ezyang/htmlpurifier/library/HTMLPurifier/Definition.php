@@ -5,8 +5,7 @@
  * functions for the class.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 abstract class GFExcel_VendorHTMLPurifier_Definition
 {
@@ -38,13 +37,13 @@ abstract class GFExcel_VendorHTMLPurifier_Definition
     /**
      * Sets up the definition object into the final form, something
      * not done by the constructor
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract protected function doSetup($config);
 
     /**
      * Setup function that aborts if already setup
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     public function setup($config)
     {

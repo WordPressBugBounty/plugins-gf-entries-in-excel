@@ -8,8 +8,7 @@
  * @todo Serialized cache for languages
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_LanguageFactory
 {
@@ -79,12 +78,12 @@ class GFExcel_VendorHTMLPurifier_LanguageFactory
     public function setup()
     {
         $this->validator = new GFExcel_VendorHTMLPurifier_AttrDef_Lang();
-        $this->dir = HTMLPURIFIER_PREFIX . '/HTMLPurifier';
+        $this->dir = HTMLPURIFIER_PREFIX . '/GFExcel_VendorHTMLPurifier';
     }
 
     /**
      * Creates a language object, handles class fallbacks
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @param bool|string $code Code to override configuration with. Private parameter.
      * @return GFExcel_VendorHTMLPurifier_Language

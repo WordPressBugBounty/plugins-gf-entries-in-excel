@@ -2,8 +2,7 @@
 /**
  * @license proprietary?
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 namespace GFExcel\ServiceProvider;

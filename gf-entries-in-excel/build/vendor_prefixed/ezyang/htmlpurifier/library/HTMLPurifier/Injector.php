@@ -14,8 +14,7 @@
  *       would help if an operation is recursive.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 abstract class GFExcel_VendorHTMLPurifier_Injector
 {
@@ -94,7 +93,7 @@ abstract class GFExcel_VendorHTMLPurifier_Injector
      * this allows references to important variables to be made within
      * the injector. This function also checks if the HTML environment
      * will work with the Injector (see checkNeeded()).
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool|string Boolean false if success, string of missing needed element/attribute if failure
      */
@@ -118,7 +117,7 @@ abstract class GFExcel_VendorHTMLPurifier_Injector
      * This function checks if the HTML environment
      * will work with the Injector: if p tags are not allowed, the
      * Auto-Paragraphing injector should not be enabled.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return bool|string Boolean false if success, string of missing needed element/attribute if failure
      */
     public function checkNeeded($config)

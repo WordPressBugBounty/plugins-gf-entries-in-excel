@@ -2,8 +2,7 @@
 /**
  * @license LGPL-2.1-or-later
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 class GFExcel_VendorHTMLPurifier_ConfigSchema_InterchangeBuilder
@@ -42,7 +41,7 @@ class GFExcel_VendorHTMLPurifier_ConfigSchema_InterchangeBuilder
     public function buildDir($interchange, $dir = null)
     {
         if (!$dir) {
-            $dir = HTMLPURIFIER_PREFIX . '/HTMLPurifier/ConfigSchema/schema';
+            $dir = HTMLPURIFIER_PREFIX . '/GFExcel_VendorHTMLPurifier/ConfigSchema/schema';
         }
         if (file_exists($dir . '/info.ini')) {
             $info = parse_ini_file($dir . '/info.ini');

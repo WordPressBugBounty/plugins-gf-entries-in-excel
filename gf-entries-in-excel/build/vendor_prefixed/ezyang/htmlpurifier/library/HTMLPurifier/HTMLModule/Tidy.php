@@ -6,10 +6,9 @@
  * @todo Figure out how to protect some of these methods/properties
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
-class HTMLPurifier_HTMLModule_Tidy extends GFExcel_VendorHTMLPurifier_HTMLModule
+class GFExcel_VendorHTMLPurifier_HTMLModule_Tidy extends GFExcel_VendorHTMLPurifier_HTMLModule
 {
     /**
      * List of supported levels.
@@ -40,7 +39,7 @@ class HTMLPurifier_HTMLModule_Tidy extends GFExcel_VendorHTMLPurifier_HTMLModule
     /**
      * Lazy load constructs the module by determining the necessary
      * fixes to create and then delegating to the populate() function.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @todo Wildcard matching and error reporting when an added or
      *       subtracted fix has no effect.
      */

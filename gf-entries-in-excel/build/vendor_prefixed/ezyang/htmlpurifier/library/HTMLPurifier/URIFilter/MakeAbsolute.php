@@ -8,8 +8,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_MakeAbsolute extends GFExcel_VendorHT
      * @type string
      *
      * @license LGPL-2.1-or-later
-     * Modified by GravityKit on 29-October-2024 using Strauss.
-     * @see https://github.com/BrianHenryIE/strauss
+     * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
      */
     public $name = 'MakeAbsolute';
 
@@ -24,7 +23,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_MakeAbsolute extends GFExcel_VendorHT
     protected $basePathStack = array();
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return bool
      */
     public function prepare($config)
@@ -49,7 +48,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_MakeAbsolute extends GFExcel_VendorHT
 
     /**
      * @param GFExcel_VendorHTMLPurifier_URI $uri
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool
      */

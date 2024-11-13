@@ -40,8 +40,7 @@
  * limitation of the token system and some workarounds would be nice.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_Lexer
 {
@@ -71,13 +70,13 @@ class GFExcel_VendorHTMLPurifier_Lexer
      *       To specify your own prototype, set %Core.LexerImpl to it.
      *       This change in behavior de-singletonizes the lexer object.
      *
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return GFExcel_VendorHTMLPurifier_Lexer
      * @throws GFExcel_VendorHTMLPurifier_Exception
      */
     public static function create($config)
     {
-        if (!($config instanceof HTMLPurifier_Config)) {
+        if (!($config instanceof GFExcel_VendorHTMLPurifier_Config)) {
             $lexer = $config;
             trigger_error(
                 "Passing a prototype to
@@ -236,7 +235,7 @@ class GFExcel_VendorHTMLPurifier_Lexer
     /**
      * Lexes an HTML string into tokens.
      * @param $string String HTML.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return GFExcel_VendorHTMLPurifier_Token[] array representation of HTML.
      */
@@ -274,20 +273,6 @@ class GFExcel_VendorHTMLPurifier_Lexer
     }
 
     /**
-     * Special Internet Explorer conditional comments should be removed.
-     * @param string $string HTML string to process.
-     * @return string HTML with conditional comments removed.
-     */
-    protected static function removeIEConditional($string)
-    {
-        return preg_replace(
-            '#<!--\[if [^>]+\]>.*?<!\[endif\]-->#si', // probably should generalize for all strings
-            '',
-            $string
-        );
-    }
-
-    /**
      * Callback function for escapeCDATA() that does the work.
      *
      * @warning Though this is public in order to let the callback happen,
@@ -306,7 +291,7 @@ class GFExcel_VendorHTMLPurifier_Lexer
      * Takes a piece of HTML and normalizes it by converting entities, fixing
      * encoding, extracting bits, and other good stuff.
      * @param string $html HTML.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      * @todo Consider making protected
@@ -326,8 +311,6 @@ class GFExcel_VendorHTMLPurifier_Lexer
 
         // escape CDATA
         $html = $this->escapeCDATA($html);
-
-        $html = $this->removeIEConditional($html);
 
         // extract body from document if applicable
         if ($config->get('Core.ConvertDocumentToFragment')) {
@@ -374,7 +357,7 @@ class GFExcel_VendorHTMLPurifier_Lexer
     public function extractBody($html)
     {
         $matches = array();
-        $result = preg_match('|(.*?)<body[^>]*>(.*)</body>|GFExcel\Vendor\is', $html, $matches);
+        $result = preg_match('|(.*?)<body[^>]*>(.*)</body>|is', $html, $matches);
         if ($result) {
             // Make sure it's not in a comment
             $comment_start = strrpos($matches[1], '<!--');

@@ -11,8 +11,7 @@
  * @todo Reread XML spec and document differences.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_Lexer_DirectLex extends GFExcel_VendorHTMLPurifier_Lexer
 {
@@ -39,7 +38,7 @@ class GFExcel_VendorHTMLPurifier_Lexer_DirectLex extends GFExcel_VendorHTMLPurif
 
     /**
      * @param String $html
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return array|GFExcel_VendorHTMLPurifier_Token[]
      */
@@ -373,7 +372,7 @@ class GFExcel_VendorHTMLPurifier_Lexer_DirectLex extends GFExcel_VendorHTMLPurif
      * Takes the inside of an HTML tag and makes an assoc array of attributes.
      *
      * @param string $string Inside of tag excluding name.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return array Assoc array of attributes.
      */

@@ -4,15 +4,14 @@
  * Configuration definition, defines directives and their defaults.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
-class HTMLPurifier_ConfigSchema
+class GFExcel_VendorHTMLPurifier_ConfigSchema
 {
     /**
      * Defaults of the directives and namespaces.
      * @type array
-     * @note This shares the exact same structure as HTMLPurifier_Config::$conf
+     * @note This shares the exact same structure as GFExcel_VendorHTMLPurifier_Config::$conf
      */
     public $defaults = array();
 
@@ -48,7 +47,7 @@ class HTMLPurifier_ConfigSchema
      * property set to the integer. If the integer is negative, type is
      * equal to the absolute value of integer, and allow_null is true.
      *
-     * This class is friendly with HTMLPurifier_Config. If you need introspection
+     * This class is friendly with GFExcel_VendorHTMLPurifier_Config. If you need introspection
      * about the schema, you're better of using the ConfigSchema_Interchange,
      * which uses more memory but has much richer information.
      * @type array
@@ -57,7 +56,7 @@ class HTMLPurifier_ConfigSchema
 
     /**
      * Application-wide singleton
-     * @type HTMLPurifier_ConfigSchema
+     * @type GFExcel_VendorHTMLPurifier_ConfigSchema
      */
     protected static $singleton;
 
@@ -68,11 +67,11 @@ class HTMLPurifier_ConfigSchema
 
     /**
      * Unserializes the default ConfigSchema.
-     * @return HTMLPurifier_ConfigSchema
+     * @return GFExcel_VendorHTMLPurifier_ConfigSchema
      */
     public static function makeFromSerial()
     {
-        $contents = file_get_contents(HTMLPURIFIER_PREFIX . '/HTMLPurifier/ConfigSchema/schema.ser');
+        $contents = file_get_contents(HTMLPURIFIER_PREFIX . '/GFExcel_VendorHTMLPurifier/ConfigSchema/schema.ser');
         $r = unserialize($contents);
         if (!$r) {
             $hash = sha1($contents);
@@ -83,17 +82,17 @@ class HTMLPurifier_ConfigSchema
 
     /**
      * Retrieves an instance of the application-wide configuration definition.
-     * @param HTMLPurifier_ConfigSchema $prototype
-     * @return HTMLPurifier_ConfigSchema
+     * @param GFExcel_VendorHTMLPurifier_ConfigSchema $prototype
+     * @return GFExcel_VendorHTMLPurifier_ConfigSchema
      */
     public static function instance($prototype = null)
     {
         if ($prototype !== null) {
-            HTMLPurifier_ConfigSchema::$singleton = $prototype;
-        } elseif (HTMLPurifier_ConfigSchema::$singleton === null || $prototype === true) {
-            HTMLPurifier_ConfigSchema::$singleton = HTMLPurifier_ConfigSchema::makeFromSerial();
+            GFExcel_VendorHTMLPurifier_ConfigSchema::$singleton = $prototype;
+        } elseif (GFExcel_VendorHTMLPurifier_ConfigSchema::$singleton === null || $prototype === true) {
+            GFExcel_VendorHTMLPurifier_ConfigSchema::$singleton = GFExcel_VendorHTMLPurifier_ConfigSchema::makeFromSerial();
         }
-        return HTMLPurifier_ConfigSchema::$singleton;
+        return GFExcel_VendorHTMLPurifier_ConfigSchema::$singleton;
     }
 
     /**

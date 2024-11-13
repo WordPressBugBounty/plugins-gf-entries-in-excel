@@ -2,8 +2,7 @@
 /**
  * @license LGPL-2.1-or-later
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 class GFExcel_VendorHTMLPurifier_Injector_RemoveEmpty extends GFExcel_VendorHTMLPurifier_Injector
@@ -14,7 +13,7 @@ class GFExcel_VendorHTMLPurifier_Injector_RemoveEmpty extends GFExcel_VendorHTML
     private $context;
 
     /**
-     * @type HTMLPurifier_Config
+     * @type GFExcel_VendorHTMLPurifier_Config
      */
     private $config;
 
@@ -40,7 +39,7 @@ class GFExcel_VendorHTMLPurifier_Injector_RemoveEmpty extends GFExcel_VendorHTML
     private $exclude;
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return void
      */
@@ -54,7 +53,7 @@ class GFExcel_VendorHTMLPurifier_Injector_RemoveEmpty extends GFExcel_VendorHTML
         $this->exclude = $config->get('AutoFormat.RemoveEmpty.Predicate');
         foreach ($this->exclude as $key => $attrs) {
             if (!is_array($attrs)) {
-                // HACK, see HTMLPurifier/Printer/ConfigForm.php
+                // HACK, see GFExcel_VendorHTMLPurifier/Printer/ConfigForm.php
                 $this->exclude[$key] = explode(';', $attrs);
             }
         }

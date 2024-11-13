@@ -14,7 +14,7 @@ function htmlpurifier_filter_extractstyleblocks_muteerrorhandler()
  * so they can be used elsewhere in the document.
  *
  * @note
- *      See tests/HTMLPurifier/Filter/ExtractStyleBlocksTest.php for
+ *      See tests/GFExcel_VendorHTMLPurifier/Filter/ExtractStyleBlocksTest.php for
  *      sample usage.
  *
  * @note
@@ -23,8 +23,7 @@ function htmlpurifier_filter_extractstyleblocks_muteerrorhandler()
  *      call GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks->cleanCSS()
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_VendorHTMLPurifier_Filter
 {
@@ -58,6 +57,11 @@ class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_Vendo
      */
     private $_enum_attrdef;
 
+    /**
+     * @type GFExcel_VendorHTMLPurifier_AttrDef_Enum
+     */
+    private $_universal_attrdef;
+
     public function __construct()
     {
         $this->_tidy = new csstidy();
@@ -74,6 +78,13 @@ class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_Vendo
                 'focus'
             )
         );
+        $this->_universal_attrdef = new GFExcel_VendorHTMLPurifier_AttrDef_Enum(
+            array(
+                'initial',
+                'inherit',
+                'unset',
+            )
+        );
     }
 
     /**
@@ -88,7 +99,7 @@ class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_Vendo
     /**
      * Removes inline <style> tags from HTML, saves them for later use
      * @param string $html
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      * @todo Extend to indicate non-text/css style blocks
@@ -118,7 +129,7 @@ class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_Vendo
      * Takes CSS (the stuff found in <style>) and cleans it.
      * @warning Requires CSSTidy <http://csstidy.sourceforge.net/>
      * @param string $css CSS styling to clean
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @throws GFExcel_VendorHTMLPurifier_Exception
      * @return string Cleaned CSS
@@ -309,6 +320,11 @@ class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_Vendo
                     foreach ($style as $name => $value) {
                         if (!isset($css_definition->info[$name])) {
                             unset($style[$name]);
+                            continue;
+                        }
+                        $uni_ret = $this->_universal_attrdef->validate($value, $config, $context);
+                        if ($uni_ret !== false) {
+                            $style[$name] = $uni_ret;
                             continue;
                         }
                         $def = $css_definition->info[$name];

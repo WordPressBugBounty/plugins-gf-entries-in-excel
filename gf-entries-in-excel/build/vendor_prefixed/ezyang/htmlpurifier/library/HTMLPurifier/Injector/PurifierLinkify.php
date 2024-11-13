@@ -5,8 +5,7 @@
  * to links
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_Injector_PurifierLinkify extends GFExcel_VendorHTMLPurifier_Injector
 {
@@ -26,7 +25,7 @@ class GFExcel_VendorHTMLPurifier_Injector_PurifierLinkify extends GFExcel_Vendor
     public $needed = array('a' => array('href'));
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      */

@@ -19,8 +19,7 @@
  *       for an implementation not to want anything to happen on a step
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 class GFExcel_VendorHTMLPurifier_Filter
@@ -35,7 +34,7 @@ class GFExcel_VendorHTMLPurifier_Filter
     /**
      * Pre-processor function, handles HTML before HTML Purifier
      * @param string $html
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      */
@@ -47,7 +46,7 @@ class GFExcel_VendorHTMLPurifier_Filter
     /**
      * Post-processor function, handles HTML after HTML Purifier
      * @param string $html
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      */

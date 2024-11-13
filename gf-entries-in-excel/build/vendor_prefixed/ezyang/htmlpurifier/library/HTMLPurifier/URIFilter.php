@@ -26,8 +26,7 @@
  *          proprietary URI schemes into regular ones.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 abstract class GFExcel_VendorHTMLPurifier_URIFilter
 {
@@ -55,7 +54,7 @@ abstract class GFExcel_VendorHTMLPurifier_URIFilter
     /**
      * Performs initialization for the filter.  If the filter returns
      * false, this means that it shouldn't be considered active.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return bool
      */
     public function prepare($config)
@@ -66,7 +65,7 @@ abstract class GFExcel_VendorHTMLPurifier_URIFilter
     /**
      * Filter a URI object
      * @param GFExcel_VendorHTMLPurifier_URI $uri Reference to URI object variable
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool Whether or not to continue processing: false indicates
      *         URL is no good, true indicates continue processing. Note that

@@ -9,8 +9,7 @@
  *      validate() is called.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_URI
 {
@@ -72,7 +71,7 @@ class GFExcel_VendorHTMLPurifier_URI
 
     /**
      * Retrieves a scheme object corresponding to the URI's scheme/default
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return GFExcel_VendorHTMLPurifier_URIScheme Scheme object appropriate for validating this URI
      */
@@ -105,7 +104,7 @@ class GFExcel_VendorHTMLPurifier_URI
     /**
      * Generic validation method applicable for all schemes. May modify
      * this URI in order to get it into a compliant form.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool True if validation/filtering succeeds, false if failure
      */
@@ -270,7 +269,7 @@ class GFExcel_VendorHTMLPurifier_URI
      * Note that this does not do any scheme checking, so it is mostly
      * only appropriate for metadata that doesn't care about protocol
      * security.  isBenign is probably what you actually want.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool
      */
@@ -292,7 +291,7 @@ class GFExcel_VendorHTMLPurifier_URI
      *
      *      - It is a local URL (isLocal), and
      *      - It has a equal or better level of security
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool
      */

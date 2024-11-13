@@ -10,8 +10,7 @@
  * subclasses are also responsible for cleaning the code if possible.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 abstract class GFExcel_VendorHTMLPurifier_AttrDef
@@ -35,7 +34,7 @@ abstract class GFExcel_VendorHTMLPurifier_AttrDef
      * Validates and cleans passed string according to a definition.
      *
      * @param string $string String to be validated and cleaned.
-     * @param HTMLPurifier_Config $config Mandatory HTMLPurifier_Config object.
+     * @param GFExcel_VendorHTMLPurifier_Config $config Mandatory GFExcel_VendorHTMLPurifier_Config object.
      * @param GFExcel_VendorHTMLPurifier_Context $context Mandatory GFExcel_VendorHTMLPurifier_Context object.
      */
     abstract public function validate($string, $config, $context);

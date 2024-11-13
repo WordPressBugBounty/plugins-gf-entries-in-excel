@@ -11,14 +11,13 @@ class GFExcel_VendorHTMLPurifier_Printer
      * @type GFExcel_VendorHTMLPurifier_Generator
      *
      * @license LGPL-2.1-or-later
-     * Modified by GravityKit on 29-October-2024 using Strauss.
-     * @see https://github.com/BrianHenryIE/strauss
+     * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
      */
     protected $generator;
 
     /**
      * For easy access.
-     * @type HTMLPurifier_Config
+     * @type GFExcel_VendorHTMLPurifier_Config
      */
     protected $config;
 
@@ -31,7 +30,7 @@ class GFExcel_VendorHTMLPurifier_Printer
 
     /**
      * Give generator necessary configuration if possible
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     public function prepareGenerator($config)
     {

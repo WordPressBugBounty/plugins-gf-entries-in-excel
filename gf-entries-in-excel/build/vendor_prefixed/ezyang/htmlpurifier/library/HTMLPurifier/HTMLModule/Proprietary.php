@@ -5,8 +5,7 @@
  * @warning If this module is enabled, standards-compliance is off!
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_HTMLModule_Proprietary extends GFExcel_VendorHTMLPurifier_HTMLModule
 {
@@ -16,7 +15,7 @@ class GFExcel_VendorHTMLPurifier_HTMLModule_Proprietary extends GFExcel_VendorHT
     public $name = 'Proprietary';
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     public function setup($config)
     {

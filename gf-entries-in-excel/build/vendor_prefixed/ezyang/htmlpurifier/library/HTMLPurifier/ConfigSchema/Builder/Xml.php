@@ -5,8 +5,7 @@
  * which can be further processed to generate documentation.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_ConfigSchema_Builder_Xml extends XMLWriter
 {
@@ -28,7 +27,7 @@ class GFExcel_VendorHTMLPurifier_ConfigSchema_Builder_Xml extends XMLWriter
     {
         $this->startElement('div');
 
-        $purifier = HTMLPurifier::getInstance();
+        $purifier = GFExcel_VendorHTMLPurifier::getInstance();
         $html = $purifier->purify($html);
         $this->writeAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
         $this->writeRaw($html);

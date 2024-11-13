@@ -10,8 +10,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_HostBlacklist extends GFExcel_VendorH
      * @type string
      *
      * @license LGPL-2.1-or-later
-     * Modified by GravityKit on 29-October-2024 using Strauss.
-     * @see https://github.com/BrianHenryIE/strauss
+     * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
      */
     public $name = 'HostBlacklist';
 
@@ -21,7 +20,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_HostBlacklist extends GFExcel_VendorH
     protected $blacklist = array();
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return bool
      */
     public function prepare($config)
@@ -32,7 +31,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_HostBlacklist extends GFExcel_VendorH
 
     /**
      * @param GFExcel_VendorHTMLPurifier_URI $uri
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool
      */

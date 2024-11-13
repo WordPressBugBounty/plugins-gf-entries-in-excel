@@ -4,8 +4,7 @@
  * Defines allowed child nodes and validates nodes against it.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 abstract class GFExcel_VendorHTMLPurifier_ChildDef
 {
@@ -34,7 +33,7 @@ abstract class GFExcel_VendorHTMLPurifier_ChildDef
     /**
      * Get lookup of tag names that should not close this element automatically.
      * All other elements will do so.
-     * @param HTMLPurifier_Config $config HTMLPurifier_Config object
+     * @param GFExcel_VendorHTMLPurifier_Config $config GFExcel_VendorHTMLPurifier_Config object
      * @return array
      */
     public function getAllowedElements($config)
@@ -46,7 +45,7 @@ abstract class GFExcel_VendorHTMLPurifier_ChildDef
      * Validates nodes according to definition and returns modification.
      *
      * @param GFExcel_VendorHTMLPurifier_Node[] $children Array of GFExcel_VendorHTMLPurifier_Node
-     * @param HTMLPurifier_Config $config HTMLPurifier_Config object
+     * @param GFExcel_VendorHTMLPurifier_Config $config GFExcel_VendorHTMLPurifier_Config object
      * @param GFExcel_VendorHTMLPurifier_Context $context GFExcel_VendorHTMLPurifier_Context object
      * @return bool|array true to leave nodes as is, false to remove parent node, array of replacement children
      */

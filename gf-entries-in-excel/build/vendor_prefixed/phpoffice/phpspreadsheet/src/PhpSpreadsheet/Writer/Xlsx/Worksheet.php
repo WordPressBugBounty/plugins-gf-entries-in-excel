@@ -2,8 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -917,7 +916,7 @@ class Worksheet extends WriterPart
 
                         $objWriter->startElement($column->getFilterType());
                         if ($column->getJoin() == Column::AUTOFILTER_COLUMN_JOIN_AND) {
-                            $objWriter->writeAttribute('GFExcel\Vendor\and', 1);
+                            $objWriter->writeAttribute('and', 1);
                         }
 
                         foreach ($rules as $rule) {
@@ -1201,7 +1200,7 @@ class Worksheet extends WriterPart
                 StringHelper::controlCharacterPHP2OOXML(htmlspecialchars($cellValue, Settings::htmlEntityFlags()))
             );
         } elseif ($cellValue instanceof RichText) {
-            $objWriter->startElement('GFExcel\Vendor\is');
+            $objWriter->startElement('is');
             $this->getParentWriter()->getWriterPartstringtable()->writeRichText($objWriter, $cellValue);
             $objWriter->endElement();
         }

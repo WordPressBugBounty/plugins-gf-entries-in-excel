@@ -12,8 +12,7 @@
  *        and shouldn't report an error to the user [TagClosedAuto].
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_Strategy_MakeWellFormed extends GFExcel_VendorHTMLPurifier_Strategy
 {
@@ -49,8 +48,8 @@ class GFExcel_VendorHTMLPurifier_Strategy_MakeWellFormed extends GFExcel_VendorH
     protected $injectors;
 
     /**
-     * Current instance of HTMLPurifier_Config.
-     * @type HTMLPurifier_Config
+     * Current instance of GFExcel_VendorHTMLPurifier_Config.
+     * @type GFExcel_VendorHTMLPurifier_Config
      */
     protected $config;
 
@@ -62,7 +61,7 @@ class GFExcel_VendorHTMLPurifier_Strategy_MakeWellFormed extends GFExcel_VendorH
 
     /**
      * @param GFExcel_VendorHTMLPurifier_Token[] $tokens
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return GFExcel_VendorHTMLPurifier_Token[]
      * @throws GFExcel_VendorHTMLPurifier_Exception

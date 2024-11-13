@@ -4,8 +4,7 @@
  * Takes the contents of blockquote when in strict and reformats for validation.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_ChildDef_StrictBlockquote extends GFExcel_VendorHTMLPurifier_ChildDef_Required
 {
@@ -35,7 +34,7 @@ class GFExcel_VendorHTMLPurifier_ChildDef_StrictBlockquote extends GFExcel_Vendo
     protected $init = false;
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return array
      * @note We don't want MakeWellFormed to auto-close inline elements since
      *       they might be allowed.
@@ -48,7 +47,7 @@ class GFExcel_VendorHTMLPurifier_ChildDef_StrictBlockquote extends GFExcel_Vendo
 
     /**
      * @param array $children
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return array
      */
@@ -96,7 +95,7 @@ class GFExcel_VendorHTMLPurifier_ChildDef_StrictBlockquote extends GFExcel_Vendo
     }
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     private function init($config)
     {

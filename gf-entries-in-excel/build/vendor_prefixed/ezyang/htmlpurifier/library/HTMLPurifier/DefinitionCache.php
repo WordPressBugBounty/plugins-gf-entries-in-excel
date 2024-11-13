@@ -9,8 +9,7 @@
  * @todo Implement memcached
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 abstract class GFExcel_VendorHTMLPurifier_DefinitionCache
 {
@@ -30,7 +29,7 @@ abstract class GFExcel_VendorHTMLPurifier_DefinitionCache
 
     /**
      * Generates a unique identifier for a particular configuration
-     * @param HTMLPurifier_Config $config Instance of HTMLPurifier_Config
+     * @param GFExcel_VendorHTMLPurifier_Config $config Instance of GFExcel_VendorHTMLPurifier_Config
      * @return string
      */
     public function generateKey($config)
@@ -44,7 +43,7 @@ abstract class GFExcel_VendorHTMLPurifier_DefinitionCache
      * Tests whether or not a key is old with respect to the configuration's
      * version and revision number.
      * @param string $key Key to test
-     * @param HTMLPurifier_Config $config Instance of HTMLPurifier_Config to test against
+     * @param GFExcel_VendorHTMLPurifier_Config $config Instance of GFExcel_VendorHTMLPurifier_Config to test against
      * @return bool
      */
     public function isOld($key, $config)
@@ -84,39 +83,39 @@ abstract class GFExcel_VendorHTMLPurifier_DefinitionCache
     /**
      * Adds a definition object to the cache
      * @param GFExcel_VendorHTMLPurifier_Definition $def
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract public function add($def, $config);
 
     /**
      * Unconditionally saves a definition object to the cache
      * @param GFExcel_VendorHTMLPurifier_Definition $def
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract public function set($def, $config);
 
     /**
      * Replace an object in the cache
      * @param GFExcel_VendorHTMLPurifier_Definition $def
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract public function replace($def, $config);
 
     /**
      * Retrieves a definition object from the cache
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract public function get($config);
 
     /**
      * Removes a definition object to the cache
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract public function remove($config);
 
     /**
      * Clears all objects from cache
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract public function flush($config);
 
@@ -125,7 +124,7 @@ abstract class GFExcel_VendorHTMLPurifier_DefinitionCache
      * @note Be careful implementing this method as flush. Flush must
      *       not interfere with other Definition types, and cleanup()
      *       should not be repeatedly called by userland code.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     abstract public function cleanup($config);
 }

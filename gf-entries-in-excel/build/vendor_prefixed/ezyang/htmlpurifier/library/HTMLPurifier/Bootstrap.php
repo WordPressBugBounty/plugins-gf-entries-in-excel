@@ -28,8 +28,7 @@ if (!defined('PHP_EOL')) {
  *      This class may be used without any other files from HTML Purifier.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_Bootstrap
 {
@@ -61,13 +60,13 @@ class GFExcel_VendorHTMLPurifier_Bootstrap
      */
     public static function getPath($class)
     {
-        if (strncmp('HTMLPurifier', $class, 12) !== 0) {
+        if (strncmp('GFExcel_VendorHTMLPurifier', $class, 12) !== 0) {
             return false;
         }
         // Custom implementations
         if (strncmp('HTMLPurifier_Language_', $class, 22) === 0) {
             $code = str_replace('_', '-', substr($class, 22));
-            $file = 'HTMLPurifier/Language/classes/' . $code . '.php';
+            $file = 'GFExcel_VendorHTMLPurifier/Language/classes/' . $code . '.php';
         } else {
             $file = str_replace('_', '/', $class) . '.php';
         }

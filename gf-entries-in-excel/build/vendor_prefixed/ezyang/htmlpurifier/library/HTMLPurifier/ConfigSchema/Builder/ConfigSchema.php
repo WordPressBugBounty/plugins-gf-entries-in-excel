@@ -5,19 +5,18 @@
  * representation used to perform checks on user configuration.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_ConfigSchema_Builder_ConfigSchema
 {
 
     /**
      * @param GFExcel_VendorHTMLPurifier_ConfigSchema_Interchange $interchange
-     * @return HTMLPurifier_ConfigSchema
+     * @return GFExcel_VendorHTMLPurifier_ConfigSchema
      */
     public function build($interchange)
     {
-        $schema = new HTMLPurifier_ConfigSchema();
+        $schema = new GFExcel_VendorHTMLPurifier_ConfigSchema();
         foreach ($interchange->directives as $d) {
             $schema->add(
                 $d->id->key,

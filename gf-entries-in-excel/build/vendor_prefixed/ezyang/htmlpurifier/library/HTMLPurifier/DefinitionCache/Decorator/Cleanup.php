@@ -5,8 +5,7 @@
  * whenever there is a cache miss.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_DefinitionCache_Decorator_Cleanup extends GFExcel_VendorHTMLPurifier_DefinitionCache_Decorator
 {
@@ -25,7 +24,7 @@ class GFExcel_VendorHTMLPurifier_DefinitionCache_Decorator_Cleanup extends GFExc
 
     /**
      * @param GFExcel_VendorHTMLPurifier_Definition $def
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return mixed
      */
     public function add($def, $config)
@@ -39,7 +38,7 @@ class GFExcel_VendorHTMLPurifier_DefinitionCache_Decorator_Cleanup extends GFExc
 
     /**
      * @param GFExcel_VendorHTMLPurifier_Definition $def
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return mixed
      */
     public function set($def, $config)
@@ -53,7 +52,7 @@ class GFExcel_VendorHTMLPurifier_DefinitionCache_Decorator_Cleanup extends GFExc
 
     /**
      * @param GFExcel_VendorHTMLPurifier_Definition $def
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return mixed
      */
     public function replace($def, $config)
@@ -66,7 +65,7 @@ class GFExcel_VendorHTMLPurifier_DefinitionCache_Decorator_Cleanup extends GFExc
     }
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return mixed
      */
     public function get($config)

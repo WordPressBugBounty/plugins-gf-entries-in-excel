@@ -4,8 +4,7 @@
  * Responsible for creating definition caches.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_DefinitionCacheFactory
 {
@@ -62,7 +61,7 @@ class GFExcel_VendorHTMLPurifier_DefinitionCacheFactory
     /**
      * Factory method that creates a cache object based on configuration
      * @param string $type Name of definitions handled by cache
-     * @param HTMLPurifier_Config $config Config instance
+     * @param GFExcel_VendorHTMLPurifier_Config $config Config instance
      * @return mixed
      */
     public function create($type, $config)

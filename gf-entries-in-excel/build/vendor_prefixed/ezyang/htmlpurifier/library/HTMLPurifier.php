@@ -14,16 +14,15 @@
  *      -# Validating attributes of the nodes; and
  *  -# Generating HTML from the purified tokens.
  *
- * However, most users will only need to interface with the HTMLPurifier
- * and HTMLPurifier_Config.
+ * However, most users will only need to interface with the GFExcel_VendorHTMLPurifier
+ * and GFExcel_VendorHTMLPurifier_Config.
  *
  *@license LGPL-2.1-or-later
- *Modified by GravityKit on 29-October-2024 using Strauss.
- *@see https://github.com/BrianHenryIE/strauss
+ *Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 /*
-    HTML Purifier 4.17.0 - Standards Compliant HTML Filtering
+    HTML Purifier 4.18.0 - Standards Compliant HTML Filtering
     Copyright (C) 2006-2008 Edward Z. Yang
 
     This library is free software; you can redistribute it and/or
@@ -47,7 +46,7 @@
  * @note There are several points in which configuration can be specified
  *       for HTML Purifier.  The precedence of these (from lowest to
  *       highest) is as follows:
- *          -# Instance: new HTMLPurifier($config)
+ *          -# Instance: new GFExcel_VendorHTMLPurifier($config)
  *          -# Invocation: purify($html, $config)
  *       These configurations are entirely independent of each other and
  *       are *not* merged (this behavior may change in the future).
@@ -55,23 +54,23 @@
  * @todo We need an easier way to inject strategies using the configuration
  *       object.
  */
-class HTMLPurifier
+class GFExcel_VendorHTMLPurifier
 {
 
     /**
      * Version of HTML Purifier.
      * @type string
      */
-    public $version = '4.17.0';
+    public $version = '4.18.0';
 
     /**
      * Constant with version of HTML Purifier.
      */
-    const VERSION = '4.17.0';
+    const VERSION = '4.18.0';
 
     /**
      * Global configuration object.
-     * @type HTMLPurifier_Config
+     * @type GFExcel_VendorHTMLPurifier_Config
      */
     public $config;
 
@@ -84,7 +83,7 @@ class HTMLPurifier
 
     /**
      * Single instance of HTML Purifier.
-     * @type HTMLPurifier
+     * @type GFExcel_VendorHTMLPurifier
      */
     private static $instance;
 
@@ -108,16 +107,16 @@ class HTMLPurifier
     /**
      * Initializes the purifier.
      *
-     * @param HTMLPurifier_Config|mixed $config Optional HTMLPurifier_Config object
+     * @param GFExcel_VendorHTMLPurifier_Config|mixed $config Optional GFExcel_VendorHTMLPurifier_Config object
      *                for all instances of the purifier, if omitted, a default
      *                configuration is supplied (which can be overridden on a
      *                per-use basis).
      *                The parameter can also be any type that
-     *                HTMLPurifier_Config::create() supports.
+     *                GFExcel_VendorHTMLPurifier_Config::create() supports.
      */
     public function __construct($config = null)
     {
-        $this->config = HTMLPurifier_Config::create($config);
+        $this->config = GFExcel_VendorHTMLPurifier_Config::create($config);
         $this->strategy = new GFExcel_VendorHTMLPurifier_Strategy_Core();
     }
 
@@ -129,7 +128,7 @@ class HTMLPurifier
     public function addFilter($filter)
     {
         trigger_error(
-            'HTMLPurifier->addFilter() is deprecated, use configuration directives' .
+            'GFExcel_VendorHTMLPurifier->addFilter() is deprecated, use configuration directives' .
             ' in the Filter namespace or Filter.Custom',
             E_USER_WARNING
         );
@@ -140,17 +139,17 @@ class HTMLPurifier
      * Filters an HTML snippet/document to be XSS-free and standards-compliant.
      *
      * @param string $html String of HTML to purify
-     * @param HTMLPurifier_Config $config Config object for this operation,
+     * @param GFExcel_VendorHTMLPurifier_Config $config Config object for this operation,
      *                if omitted, defaults to the config object specified during this
      *                object's construction. The parameter can also be any type
-     *                that HTMLPurifier_Config::create() supports.
+     *                that GFExcel_VendorHTMLPurifier_Config::create() supports.
      *
      * @return string Purified HTML
      */
     public function purify($html, $config = null)
     {
         // :TODO: make the config merge in, instead of replace
-        $config = $config ? HTMLPurifier_Config::create($config) : $this->config;
+        $config = $config ? GFExcel_VendorHTMLPurifier_Config::create($config) : $this->config;
 
         // implementation is partially environment dependant, partially
         // configuration dependant
@@ -236,8 +235,8 @@ class HTMLPurifier
      * Filters an array of HTML snippets
      *
      * @param string[] $array_of_html Array of html snippets
-     * @param HTMLPurifier_Config $config Optional config object for this operation.
-     *                See HTMLPurifier::purify() for more details.
+     * @param GFExcel_VendorHTMLPurifier_Config $config Optional config object for this operation.
+     *                See GFExcel_VendorHTMLPurifier::purify() for more details.
      *
      * @return string[] Array of purified HTML
      */
@@ -260,22 +259,22 @@ class HTMLPurifier
     /**
      * Singleton for enforcing just one HTML Purifier in your system
      *
-     * @param HTMLPurifier|HTMLPurifier_Config $prototype Optional prototype
-     *                   HTMLPurifier instance to overload singleton with,
-     *                   or HTMLPurifier_Config instance to configure the
+     * @param GFExcel_VendorHTMLPurifier|GFExcel_VendorHTMLPurifier_Config $prototype Optional prototype
+     *                   GFExcel_VendorHTMLPurifier instance to overload singleton with,
+     *                   or GFExcel_VendorHTMLPurifier_Config instance to configure the
      *                   generated version with.
      *
-     * @return HTMLPurifier
+     * @return GFExcel_VendorHTMLPurifier
      */
     public static function instance($prototype = null)
     {
         if (!self::$instance || $prototype) {
-            if ($prototype instanceof HTMLPurifier) {
+            if ($prototype instanceof GFExcel_VendorHTMLPurifier) {
                 self::$instance = $prototype;
             } elseif ($prototype) {
-                self::$instance = new HTMLPurifier($prototype);
+                self::$instance = new GFExcel_VendorHTMLPurifier($prototype);
             } else {
-                self::$instance = new HTMLPurifier();
+                self::$instance = new GFExcel_VendorHTMLPurifier();
             }
         }
         return self::$instance;
@@ -284,17 +283,17 @@ class HTMLPurifier
     /**
      * Singleton for enforcing just one HTML Purifier in your system
      *
-     * @param HTMLPurifier|HTMLPurifier_Config $prototype Optional prototype
-     *                   HTMLPurifier instance to overload singleton with,
-     *                   or HTMLPurifier_Config instance to configure the
+     * @param GFExcel_VendorHTMLPurifier|GFExcel_VendorHTMLPurifier_Config $prototype Optional prototype
+     *                   GFExcel_VendorHTMLPurifier instance to overload singleton with,
+     *                   or GFExcel_VendorHTMLPurifier_Config instance to configure the
      *                   generated version with.
      *
-     * @return HTMLPurifier
+     * @return GFExcel_VendorHTMLPurifier
      * @note Backwards compatibility, see instance()
      */
     public static function getInstance($prototype = null)
     {
-        return HTMLPurifier::instance($prototype);
+        return GFExcel_VendorHTMLPurifier::instance($prototype);
     }
 }
 

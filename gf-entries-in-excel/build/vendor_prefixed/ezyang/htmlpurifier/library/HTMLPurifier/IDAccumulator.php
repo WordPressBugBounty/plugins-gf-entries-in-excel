@@ -7,8 +7,7 @@
  *       use must use the static build() factory method to perform initialization.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_IDAccumulator
 {
@@ -21,7 +20,7 @@ class GFExcel_VendorHTMLPurifier_IDAccumulator
 
     /**
      * Builds an IDAccumulator, also initializing the default blacklist
-     * @param HTMLPurifier_Config $config Instance of HTMLPurifier_Config
+     * @param GFExcel_VendorHTMLPurifier_Config $config Instance of GFExcel_VendorHTMLPurifier_Config
      * @param GFExcel_VendorHTMLPurifier_Context $context Instance of GFExcel_VendorHTMLPurifier_Context
      * @return GFExcel_VendorHTMLPurifier_IDAccumulator Fully initialized GFExcel_VendorHTMLPurifier_IDAccumulator
      */

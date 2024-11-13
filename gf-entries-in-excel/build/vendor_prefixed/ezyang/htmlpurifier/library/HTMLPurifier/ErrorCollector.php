@@ -5,8 +5,7 @@
  * problems back to the user
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_ErrorCollector
 {
@@ -171,7 +170,7 @@ class GFExcel_VendorHTMLPurifier_ErrorCollector
 
     /**
      * Default HTML formatting implementation for error messages
-     * @param HTMLPurifier_Config $config Configuration, vital for HTML output nature
+     * @param GFExcel_VendorHTMLPurifier_Config $config Configuration, vital for HTML output nature
      * @param array $errors Errors array to display; used for recursion.
      * @return string
      */

@@ -2,8 +2,7 @@
 /**
  * @license LGPL-2.1-or-later
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 class GFExcel_VendorHTMLPurifier_HTMLModuleManager
@@ -233,7 +232,7 @@ class GFExcel_VendorHTMLPurifier_HTMLModuleManager
     /**
      * Performs processing on modules, after being called you may
      * use getElement() and getElements()
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     public function setup($config)
     {

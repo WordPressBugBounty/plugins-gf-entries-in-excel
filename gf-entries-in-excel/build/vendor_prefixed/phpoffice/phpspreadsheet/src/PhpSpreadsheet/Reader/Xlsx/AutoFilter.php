@@ -2,8 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Reader\Xlsx;
@@ -95,7 +94,7 @@ class AutoFilter
             $customFilters = $filterColumn->customFilters;
             //    Custom filters can an AND or an OR join;
             //        and there should only ever be one or two entries
-            if ((isset($customFilters['GFExcel\Vendor\and'])) && ((string) $customFilters['GFExcel\Vendor\and'] === '1')) {
+            if ((isset($customFilters['and'])) && ((string) $customFilters['and'] === '1')) {
                 $column->setJoin(Column::AUTOFILTER_COLUMN_JOIN_AND);
             }
             foreach ($customFilters->customFilter as $filterRule) {

@@ -8,8 +8,7 @@
  *       return false.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_ChildDef_Optional extends GFExcel_VendorHTMLPurifier_ChildDef_Required
 {
@@ -25,7 +24,7 @@ class GFExcel_VendorHTMLPurifier_ChildDef_Optional extends GFExcel_VendorHTMLPur
 
     /**
      * @param array $children
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return array
      */

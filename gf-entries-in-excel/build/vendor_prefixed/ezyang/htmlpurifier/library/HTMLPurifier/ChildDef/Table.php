@@ -30,8 +30,7 @@
  * we don't run into any of them, just have tr tags is OK.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_ChildDef_Table extends GFExcel_VendorHTMLPurifier_ChildDef
 {
@@ -64,7 +63,7 @@ class GFExcel_VendorHTMLPurifier_ChildDef_Table extends GFExcel_VendorHTMLPurifi
 
     /**
      * @param array $children
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return array
      */
@@ -194,6 +193,9 @@ class GFExcel_VendorHTMLPurifier_ChildDef_Table extends GFExcel_VendorHTMLPurifi
             $current_tr_tbody = null;
 
             foreach($content as $node) {
+                if (!isset($node->name)) {
+                    continue;
+                }
                 switch ($node->name) {
                 case 'tbody':
                     $current_tr_tbody = null;

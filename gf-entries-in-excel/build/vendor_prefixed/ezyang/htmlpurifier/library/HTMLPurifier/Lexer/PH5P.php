@@ -10,15 +10,14 @@
  *    this lexer will punt to DirectLex if DOM throws an exception.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 class GFExcel_VendorHTMLPurifier_Lexer_PH5P extends GFExcel_VendorHTMLPurifier_Lexer_DOMLex
 {
     /**
      * @param string $html
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return GFExcel_VendorHTMLPurifier_Token[]
      */
@@ -198,7 +197,7 @@ class GFExcel_VendorHTML5
         'alpha;',
         'amp;',
         'amp',
-        'GFExcel\Vendor\and;',
+        'and;',
         'ang;',
         'apos;',
         'aring;',
@@ -342,7 +341,7 @@ class GFExcel_VendorHTML5
         'omega;',
         'omicron;',
         'oplus;',
-        'GFExcel\Vendor\or;',
+        'or;',
         'ordf;',
         'ordf',
         'ordm;',

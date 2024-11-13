@@ -5,8 +5,7 @@
  * @note All functions in this class should be static.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_Encoder
 {
@@ -375,7 +374,7 @@ class GFExcel_VendorHTMLPurifier_Encoder
     /**
      * Convert a string to UTF-8 based on configuration.
      * @param string $str The string to convert
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      */
@@ -421,7 +420,7 @@ class GFExcel_VendorHTMLPurifier_Encoder
     /**
      * Converts a string from UTF-8 based on configuration.
      * @param string $str The string to convert
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      * @note Currently, this is a lossy conversion, with unexpressable

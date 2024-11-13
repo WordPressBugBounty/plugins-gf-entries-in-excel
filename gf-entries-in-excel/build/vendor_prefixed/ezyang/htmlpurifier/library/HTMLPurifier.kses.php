@@ -3,13 +3,16 @@
 /**
  * @file
  * Emulation layer for code that used kses(), substituting in HTML Purifier.
+ *
+ * @license LGPL-2.1-or-later
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
-require_once dirname(__FILE__) . '/HTMLPurifier.auto.php';
+require_once dirname(__FILE__) . '/GFExcel_VendorHTMLPurifier.auto.php';
 
 function kses($string, $allowed_html, $allowed_protocols = null)
 {
-    $config = HTMLPurifier_Config::createDefault();
+    $config = GFExcel_VendorHTMLPurifier_Config::createDefault();
     $allowed_elements = array();
     $allowed_attributes = array();
     foreach ($allowed_html as $element => $attributes) {
@@ -23,7 +26,7 @@ function kses($string, $allowed_html, $allowed_protocols = null)
     if ($allowed_protocols !== null) {
         $config->set('URI.AllowedSchemes', $allowed_protocols);
     }
-    $purifier = new HTMLPurifier($config);
+    $purifier = new GFExcel_VendorHTMLPurifier($config);
     return $purifier->purify($string);
 }
 

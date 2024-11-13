@@ -2,8 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 declare(strict_types=1);
@@ -35,7 +34,7 @@ interface RequestInterface extends MessageInterface
      * Retrieves the message's request target.
      *
      * Retrieves the message's request-target either as it will appear (for
-     * clients), as it appeared at request (for servers), GFExcel\Vendor\or as it was
+     * clients), as it appeared at request (for servers), or as it was
      * specified for the instance (see withRequestTarget()).
      *
      * In most cases, this will be the origin-form of the composed URI,
@@ -53,7 +52,7 @@ interface RequestInterface extends MessageInterface
      * Return an instance with the specific request-target.
      *
      * If the request needs a non-origin-form request-target — e.g., for
-     * specifying an absolute-form, authority-form, GFExcel\Vendor\or asterisk-form —
+     * specifying an absolute-form, authority-form, or asterisk-form —
      * this method may be used to create an instance with the specified
      * request-target, verbatim.
      *

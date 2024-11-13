@@ -4,7 +4,7 @@ $fallback = false;
 
 $messages = array(
 
-    'HTMLPurifier' => 'HTML Purifier',
+    'GFExcel_VendorHTMLPurifier' => 'HTML Purifier',
 // for unit testing purposes
     'LanguageFactoryTest: Pizza' => 'Pizza',
     'LanguageTest: List' => '$1',

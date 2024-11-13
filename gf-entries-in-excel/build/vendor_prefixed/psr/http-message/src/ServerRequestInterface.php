@@ -2,8 +2,7 @@
 /**
  * @license MIT
  *
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 
 declare(strict_types=1);
@@ -27,7 +26,7 @@ namespace GFExcel\Vendor\Psr\Http\Message;
  *
  * - The values represented in $_SERVER.
  * - Any cookies provided (generally via $_COOKIE)
- * - Query string arguments (generally via $_GET, GFExcel\Vendor\or as parsed via parse_str())
+ * - Query string arguments (generally via $_GET, or as parsed via parse_str())
  * - Upload files, if any (as represented by $_FILES)
  * - Deserialized body parameters (generally from $_POST)
  *

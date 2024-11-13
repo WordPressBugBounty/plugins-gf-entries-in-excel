@@ -15,17 +15,16 @@
  * @todo Reconsider some of the public member variables
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
-class HTMLPurifier_Config
+class GFExcel_VendorHTMLPurifier_Config
 {
 
     /**
      * HTML Purifier's version
      * @type string
      */
-    public $version = '4.17.0';
+    public $version = '4.18.0';
 
     /**
      * Whether or not to automatically finalize
@@ -56,8 +55,8 @@ class HTMLPurifier_Config
     protected $parser = null;
 
     /**
-     * Reference HTMLPurifier_ConfigSchema for value checking.
-     * @type HTMLPurifier_ConfigSchema
+     * Reference GFExcel_VendorHTMLPurifier_ConfigSchema for value checking.
+     * @type GFExcel_VendorHTMLPurifier_ConfigSchema
      * @note This is public for introspective purposes. Please don't
      *       abuse!
      */
@@ -103,7 +102,7 @@ class HTMLPurifier_Config
 
     /**
      * Constructor
-     * @param HTMLPurifier_ConfigSchema $definition ConfigSchema that defines
+     * @param GFExcel_VendorHTMLPurifier_ConfigSchema $definition ConfigSchema that defines
      * what directives are allowed.
      * @param GFExcel_VendorHTMLPurifier_PropertyList $parent
      */
@@ -118,22 +117,22 @@ class HTMLPurifier_Config
     /**
      * Convenience constructor that creates a config object based on a mixed var
      * @param mixed $config Variable that defines the state of the config
-     *                      object. Can be: a HTMLPurifier_Config() object,
+     *                      object. Can be: a GFExcel_VendorHTMLPurifier_Config() object,
      *                      an array of directives based on loadArray(),
      *                      or a string filename of an ini file.
-     * @param HTMLPurifier_ConfigSchema $schema Schema object
-     * @return HTMLPurifier_Config Configured object
+     * @param GFExcel_VendorHTMLPurifier_ConfigSchema $schema Schema object
+     * @return GFExcel_VendorHTMLPurifier_Config Configured object
      */
     public static function create($config, $schema = null)
     {
-        if ($config instanceof HTMLPurifier_Config) {
+        if ($config instanceof GFExcel_VendorHTMLPurifier_Config) {
             // pass-through
             return $config;
         }
         if (!$schema) {
-            $ret = HTMLPurifier_Config::createDefault();
+            $ret = GFExcel_VendorHTMLPurifier_Config::createDefault();
         } else {
-            $ret = new HTMLPurifier_Config($schema);
+            $ret = new GFExcel_VendorHTMLPurifier_Config($schema);
         }
         if (is_string($config)) {
             $ret->loadIni($config);
@@ -143,22 +142,22 @@ class HTMLPurifier_Config
 
     /**
      * Creates a new config object that inherits from a previous one.
-     * @param HTMLPurifier_Config $config Configuration object to inherit from.
-     * @return HTMLPurifier_Config object with $config as its parent.
+     * @param GFExcel_VendorHTMLPurifier_Config $config Configuration object to inherit from.
+     * @return GFExcel_VendorHTMLPurifier_Config object with $config as its parent.
      */
-    public static function inherit(HTMLPurifier_Config $config)
+    public static function inherit(GFExcel_VendorHTMLPurifier_Config $config)
     {
-        return new HTMLPurifier_Config($config->def, $config->plist);
+        return new GFExcel_VendorHTMLPurifier_Config($config->def, $config->plist);
     }
 
     /**
      * Convenience constructor that creates a default configuration object.
-     * @return HTMLPurifier_Config default object.
+     * @return GFExcel_VendorHTMLPurifier_Config default object.
      */
     public static function createDefault()
     {
-        $definition = HTMLPurifier_ConfigSchema::instance();
-        $config = new HTMLPurifier_Config($definition);
+        $definition = GFExcel_VendorHTMLPurifier_ConfigSchema::instance();
+        $config = new GFExcel_VendorHTMLPurifier_Config($definition);
         return $config;
     }
 
@@ -705,14 +704,14 @@ class HTMLPurifier_Config
      * namespaces/directives list.
      *
      * @param array $allowed List of allowed namespaces/directives
-     * @param HTMLPurifier_ConfigSchema $schema Schema to use, if not global copy
+     * @param GFExcel_VendorHTMLPurifier_ConfigSchema $schema Schema to use, if not global copy
      *
      * @return array
      */
     public static function getAllowedDirectivesForForm($allowed, $schema = null)
     {
         if (!$schema) {
-            $schema = HTMLPurifier_ConfigSchema::instance();
+            $schema = GFExcel_VendorHTMLPurifier_ConfigSchema::instance();
         }
         if ($allowed !== true) {
             if (is_string($allowed)) {
@@ -765,14 +764,14 @@ class HTMLPurifier_Config
      * @param string|bool $index Index/name that the config variables are in
      * @param array|bool $allowed List of allowed namespaces/directives
      * @param bool $mq_fix Boolean whether or not to enable magic quotes fix
-     * @param HTMLPurifier_ConfigSchema $schema Schema to use, if not global copy
+     * @param GFExcel_VendorHTMLPurifier_ConfigSchema $schema Schema to use, if not global copy
      *
      * @return mixed
      */
     public static function loadArrayFromForm($array, $index = false, $allowed = true, $mq_fix = true, $schema = null)
     {
-        $ret = HTMLPurifier_Config::prepareArrayFromForm($array, $index, $allowed, $mq_fix, $schema);
-        $config = HTMLPurifier_Config::create($ret, $schema);
+        $ret = GFExcel_VendorHTMLPurifier_Config::prepareArrayFromForm($array, $index, $allowed, $mq_fix, $schema);
+        $config = GFExcel_VendorHTMLPurifier_Config::create($ret, $schema);
         return $config;
     }
 
@@ -786,19 +785,19 @@ class HTMLPurifier_Config
      */
     public function mergeArrayFromForm($array, $index = false, $allowed = true, $mq_fix = true)
     {
-         $ret = HTMLPurifier_Config::prepareArrayFromForm($array, $index, $allowed, $mq_fix, $this->def);
+         $ret = GFExcel_VendorHTMLPurifier_Config::prepareArrayFromForm($array, $index, $allowed, $mq_fix, $this->def);
          $this->loadArray($ret);
     }
 
     /**
      * Prepares an array from a form into something usable for the more
-     * strict parts of HTMLPurifier_Config
+     * strict parts of GFExcel_VendorHTMLPurifier_Config
      *
      * @param array $array $_GET or $_POST array to import
      * @param string|bool $index Index/name that the config variables are in
      * @param array|bool $allowed List of allowed namespaces/directives
      * @param bool $mq_fix Boolean whether or not to enable magic quotes fix
-     * @param HTMLPurifier_ConfigSchema $schema Schema to use, if not global copy
+     * @param GFExcel_VendorHTMLPurifier_ConfigSchema $schema Schema to use, if not global copy
      *
      * @return array
      */
@@ -809,7 +808,7 @@ class HTMLPurifier_Config
         }
         $mq = $mq_fix && version_compare(PHP_VERSION, '7.4.0', '<') && function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc();
 
-        $allowed = HTMLPurifier_Config::getAllowedDirectivesForForm($allowed, $schema);
+        $allowed = GFExcel_VendorHTMLPurifier_Config::getAllowedDirectivesForForm($allowed, $schema);
         $ret = array();
         foreach ($allowed as $key) {
             list($ns, $directive) = $key;
@@ -880,7 +879,7 @@ class HTMLPurifier_Config
 
     /**
      * Produces a nicely formatted error message by supplying the
-     * stack frame information OUTSIDE of HTMLPurifier_Config.
+     * stack frame information OUTSIDE of GFExcel_VendorHTMLPurifier_Config.
      *
      * @param string $msg An error message
      * @param int $no An error number
@@ -894,7 +893,7 @@ class HTMLPurifier_Config
             // zip(tail(trace), trace) -- but PHP is not Haskell har har
             for ($i = 0, $c = count($trace); $i < $c - 1; $i++) {
                 // XXX this is not correct on some versions of HTML Purifier
-                if (isset($trace[$i + 1]['class']) && $trace[$i + 1]['class'] === 'HTMLPurifier_Config') {
+                if (isset($trace[$i + 1]['class']) && $trace[$i + 1]['class'] === 'GFExcel_VendorHTMLPurifier_Config') {
                     continue;
                 }
                 $frame = $trace[$i];

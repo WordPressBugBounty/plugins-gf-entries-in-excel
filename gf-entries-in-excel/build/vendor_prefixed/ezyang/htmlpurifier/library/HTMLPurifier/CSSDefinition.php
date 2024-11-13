@@ -5,8 +5,7 @@
  * @see GFExcel_VendorHTMLPurifier_HTMLDefinition
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifier_Definition
 {
@@ -21,7 +20,7 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
 
     /**
      * Constructs the info array.  The meat of this class.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     protected function doSetup($config)
     {
@@ -120,8 +119,6 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
                         'auto',
                         'cover',
                         'contain',
-                        'initial',
-                        'inherit',
                     ]
                 ),
                 new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Percentage(),
@@ -240,21 +237,20 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
             [
                 new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Length('0'),
                 new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Percentage(true),
-                new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['auto', 'initial', 'inherit'])
+                new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['auto'])
             ]
         );
         $trusted_min_wh = new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Composite(
             [
                 new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Length('0'),
                 new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Percentage(true),
-                new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['initial', 'inherit'])
             ]
         );
         $trusted_max_wh = new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Composite(
             [
                 new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Length('0'),
                 new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Percentage(true),
-                new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['none', 'initial', 'inherit'])
+                new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['none'])
             ]
         );
         $max = $config->get('CSS.MaxImgLength');
@@ -282,12 +278,7 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
                 new GFExcel_VendorHTMLPurifier_AttrDef_Switch(
                     'img',
                     // For img tags:
-                    new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Composite(
-                        [
-                            new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Length('0', $max),
-                            new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['initial', 'inherit'])
-                        ]
-                    ),
+                    new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Length('0', $max),
                     // For everyone else:
                     $trusted_min_wh
                 );
@@ -301,22 +292,29 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
                     new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Composite(
                         [
                             new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Length('0', $max),
-                            new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['none', 'initial', 'inherit'])
+                            new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['none'])
                         ]
                     ),
                     // For everyone else:
                     $trusted_max_wh
                 );
 
+        $this->info['aspect-ratio'] = new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Multiple(
+            new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Composite([
+                new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Ratio(),
+                new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['auto']),
+            ])
+        );
+
         // text-decoration and related shorthands
         $this->info['text-decoration'] = new GFExcel_VendorHTMLPurifier_AttrDef_CSS_TextDecoration();
 
         $this->info['text-decoration-line'] = new GFExcel_VendorHTMLPurifier_AttrDef_Enum(
-            ['none', 'underline', 'overline', 'line-through', 'initial', 'inherit']
+            ['none', 'underline', 'overline', 'line-through']
         );
 
         $this->info['text-decoration-style'] = new GFExcel_VendorHTMLPurifier_AttrDef_Enum(
-            ['solid', 'double', 'dotted', 'dashed', 'wavy', 'initial', 'inherit']
+            ['solid', 'double', 'dotted', 'dashed', 'wavy']
         );
 
         $this->info['text-decoration-color'] = new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Color();
@@ -324,7 +322,7 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
         $this->info['text-decoration-thickness'] = new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Composite([
             new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Length(),
             new GFExcel_VendorHTMLPurifier_AttrDef_CSS_Percentage(),
-            new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['auto', 'from-font', 'initial', 'inherit'])
+            new GFExcel_VendorHTMLPurifier_AttrDef_Enum(['auto', 'from-font'])
         ]);
 
         $this->info['font-family'] = new GFExcel_VendorHTMLPurifier_AttrDef_CSS_FontFamily();
@@ -421,7 +419,7 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
     }
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     protected function doSetupProprietary($config)
     {
@@ -469,7 +467,7 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
     }
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     protected function doSetupTricky($config)
     {
@@ -503,7 +501,7 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
     }
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     protected function doSetupTrusted($config)
     {
@@ -531,7 +529,7 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
     /**
      * Performs extra config-based processing. Based off of
      * GFExcel_VendorHTMLPurifier_HTMLDefinition.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @todo Refactor duplicate elements into common class (probably using
      *       composition, not inheritance).
      */

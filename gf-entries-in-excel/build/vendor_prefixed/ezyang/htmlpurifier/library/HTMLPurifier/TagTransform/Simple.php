@@ -6,8 +6,7 @@
  * tag cases.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_TagTransform_Simple extends GFExcel_VendorHTMLPurifier_TagTransform
 {
@@ -28,7 +27,7 @@ class GFExcel_VendorHTMLPurifier_TagTransform_Simple extends GFExcel_VendorHTMLP
 
     /**
      * @param GFExcel_VendorHTMLPurifier_Token_Tag $tag
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return string
      */

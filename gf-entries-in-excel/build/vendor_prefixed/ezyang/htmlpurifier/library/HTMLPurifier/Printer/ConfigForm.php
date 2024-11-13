@@ -4,10 +4,9 @@
  * @todo Rewrite to use Interchange objects
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
-class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
+class GFExcel_VendorHTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
 {
 
     /**
@@ -37,7 +36,7 @@ class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
     protected $compress = false;
 
     /**
-     * @var HTMLPurifier_Config
+     * @var GFExcel_VendorHTMLPurifier_Config
      */
     protected $genConfig;
 
@@ -56,8 +55,8 @@ class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
         $this->name = $name;
         $this->compress = $compress;
         // initialize sub-printers
-        $this->fields[0] = new HTMLPurifier_Printer_ConfigForm_default();
-        $this->fields[GFExcel_VendorHTMLPurifier_VarParser::C_BOOL] = new HTMLPurifier_Printer_ConfigForm_bool();
+        $this->fields[0] = new GFExcel_VendorHTMLPurifier_Printer_ConfigForm_default();
+        $this->fields[GFExcel_VendorHTMLPurifier_VarParser::C_BOOL] = new GFExcel_VendorHTMLPurifier_Printer_ConfigForm_bool();
     }
 
     /**
@@ -80,7 +79,7 @@ class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
      */
     public static function getCSS()
     {
-        return file_get_contents(HTMLPURIFIER_PREFIX . '/HTMLPurifier/Printer/ConfigForm.css');
+        return file_get_contents(HTMLPURIFIER_PREFIX . '/GFExcel_VendorHTMLPurifier/Printer/ConfigForm.css');
     }
 
     /**
@@ -88,12 +87,12 @@ class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
      */
     public static function getJavaScript()
     {
-        return file_get_contents(HTMLPURIFIER_PREFIX . '/HTMLPurifier/Printer/ConfigForm.js');
+        return file_get_contents(HTMLPURIFIER_PREFIX . '/GFExcel_VendorHTMLPurifier/Printer/ConfigForm.js');
     }
 
     /**
      * Returns HTML output for a configuration form
-     * @param HTMLPurifier_Config|array $config Configuration object of current form state, or an array
+     * @param GFExcel_VendorHTMLPurifier_Config|array $config Configuration object of current form state, or an array
      *        where [0] has an HTML namespace and [1] is being rendered.
      * @param array|bool $allowed Optional namespace(s) and directives to restrict form to.
      * @param bool $render_controls
@@ -112,7 +111,7 @@ class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
         $this->genConfig = $gen_config;
         $this->prepareGenerator($gen_config);
 
-        $allowed = HTMLPurifier_Config::getAllowedDirectivesForForm($allowed, $config->def);
+        $allowed = GFExcel_VendorHTMLPurifier_Config::getAllowedDirectivesForForm($allowed, $config->def);
         $all = array();
         foreach ($allowed as $key) {
             list($ns, $directive) = $key;
@@ -201,7 +200,7 @@ class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
             } // default
             $type_obj = $this->fields[$type];
             if ($allow_null) {
-                $type_obj = new HTMLPurifier_Printer_ConfigForm_NullDecorator($type_obj);
+                $type_obj = new GFExcel_VendorHTMLPurifier_Printer_ConfigForm_NullDecorator($type_obj);
             }
             $ret .= $type_obj->render($ns, $directive, $value, $this->name, array($this->genConfig, $this->config));
             $ret .= $this->end('td');
@@ -216,7 +215,7 @@ class HTMLPurifier_Printer_ConfigForm extends GFExcel_VendorHTMLPurifier_Printer
 /**
  * Printer decorator for directives that accept null
  */
-class HTMLPurifier_Printer_ConfigForm_NullDecorator extends GFExcel_VendorHTMLPurifier_Printer
+class GFExcel_VendorHTMLPurifier_Printer_ConfigForm_NullDecorator extends GFExcel_VendorHTMLPurifier_Printer
 {
     /**
      * Printer being decorated
@@ -238,7 +237,7 @@ class HTMLPurifier_Printer_ConfigForm_NullDecorator extends GFExcel_VendorHTMLPu
      * @param string $directive
      * @param string $value
      * @param string $name
-     * @param HTMLPurifier_Config|array $config
+     * @param GFExcel_VendorHTMLPurifier_Config|array $config
      * @return string
      */
     public function render($ns, $directive, $value, $name, $config)
@@ -264,7 +263,7 @@ class HTMLPurifier_Printer_ConfigForm_NullDecorator extends GFExcel_VendorHTMLPu
             'id' => "$name:Null_$ns.$directive",
             'onclick' => "toggleWriteability('$name:$ns.$directive',checked)" // INLINE JAVASCRIPT!!!!
         );
-        if ($this->obj instanceof HTMLPurifier_Printer_ConfigForm_bool) {
+        if ($this->obj instanceof GFExcel_VendorHTMLPurifier_Printer_ConfigForm_bool) {
             // modify inline javascript slightly
             $attr['onclick'] =
                 "toggleWriteability('$name:Yes_$ns.$directive',checked);" .
@@ -284,7 +283,7 @@ class HTMLPurifier_Printer_ConfigForm_NullDecorator extends GFExcel_VendorHTMLPu
 /**
  * Swiss-army knife configuration form field printer
  */
-class HTMLPurifier_Printer_ConfigForm_default extends GFExcel_VendorHTMLPurifier_Printer
+class GFExcel_VendorHTMLPurifier_Printer_ConfigForm_default extends GFExcel_VendorHTMLPurifier_Printer
 {
     /**
      * @type int
@@ -301,7 +300,7 @@ class HTMLPurifier_Printer_ConfigForm_default extends GFExcel_VendorHTMLPurifier
      * @param string $directive
      * @param string $value
      * @param string $name
-     * @param HTMLPurifier_Config|array $config
+     * @param GFExcel_VendorHTMLPurifier_Config|array $config
      * @return string
      */
     public function render($ns, $directive, $value, $name, $config)
@@ -391,14 +390,14 @@ class HTMLPurifier_Printer_ConfigForm_default extends GFExcel_VendorHTMLPurifier
 /**
  * Bool form field printer
  */
-class HTMLPurifier_Printer_ConfigForm_bool extends GFExcel_VendorHTMLPurifier_Printer
+class GFExcel_VendorHTMLPurifier_Printer_ConfigForm_bool extends GFExcel_VendorHTMLPurifier_Printer
 {
     /**
      * @param string $ns
      * @param string $directive
      * @param string $value
      * @param string $name
-     * @param HTMLPurifier_Config|array $config
+     * @param GFExcel_VendorHTMLPurifier_Config|array $config
      * @return string
      */
     public function render($ns, $directive, $value, $name, $config)

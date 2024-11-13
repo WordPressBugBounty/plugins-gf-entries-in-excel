@@ -7,8 +7,7 @@
  * works safely.
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_URIFilter_SafeIframe extends GFExcel_VendorHTMLPurifier_URIFilter
 {
@@ -31,7 +30,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_SafeIframe extends GFExcel_VendorHTML
     // can't check HTML.SafeIframe in the 'prepare' step: we have to
     // defer till the actual filtering.
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @return bool
      */
     public function prepare($config)
@@ -42,7 +41,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_SafeIframe extends GFExcel_VendorHTML
 
     /**
      * @param GFExcel_VendorHTMLPurifier_URI $uri
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      * @param GFExcel_VendorHTMLPurifier_Context $context
      * @return bool
      */

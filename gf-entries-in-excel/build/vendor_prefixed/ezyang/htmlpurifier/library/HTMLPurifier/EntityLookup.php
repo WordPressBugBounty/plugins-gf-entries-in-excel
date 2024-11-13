@@ -4,8 +4,7 @@
  * Object that provides entity lookup table from entity name to character
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_EntityLookup
 {
@@ -25,7 +24,7 @@ class GFExcel_VendorHTMLPurifier_EntityLookup
     public function setup($file = false)
     {
         if (!$file) {
-            $file = HTMLPURIFIER_PREFIX . '/HTMLPurifier/EntityLookup/entities.ser';
+            $file = HTMLPURIFIER_PREFIX . '/GFExcel_VendorHTMLPurifier/EntityLookup/entities.ser';
         }
         $this->table = unserialize(file_get_contents($file));
     }

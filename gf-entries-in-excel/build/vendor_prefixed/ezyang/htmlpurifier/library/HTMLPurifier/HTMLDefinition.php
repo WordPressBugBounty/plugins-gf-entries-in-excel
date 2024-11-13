@@ -24,8 +24,7 @@
  *          the HTML or Attr namespace!
  *
  * @license LGPL-2.1-or-later
- * Modified by GravityKit on 29-October-2024 using Strauss.
- * @see https://github.com/BrianHenryIE/strauss
+ * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
 class GFExcel_VendorHTMLPurifier_HTMLDefinition extends GFExcel_VendorHTMLPurifier_Definition
 {
@@ -192,7 +191,7 @@ class GFExcel_VendorHTMLPurifier_HTMLDefinition extends GFExcel_VendorHTMLPurifi
     }
 
     /**
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     protected function doSetup($config)
     {
@@ -209,7 +208,7 @@ class GFExcel_VendorHTMLPurifier_HTMLDefinition extends GFExcel_VendorHTMLPurifi
 
     /**
      * Extract out the information from the manager
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     protected function processModules($config)
     {
@@ -260,7 +259,7 @@ class GFExcel_VendorHTMLPurifier_HTMLDefinition extends GFExcel_VendorHTMLPurifi
 
     /**
      * Sets up stuff based on config. We need a better way of doing this.
-     * @param HTMLPurifier_Config $config
+     * @param GFExcel_VendorHTMLPurifier_Config $config
      */
     protected function setupConfigStuff($config)
     {
