@@ -5,6 +5,7 @@ namespace GFExcel\Field;
 use GFExcel\GFExcel;
 use GFExcel\Transformer\Transformer;
 use GFExcel\Transformer\TransformerAwareInterface;
+use GFExport;
 
 /**
  * A field transformer for {@see \GP_Nested_Form_Field}.
@@ -68,11 +69,30 @@ class NestedFormField extends SeparableField implements RowsInterface, Transform
 	 * @since 1.10
 	 */
 	protected function getSeparatedColumns(): array {
-		$fields = array_map( function ( FieldInterface $field ): array {
+		$columns = array_map( static function ( FieldInterface $field ): array {
 			return $field->getColumns();
 		}, array_values( $this->getNestedFields() ) );
 
-		return array_merge( [], ...$fields );
+		return array_map(
+			function ( $column ): string {
+				return
+					gf_apply_filters(
+						[
+							'gfexcel_field_label',
+							$this->field->get_input_type(),
+							$this->field->formId,
+							$this->field->id,
+						],
+						sprintf(
+							'%s (%s)', // Nested field label (Wrapper label)
+							(string) $column,
+							$this->getSubLabel( $this->field )
+						),
+						$this->field
+					);
+			},
+			array_merge( [], ...$columns )
+		);
 	}
 
 	/**
@@ -102,6 +122,8 @@ class NestedFormField extends SeparableField implements RowsInterface, Transform
 		if ( ! $nested_form ) {
 			return $this->fields = [];
 		}
+
+		$nested_form = GFExport::add_default_export_fields( $nested_form );
 
 		// Cache the results.
 		$this->fields = array_reduce(
