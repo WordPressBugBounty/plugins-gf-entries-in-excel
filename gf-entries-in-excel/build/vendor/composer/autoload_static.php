@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6a15003838b28368c483e75ec1d382a2
+class ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de
 {
     public static $prefixLengthsPsr4 = array (
         'G' => 
@@ -22,10 +22,10 @@ class ComposerStaticInit6a15003838b28368c483e75ec1d382a2
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'GFExcel\\Action\\AbstractAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Action/AbstractAction.php',
-        'GFExcel\\Action\\ActionAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Action/ActionAware.php',
-        'GFExcel\\Action\\ActionAwareInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Action/ActionAwareInterface.php',
-        'GFExcel\\Action\\ActionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Action/ActionInterface.php',
+        'GFExcel\\Action\\AbstractAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/AbstractAction.php',
+        'GFExcel\\Action\\ActionAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionAware.php',
+        'GFExcel\\Action\\ActionAwareInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionAwareInterface.php',
+        'GFExcel\\Action\\ActionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionInterface.php',
         'GFExcel\\Action\\CountDownloads' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/CountDownloads.php',
         'GFExcel\\Action\\DownloadCountResetAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/DownloadCountResetAction.php',
         'GFExcel\\Action\\DownloadUrlDisableAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/DownloadUrlDisableAction.php',
@@ -34,17 +34,17 @@ class ComposerStaticInit6a15003838b28368c483e75ec1d382a2
         'GFExcel\\Action\\FilterRequest' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/FilterRequest.php',
         'GFExcel\\Action\\NotificationAttachmentAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/NotificationAttachmentAction.php',
         'GFExcel\\Action\\NotificationsAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/NotificationsAction.php',
-        'GFExcel\\Addon\\AddonHelperTrait' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Addon/AddonHelperTrait.php',
-        'GFExcel\\Addon\\AddonInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Addon/AddonInterface.php',
-        'GFExcel\\Addon\\AddonTrait' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Addon/AddonTrait.php',
+        'GFExcel\\Addon\\AddonHelperTrait' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Addon/AddonHelperTrait.php',
+        'GFExcel\\Addon\\AddonInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Addon/AddonInterface.php',
+        'GFExcel\\Addon\\AddonTrait' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Addon/AddonTrait.php',
         'GFExcel\\Addon\\GravityExportAddon' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Addon/GravityExportAddon.php',
         'GFExcel\\Component\\MetaBoxes' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Component/MetaBoxes.php',
         'GFExcel\\Component\\Plugin' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Component/Plugin.php',
         'GFExcel\\Component\\Usage' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Component/Usage.php',
-        'GFExcel\\Container\\Container' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Container/Container.php',
-        'GFExcel\\Container\\ContainerAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Container/ContainerAware.php',
-        'GFExcel\\Container\\ContainerInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Container/ContainerInterface.php',
-        'GFExcel\\Container\\ServiceProviderInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Container/ServiceProviderInterface.php',
+        'GFExcel\\Container\\Container' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Container/Container.php',
+        'GFExcel\\Container\\ContainerAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Container/ContainerAware.php',
+        'GFExcel\\Container\\ContainerInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Container/ContainerInterface.php',
+        'GFExcel\\Container\\ServiceProviderInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Container/ServiceProviderInterface.php',
         'GFExcel\\Exception\\Exception' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Exception/Exception.php',
         'GFExcel\\Exception\\WrongValueException' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Exception/WrongValueException.php',
         'GFExcel\\Field\\AbstractField' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Field/AbstractField.php',
@@ -70,8 +70,8 @@ class ComposerStaticInit6a15003838b28368c483e75ec1d382a2
         'GFExcel\\GFExcel' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/GFExcel.php',
         'GFExcel\\GFExcelConfigConstants' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/GFExcelConfigConstants.php',
         'GFExcel\\GFExcelOutput' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/GFExcelOutput.php',
-        'GFExcel\\Generator\\HashGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Generator/HashGenerator.php',
-        'GFExcel\\Generator\\HashGeneratorInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Generator/HashGeneratorInterface.php',
+        'GFExcel\\Generator\\HashGenerator' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Generator/HashGenerator.php',
+        'GFExcel\\Generator\\HashGeneratorInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Generator/HashGeneratorInterface.php',
         'GFExcel\\GravityForms\\Field\\CopyShortcode' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/GravityForms/Field/CopyShortcode.php',
         'GFExcel\\GravityForms\\Field\\DownloadFile' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/GravityForms/Field/DownloadFile.php',
         'GFExcel\\GravityForms\\Field\\DownloadUrl' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/GravityForms/Field/DownloadUrl.php',
@@ -91,22 +91,25 @@ class ComposerStaticInit6a15003838b28368c483e75ec1d382a2
         'GFExcel\\Notification\\Repository\\ArrayNotificationRepository' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Notification/Repository/ArrayNotificationRepository.php',
         'GFExcel\\Notification\\Repository\\NotificationRepository' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Notification/Repository/NotificationRepository.php',
         'GFExcel\\Notification\\Repository\\NotificationRepositoryInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Notification/Repository/NotificationRepositoryInterface.php',
-        'GFExcel\\Plugin\\BasePlugin' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Plugin/BasePlugin.php',
+        'GFExcel\\Plugin\\BasePlugin' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Plugin/BasePlugin.php',
         'GFExcel\\Renderer\\AbstractPHPExcelRenderer' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Renderer/AbstractPHPExcelRenderer.php',
         'GFExcel\\Renderer\\AbstractRenderer' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Renderer/AbstractRenderer.php',
         'GFExcel\\Renderer\\PHPExcelMultisheetRenderer' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Renderer/PHPExcelMultisheetRenderer.php',
         'GFExcel\\Renderer\\PHPExcelRenderer' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Renderer/PHPExcelRenderer.php',
         'GFExcel\\Renderer\\RendererInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Renderer/RendererInterface.php',
         'GFExcel\\Repository\\FieldsRepository' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Repository/FieldsRepository.php',
-        'GFExcel\\Repository\\FormRepository' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Repository/FormRepository.php',
-        'GFExcel\\Repository\\FormRepositoryInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Repository/FormRepositoryInterface.php',
+        'GFExcel\\Repository\\FormRepository' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Repository/FormRepository.php',
+        'GFExcel\\Repository\\FormRepositoryInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Repository/FormRepositoryInterface.php',
         'GFExcel\\Repository\\FormsRepository' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Repository/FormsRepository.php',
-        'GFExcel\\ServiceProvider\\AbstractServiceProvider' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/ServiceProvider/AbstractServiceProvider.php',
+        'GFExcel\\Routing\\Request' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Routing/Request.php',
+        'GFExcel\\Routing\\Router' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Routing/Router.php',
+        'GFExcel\\Routing\\WordPressRouter' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Routing/WordPressRouter.php',
+        'GFExcel\\ServiceProvider\\AbstractServiceProvider' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/ServiceProvider/AbstractServiceProvider.php',
         'GFExcel\\ServiceProvider\\AddOnProvider' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/ServiceProvider/AddOnProvider.php',
-        'GFExcel\\ServiceProvider\\BaseServiceProvider' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/ServiceProvider/BaseServiceProvider.php',
+        'GFExcel\\ServiceProvider\\BaseServiceProvider' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/ServiceProvider/BaseServiceProvider.php',
         'GFExcel\\Shortcode\\DownloadUrl' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Shortcode/DownloadUrl.php',
-        'GFExcel\\Template\\TemplateAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Template/TemplateAware.php',
-        'GFExcel\\Template\\TemplateAwareInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-base/src/Template/TemplateAwareInterface.php',
+        'GFExcel\\Template\\TemplateAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Template/TemplateAware.php',
+        'GFExcel\\Template\\TemplateAwareInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Template/TemplateAwareInterface.php',
         'GFExcel\\Transformer\\Combiner' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Transformer/Combiner.php',
         'GFExcel\\Transformer\\CombinerInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Transformer/CombinerInterface.php',
         'GFExcel\\Transformer\\Transformer' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Transformer/Transformer.php',
@@ -881,9 +884,9 @@ class ComposerStaticInit6a15003838b28368c483e75ec1d382a2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6a15003838b28368c483e75ec1d382a2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6a15003838b28368c483e75ec1d382a2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit6a15003838b28368c483e75ec1d382a2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de::$classMap;
 
         }, null, ClassLoader::class);
     }

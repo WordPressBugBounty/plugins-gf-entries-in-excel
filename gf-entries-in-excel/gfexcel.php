@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     GravityExport Lite
- * Version:         2.3.9
+ * Version:         2.4.0
  * Plugin URI:      https://gfexcel.com
  * Description:     Export all Gravity Forms entries to Excel (.xlsx) or CSV via a secret shareable URL.
  * Author:          GravityKit
@@ -28,7 +28,7 @@ if ( ! defined( 'GFEXCEL_PLUGIN_FILE' ) ) {
 }
 
 if ( ! defined( 'GFEXCEL_PLUGIN_VERSION' ) ) {
-	define( 'GFEXCEL_PLUGIN_VERSION', '2.3.9' );
+	define( 'GFEXCEL_PLUGIN_VERSION', '2.4.0' );
 }
 
 if ( ! defined( 'GFEXCEL_MIN_PHP_VERSION' ) ) {
@@ -117,6 +117,9 @@ add_action( 'gform_loaded', static function (): void {
 		// add internal service provider
 		->addServiceProvider( new BaseServiceProvider() )
 		->addServiceProvider( new AddOnProvider() );
+
+    // Dispatch event including the container.
+    do_action( 'gfexcel_container_loaded', $container );
 
 	// Instantiate add on from container.
 	$addon = $container->get( GravityExportAddon::class );

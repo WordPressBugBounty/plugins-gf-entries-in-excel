@@ -65,58 +65,9 @@
             "install-path": "../ezyang/htmlpurifier"
         },
         {
-            "name": "gravitykit/gravityexport-base",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GravityKit/GravityExport-Base.git",
-                "reference": "6d476e6842c0f58e50b180b75ab87659c0f1ed11"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GravityKit/GravityExport-Base/zipball/6d476e6842c0f58e50b180b75ab87659c0f1ed11",
-                "reference": "6d476e6842c0f58e50b180b75ab87659c0f1ed11",
-                "shasum": ""
-            },
-            "require": {
-                "league/container": "^3.3"
-            },
-            "require-dev": {
-                "overtrue/phplint": "^2.3",
-                "php-mock/php-mock-phpunit": "^2.5",
-                "phpunit/phpunit": "^9.5"
-            },
-            "time": "2023-09-25T18:02:42+00:00",
-            "default-branch": true,
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "GFExcel\\": "./src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Doeke Norg",
-                    "email": "doeke@gravitykit.com"
-                }
-            ],
-            "description": "Base for GravityExport",
-            "support": {
-                "issues": "https://github.com/GravityKit/GravityExport-Base/issues",
-                "source": "https://github.com/GravityKit/GravityExport-Base/tree/master"
-            },
-            "install-path": "../gravitykit/gravityexport-base"
-        },
-        {
             "name": "gravitykit/gravityexport-lite-src",
-            "version": "dev-main",
-            "version_normalized": "dev-main",
+            "version": "dev-develop",
+            "version_normalized": "dev-develop",
             "dist": {
                 "type": "path",
                 "url": "../src",
