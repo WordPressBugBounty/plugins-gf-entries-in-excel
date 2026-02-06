@@ -2,7 +2,7 @@
 
 /**
  * XHTML 1.1 Ruby Annotation Module, defines elements that indicate
- * short runs of text alongside base text for annotation or pronounciation.
+ * short runs of text alongside base text for annotation or pronunciation.
  *
  * @license LGPL-2.1-or-later
  * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.

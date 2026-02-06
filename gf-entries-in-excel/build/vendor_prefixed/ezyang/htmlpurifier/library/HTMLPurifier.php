@@ -22,7 +22,7 @@
  */
 
 /*
-    HTML Purifier 4.18.0 - Standards Compliant HTML Filtering
+    HTML Purifier 4.19.0 - Standards Compliant HTML Filtering
     Copyright (C) 2006-2008 Edward Z. Yang
 
     This library is free software; you can redistribute it and/or
@@ -61,12 +61,12 @@ class GFExcel_VendorHTMLPurifier
      * Version of HTML Purifier.
      * @type string
      */
-    public $version = '4.18.0';
+    public $version = '4.19.0';
 
     /**
      * Constant with version of HTML Purifier.
      */
-    const VERSION = '4.18.0';
+    const VERSION = '4.19.0';
 
     /**
      * Global configuration object.

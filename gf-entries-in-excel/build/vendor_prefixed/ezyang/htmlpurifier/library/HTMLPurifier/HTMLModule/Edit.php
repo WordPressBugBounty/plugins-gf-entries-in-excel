@@ -31,7 +31,7 @@ class GFExcel_VendorHTMLPurifier_HTMLModule_Edit extends GFExcel_VendorHTMLPurif
 
     // HTML 4.01 specifies that ins/del must not contain block
     // elements when used in an inline context, chameleon is
-    // a complicated workaround to acheive this effect
+    // a complicated workaround to achieve this effect
 
     // Inline context ! Block context (exclamation mark is
     // separator, see getChildDef for parsing)

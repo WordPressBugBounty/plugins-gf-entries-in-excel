@@ -55,14 +55,7 @@ class GFExcel_VendorHTMLPurifier_Lexer_DOMLex extends GFExcel_VendorHTMLPurifier
         // attempt to armor stray angled brackets that cannot possibly
         // form tags and thus are probably being used as emoticons
         if ($config->get('Core.AggressivelyFixLt')) {
-            $char = '[^a-z!\/]';
-            $comment = "/<!--(.*?)(-->|\z)/is";
-            $html = preg_replace_callback($comment, array($this, 'callbackArmorCommentEntities'), $html);
-            do {
-                $old = $html;
-                $html = preg_replace("/<($char)/i", '&lt;\\1', $html);
-            } while ($html !== $old);
-            $html = preg_replace_callback($comment, array($this, 'callbackUndoCommentSubst'), $html); // fix comments
+            $html = $this->aggressivelyFixLt($html);
         }
 
         // preprocess html, essential for UTF-8
@@ -291,7 +284,7 @@ class GFExcel_VendorHTMLPurifier_Lexer_DOMLex extends GFExcel_VendorHTMLPurifier
      */
     public function callbackUndoCommentSubst($matches)
     {
-        return '<!--' . strtr($matches[1], array('&amp;' => '&', '&lt;' => '<')) . $matches[2];
+        return '<!--' . $this->undoCommentSubstr($matches[1]) . $matches[2];
     }
 
     /**
@@ -302,7 +295,25 @@ class GFExcel_VendorHTMLPurifier_Lexer_DOMLex extends GFExcel_VendorHTMLPurifier
      */
     public function callbackArmorCommentEntities($matches)
     {
-        return '<!--' . str_replace('&', '&amp;', $matches[1]) . $matches[2];
+        return '<!--' . $this->armorEntities($matches[1]) . $matches[2];
+    }
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    protected function armorEntities($string)
+    {
+        return str_replace('&', '&amp;', $string);
+    }
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    protected function undoCommentSubstr($string)
+    {
+        return strtr($string, array('&amp;' => '&', '&lt;' => '<'));
     }
 
     /**
@@ -337,6 +348,66 @@ class GFExcel_VendorHTMLPurifier_Lexer_DOMLex extends GFExcel_VendorHTMLPurifier
         if ($use_div) $ret .= '</div>';
         $ret .= '</body></html>';
         return $ret;
+    }
+
+    /**
+     * @param string $html
+     * @return string
+     */
+    protected function aggressivelyFixLt($html)
+    {
+        $char = '[^a-z!\/]';
+        $html = $this->manipulateHtmlComments($html, array($this, 'armorEntities'));
+
+        do {
+            $old = $html;
+            $html = preg_replace("/<($char)/i", '&lt;\\1', $html);
+        } while ($html !== $old);
+
+        return $this->manipulateHtmlComments($html, array($this, 'undoCommentSubstr'));
+    }
+
+    /**
+     * Modify HTML comments in the given HTML content using a callback.
+     *
+     * @param string $html
+     * @param callable $callback
+     * @return string
+     */
+    protected function manipulateHtmlComments($html, callable $callback)
+    {
+        $offset = 0;
+        $startTag = '<!--';
+        $endTag = '-->';
+
+        while (($startPos = strpos($html, $startTag, $offset)) !== false) {
+            $startPos += strlen($startTag); // Move past `<!--`
+            $endPos = strpos($html, $endTag, $startPos);
+
+            if ($endPos === false) {
+                // No matching ending comment tag found
+                break;
+            }
+
+            // Extract the original comment content
+            $commentContent = substr($html, $startPos, $endPos - $startPos);
+
+            // Apply the callback to the comment content
+            $newCommentContent = $callback($commentContent);
+
+            // Reconstruct the entire comment with the new content
+            $newComment = $startTag . $newCommentContent . $endTag;
+
+            // Replace the old comment in the HTML content with the new one
+            $html = substr($html, 0, $startPos - strlen($startTag)) .
+                $newComment .
+                substr($html, $endPos + strlen($endTag));
+
+            // Move offset to the end of the new comment for the next iteration
+            $offset = strpos($html, $newComment, $offset) + strlen($newComment);
+        }
+
+        return $html;
     }
 }
 

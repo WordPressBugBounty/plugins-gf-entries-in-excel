@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Name is deprecated, but allowed in strict doctypes, so onl
+ * Name is deprecated, but allowed in strict doctypes, so only
  *
  * @license LGPL-2.1-or-later
  * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.

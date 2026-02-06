@@ -3,7 +3,7 @@
 // this MUST be placed in post, as it assumes that any value in dir is valid
 
 /**
- * Post-trasnform that ensures that bdo tags have the dir attribute set.
+ * Post-transform that ensures that bdo tags have the dir attribute set.
  *
  * @license LGPL-2.1-or-later
  * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.

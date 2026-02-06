@@ -4,9 +4,12 @@
  *
  * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
+
 declare(strict_types=1);
 
 namespace GFExcel\Vendor\ZipStream;
+
+use function mb_strlen;
 
 use GFExcel\Vendor\Psr\Http\Message\StreamInterface;
 use RuntimeException;
@@ -25,6 +28,29 @@ class Stream implements StreamInterface
     public function __construct($stream)
     {
         $this->stream = $stream;
+    }
+
+    /**
+     * Reads all data from the stream into a string, from the beginning to end.
+     *
+     * This method MUST attempt to seek to the beginning of the stream before
+     * reading data and read the stream until the end is reached.
+     *
+     * Warning: This could attempt to load a large amount of data into memory.
+     *
+     * This method MUST NOT raise an exception in order to conform with PHP's
+     * string casting operations.
+     *
+     * @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
+     * @return string
+     */
+    public function __toString(): string
+    {
+        try {
+            $this->seek(0);
+        } catch (RuntimeException $e) {
+        }
+        return (string) stream_get_contents($this->stream);
     }
 
     /**
@@ -55,28 +81,6 @@ class Stream implements StreamInterface
     }
 
     /**
-     * Reads all data from the stream into a string, from the beginning to end.
-     *
-     * This method MUST attempt to seek to the beginning of the stream before
-     * reading data and read the stream until the end is reached.
-     *
-     * Warning: This could attempt to load a large amount of data into memory.
-     *
-     * This method MUST NOT raise an exception in order to conform with PHP's
-     * string casting operations.
-     *
-     * @see http://php.net/manual/en/language.oop5.magic.php#object.tostring
-     * @return string
-     */
-    public function __toString(): string
-    {
-        try {
-            $this->seek(0);
-        } catch (\RuntimeException $e) {}
-        return (string) stream_get_contents($this->stream);
-    }
-
-    /**
      * Seek to a position in the stream.
      *
      * @link http://www.php.net/manual/en/function.fseek.php
@@ -86,15 +90,15 @@ class Stream implements StreamInterface
      *     PHP $whence values for `fseek()`.  SEEK_SET: Set position equal to
      *     offset bytes SEEK_CUR: Set position to current location plus offset
      *     SEEK_END: Set position to end-of-stream plus offset.
-     * @throws \RuntimeException on failure.
+     * @throws RuntimeException on failure.
      */
     public function seek($offset, $whence = SEEK_SET): void
     {
         if (!$this->isSeekable()) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
         if (fseek($this->stream, $offset, $whence) !== 0) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
     }
 
@@ -141,13 +145,13 @@ class Stream implements StreamInterface
      * Returns the current position of the file read/write pointer
      *
      * @return int Position of the file pointer
-     * @throws \RuntimeException on error.
+     * @throws RuntimeException on error.
      */
     public function tell(): int
     {
         $position = ftell($this->stream);
         if ($position === false) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
         return $position;
     }
@@ -170,7 +174,7 @@ class Stream implements StreamInterface
      *
      * @see seek()
      * @link http://www.php.net/manual/en/function.fseek.php
-     * @throws \RuntimeException on failure.
+     * @throws RuntimeException on failure.
      */
     public function rewind(): void
     {
@@ -182,17 +186,17 @@ class Stream implements StreamInterface
      *
      * @param string $string The string that is to be written.
      * @return int Returns the number of bytes written to the stream.
-     * @throws \RuntimeException on failure.
+     * @throws RuntimeException on failure.
      */
     public function write($string): int
     {
         if (!$this->isWritable()) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
         if (fwrite($this->stream, $string) === false) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
-        return \mb_strlen($string);
+        return mb_strlen($string);
     }
 
     /**
@@ -202,7 +206,11 @@ class Stream implements StreamInterface
      */
     public function isWritable(): bool
     {
-        return preg_match('/[waxc+]/', $this->getMetadata('mode')) === 1;
+        $mode = $this->getMetadata('mode');
+        if (!is_string($mode)) {
+            throw new RuntimeException('Could not get stream mode from metadata!');
+        }
+        return preg_match('/[waxc+]/', $mode) === 1;
     }
 
     /**
@@ -213,16 +221,16 @@ class Stream implements StreamInterface
      *     call returns fewer bytes.
      * @return string Returns the data read from the stream, or an empty string
      *     if no bytes are available.
-     * @throws \RuntimeException if an error occurs.
+     * @throws RuntimeException if an error occurs.
      */
     public function read($length): string
     {
         if (!$this->isReadable()) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
         $result = fread($this->stream, $length);
         if ($result === false) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
         return $result;
     }
@@ -234,24 +242,28 @@ class Stream implements StreamInterface
      */
     public function isReadable(): bool
     {
-        return preg_match('/[r+]/', $this->getMetadata('mode')) === 1;
+        $mode = $this->getMetadata('mode');
+        if (!is_string($mode)) {
+            throw new RuntimeException('Could not get stream mode from metadata!');
+        }
+        return preg_match('/[r+]/', $mode) === 1;
     }
 
     /**
      * Returns the remaining contents in a string
      *
      * @return string
-     * @throws \RuntimeException if unable to read or an error occurs while
+     * @throws RuntimeException if unable to read or an error occurs while
      *     reading.
      */
     public function getContents(): string
     {
         if (!$this->isReadable()) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
         $result = stream_get_contents($this->stream);
         if ($result === false) {
-            throw new RuntimeException;
+            throw new RuntimeException();
         }
         return $result;
     }

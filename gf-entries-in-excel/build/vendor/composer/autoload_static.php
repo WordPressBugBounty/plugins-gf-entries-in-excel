@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de
+class ComposerStaticInit538a8c6c27d50638b2acc673554a766a
 {
     public static $prefixLengthsPsr4 = array (
-        'G' => 
+        'G' =>
         array (
             'GFExcel\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'GFExcel\\' => 
+        'GFExcel\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -879,14 +879,15 @@ class ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de
         'GFExcel_VendorHTMLPurifier_VarParser_Flexible' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Flexible.php',
         'GFExcel_VendorHTMLPurifier_VarParser_Native' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
         'GFExcel_VendorHTMLPurifier_Zipper' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
+        'Stringable' => __DIR__ . '/../..' . '/vendor_prefixed/myclabs/php-enum/stubs/Stringable.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita2f3fc074b10fd40a43c58905a3ef8de::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit538a8c6c27d50638b2acc673554a766a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit538a8c6c27d50638b2acc673554a766a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit538a8c6c27d50638b2acc673554a766a::$classMap;
 
         }, null, ClassLoader::class);
     }

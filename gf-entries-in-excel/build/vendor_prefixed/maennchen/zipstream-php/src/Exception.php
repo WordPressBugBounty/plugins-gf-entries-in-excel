@@ -4,6 +4,7 @@
  *
  * Modified by GravityKit using {@see https://github.com/BrianHenryIE/strauss}.
  */
+
 declare(strict_types=1);
 
 namespace GFExcel\Vendor\ZipStream;

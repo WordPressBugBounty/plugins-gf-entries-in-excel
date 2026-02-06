@@ -76,7 +76,7 @@ class GFExcel_VendorHTMLPurifier_URIFilter_Munge extends GFExcel_VendorHTMLPurif
         } // ignore unknown schemes, maybe another postfilter did it
         if (!$scheme_obj->browsable) {
             return true;
-        } // ignore non-browseable schemes, since we can't munge those in a reasonable way
+        } // ignore non-browsable schemes, since we can't munge those in a reasonable way
         if ($uri->isBenign($config, $context)) {
             return true;
         } // don't redirect if a benign URL

@@ -60,11 +60,12 @@ class GFExcel_VendorHTMLPurifier_URIFilter_SafeIframe extends GFExcel_VendorHTML
             return true;
         }
         // check if we actually have some whitelists enabled
-        if ($this->regexp === null) {
-            return false;
+        if ($this->regexp !== null) {
+            return preg_match($this->regexp, $uri->toString());
         }
-        // actually check the whitelists
-        return preg_match($this->regexp, $uri->toString());
+        // check if the host is in a whitelist for safe iframe hosts
+        $safeHosts = $config->get('URI.SafeIframeHosts');
+        return $safeHosts !== null && isset($safeHosts[$uri->host]);
     }
 }
 

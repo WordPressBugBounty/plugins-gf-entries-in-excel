@@ -40,7 +40,7 @@ class GFExcel_VendorHTMLPurifier_AttrDef_URI_IPv6 extends GFExcel_VendorHTMLPuri
             }
         }
 
-        //      IPv4-compatiblity check
+        //      IPv4-compatibility check
         if (preg_match('#(?<=:' . ')' . $this->ip4 . '$#s', $aIP, $find)) {
             $aIP = substr($aIP, 0, 0 - strlen($find[0]));
             $ip = explode('.', $find[0]);

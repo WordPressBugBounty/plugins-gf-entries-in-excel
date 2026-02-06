@@ -864,4 +864,5 @@ return array(
     'GFExcel_VendorHTMLPurifier_VarParser_Flexible' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Flexible.php',
     'GFExcel_VendorHTMLPurifier_VarParser_Native' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
     'GFExcel_VendorHTMLPurifier_Zipper' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
+    'Stringable' => $baseDir . '/vendor_prefixed/myclabs/php-enum/stubs/Stringable.php',
 );

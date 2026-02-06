@@ -145,12 +145,11 @@ class GFExcel_VendorHTMLPurifier_ContentSets
         if ($return !== false) {
             return $return;
         }
-        // error-out
-        trigger_error(
+
+        throw new Exception(
             'Could not determine which ChildDef class to instantiate',
             E_USER_ERROR
         );
-        return false;
     }
 
     /**

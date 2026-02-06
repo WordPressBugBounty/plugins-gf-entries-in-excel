@@ -115,9 +115,8 @@ class GFExcel_VendorHTMLPurifier_HTMLModule_Tidy extends GFExcel_VendorHTMLPurif
             return;
         }
         if (!isset($this->fixesForLevel[$this->defaultLevel])) {
-            trigger_error(
-                'Default level ' . $this->defaultLevel . ' does not exist',
-                E_USER_ERROR
+            throw new Exception(
+                'Default level ' . $this->defaultLevel . ' does not exist'
             );
             return;
         }
@@ -165,8 +164,7 @@ class GFExcel_VendorHTMLPurifier_HTMLModule_Tidy extends GFExcel_VendorHTMLPurif
                     $e->$type = $fix;
                     break;
                 default:
-                    trigger_error("Fix type $type not supported", E_USER_ERROR);
-                    break;
+                    throw new Exception("Fix type $type not supported");
             }
         }
     }

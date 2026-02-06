@@ -144,8 +144,9 @@ class GFExcel_VendorHTMLPurifier_DefinitionCache_Serializer extends GFExcel_Vend
                 continue;
             }
             $key = substr($filename, 0, strlen($filename) - 4);
-            if ($this->isOld($key, $config)) {
-                unlink($dir . '/' . $filename);
+            $file = $dir . '/' . $filename;
+            if ($this->isOld($key, $config) && file_exists($file)) {
+                unlink($file);
             }
         }
         closedir($dh);

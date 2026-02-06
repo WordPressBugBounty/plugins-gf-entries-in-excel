@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     GravityExport Lite
- * Version:         2.4.0
+ * Version:         2.4.2
  * Plugin URI:      https://gfexcel.com
  * Description:     Export all Gravity Forms entries to Excel (.xlsx) or CSV via a secret shareable URL.
  * Author:          GravityKit
@@ -28,7 +28,7 @@ if ( ! defined( 'GFEXCEL_PLUGIN_FILE' ) ) {
 }
 
 if ( ! defined( 'GFEXCEL_PLUGIN_VERSION' ) ) {
-	define( 'GFEXCEL_PLUGIN_VERSION', '2.4.0' );
+	define( 'GFEXCEL_PLUGIN_VERSION', '2.4.2' );
 }
 
 if ( ! defined( 'GFEXCEL_MIN_PHP_VERSION' ) ) {
@@ -71,6 +71,7 @@ add_action( 'gform_loaded', static function (): void {
 	$autoload_file = __DIR__ . '/build/vendor/autoload.php';
 
 	$is_build = true;
+	$can_add_class_alias = ! defined( 'GFEXCEL_AVOID_CLASS_ALIAS' ) || ! GFEXCEL_AVOID_CLASS_ALIAS;
 	if ( ! file_exists( $autoload_file ) ) {
 		$autoload_file = __DIR__ . '/vendor/autoload.php';
 		$is_build      = false;
@@ -78,7 +79,7 @@ add_action( 'gform_loaded', static function (): void {
 
 	require_once $autoload_file;
 
-	if ( $is_build ) {
+	if ( $is_build && $can_add_class_alias ) {
 		// Make old class names available as aliases if possible.
 		$class_aliases = [
 			'PhpOffice\PhpSpreadsheet\Document\Properties',

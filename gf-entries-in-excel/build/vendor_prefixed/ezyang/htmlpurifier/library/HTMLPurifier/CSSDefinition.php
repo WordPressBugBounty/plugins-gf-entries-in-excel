@@ -29,6 +29,11 @@ class GFExcel_VendorHTMLPurifier_CSSDefinition extends GFExcel_VendorHTMLPurifie
             false
         );
 
+        $this->info['direction'] = new GFExcel_VendorHTMLPurifier_AttrDef_Enum(
+            ['ltr', 'rtl'],
+            false
+        );
+
         $border_style =
             $this->info['border-bottom-style'] =
             $this->info['border-right-style'] =
