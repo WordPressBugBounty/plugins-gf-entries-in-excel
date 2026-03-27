@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit538a8c6c27d50638b2acc673554a766a
+class ComposerStaticInitfece2c4581d7ed49eb216a156405c2da
 {
     public static $prefixLengthsPsr4 = array (
         'G' =>
@@ -21,6 +21,7 @@ class ComposerStaticInit538a8c6c27d50638b2acc673554a766a
     );
 
     public static $classMap = array (
+        'Attribute' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'GFExcel\\Action\\AbstractAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/AbstractAction.php',
         'GFExcel\\Action\\ActionAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionAware.php',
@@ -626,6 +627,8 @@ class ComposerStaticInit538a8c6c27d50638b2acc673554a766a
         'GFExcel\\Vendor\\Psr\\SimpleCache\\InvalidArgumentException' => __DIR__ . '/../..' . '/vendor_prefixed/psr/simple-cache/src/InvalidArgumentException.php',
         'GFExcel\\Vendor\\Symfony\\Polyfill\\Iconv\\Iconv' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-iconv/Iconv.php',
         'GFExcel\\Vendor\\Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-mbstring/Mbstring.php',
+        'GFExcel\\Vendor\\Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Php80.php',
+        'GFExcel\\Vendor\\Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/PhpToken.php',
         'GFExcel\\Vendor\\ZipStream\\Bigint' => __DIR__ . '/../..' . '/vendor_prefixed/maennchen/zipstream-php/src/Bigint.php',
         'GFExcel\\Vendor\\ZipStream\\DeflateStream' => __DIR__ . '/../..' . '/vendor_prefixed/maennchen/zipstream-php/src/DeflateStream.php',
         'GFExcel\\Vendor\\ZipStream\\Exception' => __DIR__ . '/../..' . '/vendor_prefixed/maennchen/zipstream-php/src/Exception.php',
@@ -879,15 +882,18 @@ class ComposerStaticInit538a8c6c27d50638b2acc673554a766a
         'GFExcel_VendorHTMLPurifier_VarParser_Flexible' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Flexible.php',
         'GFExcel_VendorHTMLPurifier_VarParser_Native' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
         'GFExcel_VendorHTMLPurifier_Zipper' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
-        'Stringable' => __DIR__ . '/../..' . '/vendor_prefixed/myclabs/php-enum/stubs/Stringable.php',
+        'PhpToken' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+        'Stringable' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'UnhandledMatchError' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'ValueError' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit538a8c6c27d50638b2acc673554a766a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit538a8c6c27d50638b2acc673554a766a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit538a8c6c27d50638b2acc673554a766a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfece2c4581d7ed49eb216a156405c2da::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfece2c4581d7ed49eb216a156405c2da::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfece2c4581d7ed49eb216a156405c2da::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Attribute' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'GFExcel\\Action\\AbstractAction' => $baseDir . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/AbstractAction.php',
     'GFExcel\\Action\\ActionAware' => $baseDir . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionAware.php',
@@ -611,6 +612,8 @@ return array(
     'GFExcel\\Vendor\\Psr\\SimpleCache\\InvalidArgumentException' => $baseDir . '/vendor_prefixed/psr/simple-cache/src/InvalidArgumentException.php',
     'GFExcel\\Vendor\\Symfony\\Polyfill\\Iconv\\Iconv' => $baseDir . '/vendor_prefixed/symfony/polyfill-iconv/Iconv.php',
     'GFExcel\\Vendor\\Symfony\\Polyfill\\Mbstring\\Mbstring' => $baseDir . '/vendor_prefixed/symfony/polyfill-mbstring/Mbstring.php',
+    'GFExcel\\Vendor\\Symfony\\Polyfill\\Php80\\Php80' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Php80.php',
+    'GFExcel\\Vendor\\Symfony\\Polyfill\\Php80\\PhpToken' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/PhpToken.php',
     'GFExcel\\Vendor\\ZipStream\\Bigint' => $baseDir . '/vendor_prefixed/maennchen/zipstream-php/src/Bigint.php',
     'GFExcel\\Vendor\\ZipStream\\DeflateStream' => $baseDir . '/vendor_prefixed/maennchen/zipstream-php/src/DeflateStream.php',
     'GFExcel\\Vendor\\ZipStream\\Exception' => $baseDir . '/vendor_prefixed/maennchen/zipstream-php/src/Exception.php',
@@ -864,5 +867,8 @@ return array(
     'GFExcel_VendorHTMLPurifier_VarParser_Flexible' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Flexible.php',
     'GFExcel_VendorHTMLPurifier_VarParser_Native' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
     'GFExcel_VendorHTMLPurifier_Zipper' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
-    'Stringable' => $baseDir . '/vendor_prefixed/myclabs/php-enum/stubs/Stringable.php',
+    'PhpToken' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
+    'Stringable' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+    'UnhandledMatchError' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+    'ValueError' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 );
