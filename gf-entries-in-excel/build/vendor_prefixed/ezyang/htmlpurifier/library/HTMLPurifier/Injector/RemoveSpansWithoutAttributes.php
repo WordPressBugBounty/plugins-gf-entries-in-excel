@@ -77,7 +77,7 @@ class GFExcel_VendorHTMLPurifier_Injector_RemoveSpansWithoutAttributes extends G
 
         if ($current instanceof GFExcel_VendorHTMLPurifier_Token_End && $current->name === 'span') {
             // Mark closing span tag for deletion
-            $this->markForDeletion->attach($current);
+            $this->markForDeletion->offsetSet($current);
             // Delete open span tag
             $token = false;
         }
@@ -88,8 +88,8 @@ class GFExcel_VendorHTMLPurifier_Injector_RemoveSpansWithoutAttributes extends G
      */
     public function handleEnd(&$token)
     {
-        if ($this->markForDeletion->contains($token)) {
-            $this->markForDeletion->detach($token);
+        if ($this->markForDeletion->offsetExists($token)) {
+            $this->markForDeletion->offsetUnset($token);
             $token = false;
         }
     }

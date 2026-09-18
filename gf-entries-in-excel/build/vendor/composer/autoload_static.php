@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitfece2c4581d7ed49eb216a156405c2da
+class ComposerStaticInitd6a793464d574adb73f963e4874ed617
 {
     public static $prefixLengthsPsr4 = array (
-        'G' =>
+        'G' => 
         array (
             'GFExcel\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'GFExcel\\' =>
+        'GFExcel\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -27,14 +27,17 @@ class ComposerStaticInitfece2c4581d7ed49eb216a156405c2da
         'GFExcel\\Action\\ActionAware' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionAware.php',
         'GFExcel\\Action\\ActionAwareInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionAwareInterface.php',
         'GFExcel\\Action\\ActionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionInterface.php',
+        'GFExcel\\Action\\ActionNotice' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/ActionNotice.php',
         'GFExcel\\Action\\CountDownloads' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/CountDownloads.php',
         'GFExcel\\Action\\DownloadCountResetAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/DownloadCountResetAction.php',
         'GFExcel\\Action\\DownloadUrlDisableAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/DownloadUrlDisableAction.php',
         'GFExcel\\Action\\DownloadUrlEnableAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/DownloadUrlEnableAction.php',
         'GFExcel\\Action\\DownloadUrlResetAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/DownloadUrlResetAction.php',
         'GFExcel\\Action\\FilterRequest' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/FilterRequest.php',
+        'GFExcel\\Action\\FiresWithNotice' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/FiresWithNotice.php',
         'GFExcel\\Action\\NotificationAttachmentAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/NotificationAttachmentAction.php',
         'GFExcel\\Action\\NotificationsAction' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/NotificationsAction.php',
+        'GFExcel\\Action\\NotifyingActionInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Action/NotifyingActionInterface.php',
         'GFExcel\\Addon\\AddonHelperTrait' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Addon/AddonHelperTrait.php',
         'GFExcel\\Addon\\AddonInterface' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Addon/AddonInterface.php',
         'GFExcel\\Addon\\AddonTrait' => __DIR__ . '/../..' . '/vendor_prefixed/gravitykit/gravityexport-lite-src/Addon/AddonTrait.php',
@@ -883,7 +886,7 @@ class ComposerStaticInitfece2c4581d7ed49eb216a156405c2da
         'GFExcel_VendorHTMLPurifier_VarParser_Native' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
         'GFExcel_VendorHTMLPurifier_Zipper' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
         'PhpToken' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-        'Stringable' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'Stringable' => __DIR__ . '/../..' . '/vendor_prefixed/myclabs/php-enum/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
@@ -891,9 +894,9 @@ class ComposerStaticInitfece2c4581d7ed49eb216a156405c2da
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitfece2c4581d7ed49eb216a156405c2da::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitfece2c4581d7ed49eb216a156405c2da::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitfece2c4581d7ed49eb216a156405c2da::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd6a793464d574adb73f963e4874ed617::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd6a793464d574adb73f963e4874ed617::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd6a793464d574adb73f963e4874ed617::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -3,9 +3,9 @@ Contributors: gravityview, doekenorg
 Donate link: https://www.gravitykit.com/extensions/gravityexport/?utm_source=plugin&utm_campaign=gravityexport-lite&utm_content=readme-donate
 Tags: Gravity Forms, GravityForms, Excel, Export, Entries
 Requires at least: 4.0
-Requires PHP: 7.2
-Tested up to: 6.9.4
-Stable tag: 2.6.0
+Requires PHP: 7.4
+Tested up to: 7.1.1
+Stable tag: 2.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,13 +50,13 @@ Save time generating exports in Gravity Forms: Configure the fields that are inc
 
 ### Documentation & support
 
-If you have any questions regarding GravityExport Lite, [check out our documentation](https://docs.gravitykit.com/category/791-gravityexport?utm_source=plugin&utm_campaign=gravityexport-lite&utm_content=readme-checkout-docs).
+If you have any questions regarding GravityExport Lite, [check out our documentation](https://www.gravitykit.com/docs/gravityexport/?utm_source=plugin&utm_campaign=gravityexport-lite&utm_content=readme-checkout-docs).
 
 If you need further assistance, [read this first](https://wordpress.org/support/topic/read-me-first-9/) and our support team will gladly give you a helping hand!
 
 #### Requirements
 
-* PHP 7.2
+* PHP 7.4
 * `php-xml` and `php-zip` libraries. The plugin will check for those.
 * Gravity Forms 2.5 or higher
 
@@ -255,6 +255,31 @@ You can hide a row by adding a hook. Checkout this example:
 3. Or download it from the list via the bulk selector
 
 == Changelog ==
+
+= 2.7.2 on September 17, 2026 =
+
+**Note: GravityExport Lite now requires PHP 7.4 or newer.**
+
+* Fixed: PDF exports were not sent with a PDF file type, which could cause browsers, proxies and file previewers to handle the downloaded file incorrectly.
+* Fixed: A browser console error appeared on a form's GravityExport Lite settings page before a download URL was enabled.
+
+= 2.7.1 on August 14, 2026 =
+
+* Fixed: Sites running PHP 8.4 or newer logged repeated "deprecated" warnings on every page.
+* Fixed: The global settings page was hidden for administrators when the Members plugin managed capabilities. The page now requires the "Export Entries" capability, which can be granted per role.
+
+= 2.7.0 on August 6, 2026 =
+
+* Added: The single-entry export attached to a notification is now saved to a unique temporary folder, so simultaneous submissions can no longer overwrite each other's attachment.
+* Fixed: Copy-to-clipboard button icons were vertically misaligned in WordPress 7.0.
+* Fixed: A "translation loading triggered too early" notice (WordPress 6.7+) caused by the download-URL feed actions loading translations during plugin bootstrap.
+* Fixed: The success message shown after regenerating, enabling, or disabling a download URL was lost because the page redirected before it could display.
+
+__Developer Updates:__
+* Added: `gk/gravityexport/notification/attachment-ids` filter to change the notification IDs the single-entry export is attached to.
+* Added: `gk/gravityexport/notification/attachment-source-ids` filter to replace the stored notification selection; it runs first, so callbacks on the filter above always receive the complete selection (used by GravityExport to attach the export to multiple notifications).
+* Added: `gk/gravityexport/renderer/save-path` filter to change the path a rendered export file is saved to.
+* Added: `gk/gravityexport/feed/pre-save-settings` filter to change the feed settings before they are stored; it runs inside the save, so related settings are written in a single update.
 
 = 2.6.0 on March 26, 2026 =
 

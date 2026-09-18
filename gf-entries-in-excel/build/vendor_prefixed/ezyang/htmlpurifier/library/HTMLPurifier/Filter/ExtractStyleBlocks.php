@@ -113,6 +113,7 @@ class GFExcel_VendorHTMLPurifier_Filter_ExtractStyleBlocks extends GFExcel_Vendo
         // NB: this must be NON-greedy because if we have
         // <style>foo</style>  <style>bar</style>
         // we must not grab foo</style>  <style>bar
+        $html = (string) $html;
         $html = preg_replace_callback('#<style(?:\s.*)?>(.*)<\/style>#isU', array($this, 'styleCallback'), $html);
         $style_blocks = $this->_styleMatches;
         $this->_styleMatches = array(); // reset

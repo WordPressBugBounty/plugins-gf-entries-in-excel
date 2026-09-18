@@ -52,9 +52,9 @@ class Container implements ContainerInterface
      * @param InflectorAggregateInterface|null       $inflectors
      */
     public function __construct(
-        DefinitionAggregateInterface      $definitions = null,
-        ServiceProviderAggregateInterface $providers = null,
-        InflectorAggregateInterface       $inflectors = null
+        ?DefinitionAggregateInterface      $definitions = null,
+        ?ServiceProviderAggregateInterface $providers = null,
+        ?InflectorAggregateInterface       $inflectors = null
     ) {
         $this->definitions = $definitions ?? new DefinitionAggregate;
         $this->providers   = $providers   ?? new ServiceProviderAggregate;
@@ -82,7 +82,7 @@ class Container implements ContainerInterface
      *
      * @return DefinitionInterface
      */
-    public function add(string $id, $concrete = null, bool $shared = null) : DefinitionInterface
+    public function add(string $id, $concrete = null, ?bool $shared = null) : DefinitionInterface
     {
         $concrete = $concrete ?? $id;
         $shared = $shared ?? $this->defaultToShared;
@@ -227,7 +227,7 @@ class Container implements ContainerInterface
      *
      * @return InflectorInterface
      */
-    public function inflector(string $type, callable $callback = null) : InflectorInterface
+    public function inflector(string $type, ?callable $callback = null) : InflectorInterface
     {
         return $this->inflectors->add($type, $callback);
     }

@@ -22,7 +22,7 @@
  */
 
 /*
-    HTML Purifier 4.19.0 - Standards Compliant HTML Filtering
+    HTML Purifier 4.19.1 - Standards Compliant HTML Filtering
     Copyright (C) 2006-2008 Edward Z. Yang
 
     This library is free software; you can redistribute it and/or
@@ -61,12 +61,12 @@ class GFExcel_VendorHTMLPurifier
      * Version of HTML Purifier.
      * @type string
      */
-    public $version = '4.19.0';
+    public $version = '4.19.1';
 
     /**
      * Constant with version of HTML Purifier.
      */
-    const VERSION = '4.19.0';
+    const VERSION = '4.19.1';
 
     /**
      * Global configuration object.
@@ -177,6 +177,7 @@ class GFExcel_VendorHTMLPurifier
         $id_accumulator = GFExcel_VendorHTMLPurifier_IDAccumulator::build($config, $context);
         $context->register('IDAccumulator', $id_accumulator);
 
+        $html = (string) $html;
         $html = GFExcel_VendorHTMLPurifier_Encoder::convertToUTF8($html, $config, $context);
 
         // setup filters
@@ -202,7 +203,7 @@ class GFExcel_VendorHTMLPurifier
         // maybe prepare(), but later
 
         for ($i = 0, $filter_size = count($filters); $i < $filter_size; $i++) {
-            $html = $filters[$i]->preFilter($html, $config, $context);
+            $html = (string) $filters[$i]->preFilter($html, $config, $context);
         }
 
         // purified HTML
@@ -223,7 +224,7 @@ class GFExcel_VendorHTMLPurifier
             );
 
         for ($i = $filter_size - 1; $i >= 0; $i--) {
-            $html = $filters[$i]->postFilter($html, $config, $context);
+            $html = (string) $filters[$i]->postFilter($html, $config, $context);
         }
 
         $html = GFExcel_VendorHTMLPurifier_Encoder::convertFromUTF8($html, $config, $context);

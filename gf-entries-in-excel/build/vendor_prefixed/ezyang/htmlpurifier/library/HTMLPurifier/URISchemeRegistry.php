@@ -47,6 +47,10 @@ class GFExcel_VendorHTMLPurifier_URISchemeRegistry
             $config = GFExcel_VendorHTMLPurifier_Config::createDefault();
         }
 
+        if ($scheme === null) {
+            return;
+        }
+
         // important, otherwise attacker could include arbitrary file
         $allowed_schemes = $config->get('URI.AllowedSchemes');
         if (!$config->get('URI.OverrideAllowedSchemes') &&
