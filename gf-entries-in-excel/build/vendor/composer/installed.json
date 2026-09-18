@@ -66,8 +66,8 @@
         },
         {
             "name": "gravitykit/gravityexport-lite-src",
-            "version": "dev-main",
-            "version_normalized": "dev-main",
+            "version": "v2.7.3",
+            "version_normalized": "2.7.3.0",
             "dist": {
                 "type": "path",
                 "url": "../src",
