@@ -8,31 +8,6 @@ var gfexcel_sortable;
 	// Duration of the light-up highlight effect on a moved field.
 	var LIGHT_UP_DURATION = 200;
 
-	// English messages for a count, used when the lists carry no translated ones.
-	var COUNT_MESSAGE_FALLBACKS = {
-		'match': [ '[count] field matches your search.', '[count] fields match your search.' ],
-		'moved': [ '[count] field moved to [destination].', '[count] fields moved to [destination].' ]
-	};
-
-	/**
-	 * Returns the message for a number of fields, in the form the site's language uses for that number.
-	 *
-	 * @param {jQuery} $container The sort fields container, carrying the translated messages per count.
-	 * @param {string} type 'match' for the search status, 'moved' for the move announcement.
-	 * @param {number} count The number of fields.
-	 *
-	 * @return {string} The message. A 'moved' message keeps its [destination] placeholder.
-	 */
-	var countMessage = function ( $container, type, count ) {
-		var messages = $container.data( 'count-messages' ) || {};
-
-		if ( messages[ type ] && messages[ type ][ count ] ) {
-			return messages[ type ][ count ];
-		}
-
-		return COUNT_MESSAGE_FALLBACKS[ type ][ count === 1 ? 0 : 1 ].replace( '[count]', count );
-	};
-
 	/**
 	 * Filter sortable field lists based on search input.
 	 *
@@ -51,8 +26,7 @@ var gfexcel_sortable;
 		$lists.each( function () {
 			var $list = $( this );
 
-			// Only the field items: a label may hold its own HTML list.
-			$list.children( 'li' ).each( function () {
+			$list.find( 'li' ).each( function () {
 				var $item = $( this );
 				var fieldLabel = $item.find( '.field span' ).text().toLowerCase();
 
@@ -73,8 +47,11 @@ var gfexcel_sortable;
 			if ( totalVisible === 0 ) {
 				statusMessage = strings.no_fields_match;
 				$status.addClass( 'is-no-results' );
+			} else if ( totalVisible === 1 ) {
+				statusMessage = strings.one_field_matches;
+				$status.removeClass( 'is-no-results' );
 			} else {
-				statusMessage = countMessage( $container, 'match', totalVisible );
+				statusMessage = strings.n_fields_match.replace( '[count]', totalVisible );
 				$status.removeClass( 'is-no-results' );
 			}
 			$statusText.text( statusMessage );
@@ -111,7 +88,11 @@ var gfexcel_sortable;
 				'enable_visible': 'Enable visible',
 				'disable_visible': 'Disable visible',
 				'no_fields_match': 'No fields match your search.',
-				'field_moved': '[field] moved to [destination].'
+				'one_field_matches': '1 field matches your search.',
+				'n_fields_match': '[count] fields match your search.',
+				'field_moved': '[field] moved to [destination].',
+				'fields_moved': '[count] fields moved to [destination].',
+				'one_field_moved': '1 field moved to [destination].'
 			};
 
 		// Track buttons for label updates during search
@@ -178,7 +159,7 @@ var gfexcel_sortable;
 				// Move visible items to the `send-to` list when clicked.
 				.on( 'click', function () {
 					// Only move items that are not hidden by search filter
-					var $itemsToMove = $list.children( 'li:not(.gk-gravityexport-sort-fields__hidden)' );
+					var $itemsToMove = $list.find( 'li:not(.gk-gravityexport-sort-fields__hidden)' );
 					var count = $itemsToMove.length;
 
 					if ( count === 0 ) {
@@ -193,7 +174,13 @@ var gfexcel_sortable;
 					updateLists( $elements );
 
 					// Announce the action to screen readers
-					wp.a11y.speak( countMessage( $container, 'moved', count ).replace( '[destination]', targetLabel ) );
+					var message;
+					if ( count === 1 ) {
+						message = strings.one_field_moved.replace( '[destination]', targetLabel );
+					} else {
+						message = strings.fields_moved.replace( '[count]', count ).replace( '[destination]', targetLabel );
+					}
+					wp.a11y.speak( message );
 				} );
 
 			// Add the button before the list.
@@ -213,8 +200,8 @@ var gfexcel_sortable;
 		 * @param {jQuery} $moveButton The move button that was activated.
 		 */
 		var moveField = function ( $moveButton ) {
-			var $element = $moveButton.parent( 'li' );
-			var $sourceList = $element.parent( 'ul' );
+			var $element = $moveButton.closest( 'li' );
+			var $sourceList = $element.closest( 'ul' );
 			var send_to = '#' + $sourceList.data( 'send-to' );
 			var $targetList = $( send_to );
 			var fieldLabel = $element.find( '.field span' ).text();
@@ -235,13 +222,12 @@ var gfexcel_sortable;
 			wp.a11y.speak( message );
 		};
 
-		// Only each field item's own button: a label printed as HTML can hold its own .move element.
 		$elements
-			.on( 'click', '> li > .move', function () {
+			.on( 'click', '.move', function () {
 				moveField( $( this ) );
 			} )
 			// Keyboard support for move button
-			.on( 'keydown', '> li > .move', function ( e ) {
+			.on( 'keydown', '.move', function ( e ) {
 				if ( e.key === 'Enter' || e.key === ' ' ) {
 					e.preventDefault();
 					moveField( $( this ) );
