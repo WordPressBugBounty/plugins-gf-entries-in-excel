@@ -4,8 +4,8 @@ Donate link: https://www.gravitykit.com/extensions/gravityexport/?utm_source=plu
 Tags: Gravity Forms, GravityForms, Excel, Export, Entries
 Requires at least: 6.5
 Requires PHP: 7.4.0
-Tested up to: 7.1.2
-Stable tag: 2.7.4
+Tested up to: 7.1.4
+Stable tag: 2.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -255,6 +255,26 @@ You can hide a row by adding a hook. Checkout this example:
 3. Or download it from the list via the bulk selector
 
 == Changelog ==
+
+= 2.7.6 on October 29, 2026 =
+
+This release fixes how Repeater fields export, translates two labels in the form settings, and adds a filter for who can download a secured export.
+
+* Fixed: Issues with Repeater fields in exports:
+  - Values could appear under the wrong column;
+  - Values from two rows could look like one row;
+  - The Repeater field was offered as a sort field, but sorting by it did nothing.
+* Fixed: The "Enable download URL" button and the "Copied!" label on a form's GravityExport Lite settings tab now show in the site's language.
+
+__Developer Updates:__
+* Added: `gk/gravityexport/download/can-download` filter to allow or refuse a secured GravityExport Lite download URL for a given feed and user. By default, only users with the `gravityforms_export_entries` capability can download secured exports; public download URLs are not affected.
+
+= 2.7.5 on October 22, 2026 =
+
+* Fixed: On sites upgraded from a version before 2.0, the global and form export settings could revert to their pre-2.0 values.
+* Fixed: In the field settings, the number of fields matching a search and the number of fields moved used the wrong plural form in languages such as Arabic, Russian and Polish.
+* Fixed: If a field label contained a list, "Enable all" and "Disable all" in the field settings moved its items as if they were fields, and searching for a field hid them.
+* Fixed: New installs on PHP 8.1 or newer logged a PHP "deprecated" notice.
 
 = 2.7.4 on October 3, 2026 =
 

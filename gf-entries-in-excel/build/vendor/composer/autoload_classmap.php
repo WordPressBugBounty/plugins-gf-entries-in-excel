@@ -871,7 +871,7 @@ return array(
     'GFExcel_VendorHTMLPurifier_VarParser_Native' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
     'GFExcel_VendorHTMLPurifier_Zipper' => $baseDir . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
     'PhpToken' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-    'Stringable' => $baseDir . '/vendor_prefixed/myclabs/php-enum/stubs/Stringable.php',
+    'Stringable' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'UnhandledMatchError' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $baseDir . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 );

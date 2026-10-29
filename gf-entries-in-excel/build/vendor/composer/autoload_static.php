@@ -886,7 +886,7 @@ class ComposerStaticInitd6a793464d574adb73f963e4874ed617
         'GFExcel_VendorHTMLPurifier_VarParser_Native' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/VarParser/Native.php',
         'GFExcel_VendorHTMLPurifier_Zipper' => __DIR__ . '/../..' . '/vendor_prefixed/ezyang/htmlpurifier/library/HTMLPurifier/Zipper.php',
         'PhpToken' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
-        'Stringable' => __DIR__ . '/../..' . '/vendor_prefixed/myclabs/php-enum/stubs/Stringable.php',
+        'Stringable' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/../..' . '/vendor_prefixed/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
