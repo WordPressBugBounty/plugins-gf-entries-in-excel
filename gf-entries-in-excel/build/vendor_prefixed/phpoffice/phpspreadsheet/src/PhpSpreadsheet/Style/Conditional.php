@@ -14,23 +14,37 @@ class Conditional implements IComparable
 {
     // Condition types
     const CONDITION_NONE = 'none';
+    const CONDITION_BEGINSWITH = 'beginsWith';
     const CONDITION_CELLIS = 'cellIs';
-    const CONDITION_CONTAINSTEXT = 'containsText';
-    const CONDITION_EXPRESSION = 'expression';
     const CONDITION_CONTAINSBLANKS = 'containsBlanks';
-    const CONDITION_NOTCONTAINSBLANKS = 'notContainsBlanks';
+    const CONDITION_CONTAINSERRORS = 'containsErrors';
+    const CONDITION_CONTAINSTEXT = 'containsText';
     const CONDITION_DATABAR = 'dataBar';
+    const CONDITION_ENDSWITH = 'endsWith';
+    const CONDITION_EXPRESSION = 'expression';
+    const CONDITION_NOTCONTAINSBLANKS = 'notContainsBlanks';
+    const CONDITION_NOTCONTAINSERRORS = 'notContainsErrors';
     const CONDITION_NOTCONTAINSTEXT = 'notContainsText';
+    const CONDITION_TIMEPERIOD = 'timePeriod';
+    const CONDITION_DUPLICATES = 'duplicateValues';
+    const CONDITION_UNIQUE = 'uniqueValues';
 
     private const CONDITION_TYPES = [
+        self::CONDITION_BEGINSWITH,
         self::CONDITION_CELLIS,
         self::CONDITION_CONTAINSBLANKS,
+        self::CONDITION_CONTAINSERRORS,
         self::CONDITION_CONTAINSTEXT,
         self::CONDITION_DATABAR,
+        self::CONDITION_DUPLICATES,
+        self::CONDITION_ENDSWITH,
         self::CONDITION_EXPRESSION,
         self::CONDITION_NONE,
         self::CONDITION_NOTCONTAINSBLANKS,
+        self::CONDITION_NOTCONTAINSERRORS,
         self::CONDITION_NOTCONTAINSTEXT,
+        self::CONDITION_TIMEPERIOD,
+        self::CONDITION_UNIQUE,
     ];
 
     // Operator types
@@ -47,6 +61,17 @@ class Conditional implements IComparable
     const OPERATOR_NOTCONTAINS = 'notContains';
     const OPERATOR_BETWEEN = 'between';
     const OPERATOR_NOTBETWEEN = 'notBetween';
+
+    const TIMEPERIOD_TODAY = 'today';
+    const TIMEPERIOD_YESTERDAY = 'yesterday';
+    const TIMEPERIOD_TOMORROW = 'tomorrow';
+    const TIMEPERIOD_LAST_7_DAYS = 'last7Days';
+    const TIMEPERIOD_LAST_WEEK = 'lastWeek';
+    const TIMEPERIOD_THIS_WEEK = 'thisWeek';
+    const TIMEPERIOD_NEXT_WEEK = 'nextWeek';
+    const TIMEPERIOD_LAST_MONTH = 'lastMonth';
+    const TIMEPERIOD_THIS_MONTH = 'thisMonth';
+    const TIMEPERIOD_NEXT_MONTH = 'nextMonth';
 
     /**
      * Condition type.
@@ -79,7 +104,7 @@ class Conditional implements IComparable
     /**
      * Condition.
      *
-     * @var string[]
+     * @var (bool|float|int|string)[]
      */
     private $condition = [];
 
@@ -95,6 +120,9 @@ class Conditional implements IComparable
      */
     private $style;
 
+    /** @var bool */
+    private $noFormatSet = false;
+
     /**
      * Create a new Conditional.
      */
@@ -102,6 +130,18 @@ class Conditional implements IComparable
     {
         // Initialise values
         $this->style = new Style(false, true);
+    }
+
+    public function getNoFormatSet(): bool
+    {
+        return $this->noFormatSet;
+    }
+
+    public function setNoFormatSet(bool $noFormatSet): self
+    {
+        $this->noFormatSet = $noFormatSet;
+
+        return $this;
     }
 
     /**
@@ -203,7 +243,7 @@ class Conditional implements IComparable
     /**
      * Get Conditions.
      *
-     * @return string[]
+     * @return (bool|float|int|string)[]
      */
     public function getConditions()
     {
@@ -213,7 +253,7 @@ class Conditional implements IComparable
     /**
      * Set Conditions.
      *
-     * @param bool|float|int|string|string[] $conditions Condition
+     * @param (bool|float|int|string)[]|bool|float|int|string $conditions Condition
      *
      * @return $this
      */
@@ -230,7 +270,7 @@ class Conditional implements IComparable
     /**
      * Add Condition.
      *
-     * @param string $condition Condition
+     * @param bool|float|int|string $condition Condition
      *
      * @return $this
      */
@@ -254,11 +294,9 @@ class Conditional implements IComparable
     /**
      * Set Style.
      *
-     * @param Style $style
-     *
      * @return $this
      */
-    public function setStyle(?Style $style = null)
+    public function setStyle(Style $style)
     {
         $this->style = $style;
 

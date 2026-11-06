@@ -11,6 +11,7 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Reader\Exception as ReaderException;
 
 class OLERead
 {
+    /** @var string */
     private $data = '';
 
     // Size of a sector = 512 bytes
@@ -39,10 +40,13 @@ class OLERead
     const START_BLOCK_POS = 0x74;
     const SIZE_POS = 0x78;
 
+    /** @var int */
     public $wrkbook;
 
+    /** @var int */
     public $summaryInformation;
 
+    /** @var int */
     public $documentSummaryInformation;
 
     /**
@@ -95,6 +99,9 @@ class OLERead
      */
     private $props = [];
 
+    /** @var int[] */
+    private array $possibleLoop = [];
+
     /**
      * Read the file.
      */
@@ -104,7 +111,7 @@ class OLERead
 
         // Get the file identifier
         // Don't bother reading the whole file until we know it's a valid OLE file
-        $this->data = file_get_contents($filename, false, null, 0, 8);
+        $this->data = (string) file_get_contents($filename, false, null, 0, 8);
 
         // Check OLE identifier
         $identifierOle = pack('CCCCCCCC', 0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1);
@@ -113,7 +120,7 @@ class OLERead
         }
 
         // Get the file data
-        $this->data = file_get_contents($filename);
+        $this->data = (string) file_get_contents($filename);
 
         // Total number of sectors used for the SAT
         $this->numBigBlockDepotBlocks = self::getInt4d($this->data, self::NUM_BIG_BLOCK_DEPOT_BLOCKS_POS);
@@ -135,7 +142,7 @@ class OLERead
 
         $bbdBlocks = $this->numBigBlockDepotBlocks;
 
-        if ($this->numExtensionBlocks != 0) {
+        if ($this->numExtensionBlocks !== 0) {
             $bbdBlocks = (self::BIG_BLOCK_SIZE - self::BIG_BLOCK_DEPOT_BLOCKS_POS) / 4;
         }
 
@@ -169,10 +176,11 @@ class OLERead
             $pos += 4 * $bbs;
         }
 
-        $pos = 0;
         $sbdBlock = $this->sbdStartBlock;
         $this->smallBlockChain = '';
+        $this->possibleLoop = [];
         while ($sbdBlock != -2) {
+            $this->catchLoop($sbdBlock);
             $pos = ($sbdBlock + 1) * self::BIG_BLOCK_SIZE;
 
             $this->smallBlockChain .= substr($this->data, $pos, 4 * $bbs);
@@ -188,10 +196,18 @@ class OLERead
         $this->readPropertySets();
     }
 
+    private function catchLoop(int $sbdBlock): void
+    {
+        if (in_array($sbdBlock, $this->possibleLoop, true)) {
+            throw new ReaderException('Detected loop while iterating blocks');
+        }
+        $this->possibleLoop[] = $sbdBlock;
+    }
+
     /**
      * Extract binary stream data.
      *
-     * @param int $stream
+     * @param ?int $stream
      *
      * @return null|string
      */
@@ -208,7 +224,9 @@ class OLERead
 
             $block = $this->props[$stream]['startBlock'];
 
+            $this->possibleLoop = [];
             while ($block != -2) {
+                $this->catchLoop($block);
                 $pos = $block * self::SMALL_BLOCK_SIZE;
                 $streamData .= substr($rootdata, $pos, self::SMALL_BLOCK_SIZE);
 
@@ -228,7 +246,9 @@ class OLERead
 
         $block = $this->props[$stream]['startBlock'];
 
+        $this->possibleLoop = [];
         while ($block != -2) {
+            $this->catchLoop($block);
             $pos = ($block + 1) * self::BIG_BLOCK_SIZE;
             $streamData .= substr($this->data, $pos, self::BIG_BLOCK_SIZE);
             $block = self::getInt4d($this->bigBlockChain, $block * 4);
@@ -248,7 +268,9 @@ class OLERead
     {
         $data = '';
 
+        $this->possibleLoop = [];
         while ($block != -2) {
+            $this->catchLoop($block);
             $pos = ($block + 1) * self::BIG_BLOCK_SIZE;
             $data .= substr($this->data, $pos, self::BIG_BLOCK_SIZE);
             $block = self::getInt4d($this->bigBlockChain, $block * 4);

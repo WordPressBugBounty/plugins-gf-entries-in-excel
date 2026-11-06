@@ -11,6 +11,11 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
 
 abstract class VarianceBase
 {
+    /**
+     * @param mixed $value
+     *
+     * @return mixed
+     */
     protected static function datatypeAdjustmentAllowStrings($value)
     {
         if (is_bool($value)) {
@@ -22,6 +27,11 @@ abstract class VarianceBase
         return $value;
     }
 
+    /**
+     * @param mixed $value
+     *
+     * @return mixed
+     */
     protected static function datatypeAdjustmentBooleans($value)
     {
         if (is_bool($value) && (Functions::getCompatibilityMode() == Functions::COMPATIBILITY_OPENOFFICE)) {

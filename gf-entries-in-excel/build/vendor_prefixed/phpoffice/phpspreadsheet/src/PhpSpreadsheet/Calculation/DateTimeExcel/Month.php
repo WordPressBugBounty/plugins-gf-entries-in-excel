@@ -7,10 +7,13 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 
 class Month
 {
+    use ArrayEnabled;
+
     /**
      * EDATE.
      *
@@ -24,21 +27,30 @@ class Month
      *
      * @param mixed $dateValue Excel date serial value (float), PHP date timestamp (integer),
      *                                        PHP DateTime object, or a standard date string
-     * @param int $adjustmentMonths The number of months before or after start_date.
+     *                         Or can be an array of date values
+     * @param array|int $adjustmentMonths The number of months before or after start_date.
      *                                        A positive value for months yields a future date;
      *                                        a negative value yields a past date.
+     *                         Or can be an array of adjustment values
      *
-     * @return mixed Excel date/time serial value, PHP date/time serial value or PHP date/time object,
+     * @return array|mixed Excel date/time serial value, PHP date/time serial value or PHP date/time object,
      *                        depending on the value of the ReturnDateType flag
+     *         If an array of values is passed as the argument, then the returned result will also be an array
+     *            with the same dimensions
      */
     public static function adjust($dateValue, $adjustmentMonths)
     {
+        if (is_array($dateValue) || is_array($adjustmentMonths)) {
+            return self::evaluateArrayArguments([self::class, __FUNCTION__], $dateValue, $adjustmentMonths);
+        }
+
         try {
             $dateValue = Helpers::getDateValue($dateValue, false);
             $adjustmentMonths = Helpers::validateNumericNull($adjustmentMonths);
         } catch (Exception $e) {
             return $e->getMessage();
         }
+        $dateValue = floor($dateValue);
         $adjustmentMonths = floor($adjustmentMonths);
 
         // Execute function
@@ -59,21 +71,30 @@ class Month
      *
      * @param mixed $dateValue Excel date serial value (float), PHP date timestamp (integer),
      *                                        PHP DateTime object, or a standard date string
-     * @param int $adjustmentMonths The number of months before or after start_date.
+     *                         Or can be an array of date values
+     * @param array|int $adjustmentMonths The number of months before or after start_date.
      *                                        A positive value for months yields a future date;
      *                                        a negative value yields a past date.
+     *                         Or can be an array of adjustment values
      *
-     * @return mixed Excel date/time serial value, PHP date/time serial value or PHP date/time object,
+     * @return array|mixed Excel date/time serial value, PHP date/time serial value or PHP date/time object,
      *                        depending on the value of the ReturnDateType flag
+     *         If an array of values is passed as the argument, then the returned result will also be an array
+     *            with the same dimensions
      */
     public static function lastDay($dateValue, $adjustmentMonths)
     {
+        if (is_array($dateValue) || is_array($adjustmentMonths)) {
+            return self::evaluateArrayArguments([self::class, __FUNCTION__], $dateValue, $adjustmentMonths);
+        }
+
         try {
             $dateValue = Helpers::getDateValue($dateValue, false);
             $adjustmentMonths = Helpers::validateNumericNull($adjustmentMonths);
         } catch (Exception $e) {
             return $e->getMessage();
         }
+        $dateValue = floor($dateValue);
         $adjustmentMonths = floor($adjustmentMonths);
 
         // Execute function

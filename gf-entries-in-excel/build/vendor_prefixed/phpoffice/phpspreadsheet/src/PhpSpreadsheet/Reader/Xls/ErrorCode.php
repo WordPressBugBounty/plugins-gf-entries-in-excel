@@ -9,7 +9,7 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Reader\Xls;
 
 class ErrorCode
 {
-    protected static $map = [
+    private const ERROR_CODE_MAP = [
         0x00 => '#NULL!',
         0x07 => '#DIV/0!',
         0x0F => '#VALUE!',
@@ -28,10 +28,6 @@ class ErrorCode
      */
     public static function lookup($code)
     {
-        if (isset(self::$map[$code])) {
-            return self::$map[$code];
-        }
-
-        return false;
+        return self::ERROR_CODE_MAP[$code] ?? false;
     }
 }

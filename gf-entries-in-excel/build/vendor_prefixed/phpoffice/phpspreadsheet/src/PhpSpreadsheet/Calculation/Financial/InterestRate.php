@@ -9,6 +9,7 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class InterestRate
 {
@@ -39,7 +40,7 @@ class InterestRate
         }
 
         if ($nominalRate <= 0 || $periodsPerYear < 1) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         return ((1 + $nominalRate / $periodsPerYear) ** $periodsPerYear) - 1;
@@ -68,7 +69,7 @@ class InterestRate
         }
 
         if ($effectiveRate <= 0 || $periodsPerYear < 1) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         // Calculate

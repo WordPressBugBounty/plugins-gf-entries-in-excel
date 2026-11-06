@@ -7,11 +7,31 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\LookupRef;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Matrix
 {
+    use ArrayEnabled;
+
+    /**
+     * Helper function; NOT an implementation of any Excel Function.
+     */
+    public static function isColumnVector(array $values): bool
+    {
+        return count($values, COUNT_RECURSIVE) === (count($values, COUNT_NORMAL) * 2);
+    }
+
+    /**
+     * Helper function; NOT an implementation of any Excel Function.
+     */
+    public static function isRowVector(array $values): bool
+    {
+        return count($values, COUNT_RECURSIVE) > 1 &&
+            (count($values, COUNT_NORMAL) === 1 || count($values, COUNT_RECURSIVE) === count($values, COUNT_NORMAL));
+    }
+
     /**
      * TRANSPOSE.
      *
@@ -50,17 +70,26 @@ class Matrix
      * @param mixed $matrix A range of cells or an array constant
      * @param mixed $rowNum The row in the array or range from which to return a value.
      *                          If row_num is omitted, column_num is required.
+     *                      Or can be an array of values
      * @param mixed $columnNum The column in the array or range from which to return a value.
      *                          If column_num is omitted, row_num is required.
+     *                      Or can be an array of values
      *
      * TODO Provide support for area_num, currently not supported
      *
      * @return mixed the value of a specified cell or array of cells
+     *         If an array of values is passed as the $rowNum and/or $columnNum arguments, then the returned result
+     *            will also be an array with the same dimensions
      */
-    public static function index($matrix, $rowNum = 0, $columnNum = 0)
+    public static function index($matrix, $rowNum = 0, $columnNum = null)
     {
-        $rowNum = ($rowNum === null) ? 0 : Functions::flattenSingleValue($rowNum);
-        $columnNum = ($columnNum === null) ? 0 : Functions::flattenSingleValue($columnNum);
+        if (is_array($rowNum) || is_array($columnNum)) {
+            return self::evaluateArrayArgumentsSubsetFrom([self::class, __FUNCTION__], 1, $matrix, $rowNum, $columnNum);
+        }
+
+        $rowNum = $rowNum ?? 0;
+        $originalColumnNum = $columnNum;
+        $columnNum = $columnNum ?? 0;
 
         try {
             $rowNum = LookupRefValidations::validatePositiveInt($rowNum);
@@ -70,14 +99,17 @@ class Matrix
         }
 
         if (!is_array($matrix) || ($rowNum > count($matrix))) {
-            return Functions::REF();
+            return ExcelError::REF();
         }
 
         $rowKeys = array_keys($matrix);
         $columnKeys = @array_keys($matrix[$rowKeys[0]]);
 
         if ($columnNum > count($columnKeys)) {
-            return Functions::REF();
+            return ExcelError::REF();
+        }
+        if ($originalColumnNum === null && 1 < count($columnKeys)) {
+            return ExcelError::REF();
         }
 
         if ($columnNum === 0) {
@@ -98,6 +130,7 @@ class Matrix
         return $matrix[$rowNum][$columnNum];
     }
 
+    /** @return mixed */
     private static function extractRowValue(array $matrix, array $rowKeys, int $rowNum)
     {
         if ($rowNum === 0) {

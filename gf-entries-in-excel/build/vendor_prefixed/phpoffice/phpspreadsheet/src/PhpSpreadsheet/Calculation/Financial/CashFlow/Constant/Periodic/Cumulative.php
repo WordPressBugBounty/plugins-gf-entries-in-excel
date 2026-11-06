@@ -11,6 +11,7 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\CashFlow\CashFlowValidations;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\Constants as FinancialConstants;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Cumulative
 {
@@ -62,7 +63,7 @@ class Cumulative
 
         // Validate parameters
         if ($start < 1 || $start > $end) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         // Calculate
@@ -127,7 +128,7 @@ class Cumulative
 
         // Validate parameters
         if ($start < 1 || $start > $end) {
-            return Functions::VALUE();
+            return ExcelError::VALUE();
         }
 
         // Calculate

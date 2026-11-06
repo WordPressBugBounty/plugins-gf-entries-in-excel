@@ -8,6 +8,7 @@
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Statistical;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Size
 {
@@ -35,15 +36,15 @@ class Size
             $mArgs = self::filter($aArgs);
             $count = Counts::COUNT($mArgs);
             --$entry;
-            if (($entry < 0) || ($entry >= $count) || ($count == 0)) {
-                return Functions::NAN();
+            if ($count === 0 || $entry < 0 || $entry >= $count) {
+                return ExcelError::NAN();
             }
             rsort($mArgs);
 
             return $mArgs[$entry];
         }
 
-        return Functions::VALUE();
+        return ExcelError::VALUE();
     }
 
     /**
@@ -71,15 +72,15 @@ class Size
             $mArgs = self::filter($aArgs);
             $count = Counts::COUNT($mArgs);
             --$entry;
-            if (($entry < 0) || ($entry >= $count) || ($count == 0)) {
-                return Functions::NAN();
+            if ($count === 0 || $entry < 0 || $entry >= $count) {
+                return ExcelError::NAN();
             }
             sort($mArgs);
 
             return $mArgs[$entry];
         }
 
-        return Functions::VALUE();
+        return ExcelError::VALUE();
     }
 
     /**

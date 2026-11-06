@@ -9,15 +9,20 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Style\ConditionalFormatting;
 
 class ConditionalFormatValueObject
 {
+    /** @var mixed */
     private $type;
 
+    /** @var mixed */
     private $value;
 
+    /** @var mixed */
     private $cellFormula;
 
     /**
      * ConditionalFormatValueObject constructor.
      *
+     * @param mixed $type
+     * @param mixed $value
      * @param null|mixed $cellFormula
      */
     public function __construct($type, $value = null, $cellFormula = null)
@@ -38,7 +43,7 @@ class ConditionalFormatValueObject
     /**
      * @param mixed $type
      */
-    public function setType($type)
+    public function setType($type): self
     {
         $this->type = $type;
 
@@ -56,7 +61,7 @@ class ConditionalFormatValueObject
     /**
      * @param mixed $value
      */
-    public function setValue($value)
+    public function setValue($value): self
     {
         $this->value = $value;
 
@@ -74,7 +79,7 @@ class ConditionalFormatValueObject
     /**
      * @param mixed $cellFormula
      */
-    public function setCellFormula($cellFormula)
+    public function setCellFormula($cellFormula): self
     {
         $this->cellFormula = $cellFormula;
 

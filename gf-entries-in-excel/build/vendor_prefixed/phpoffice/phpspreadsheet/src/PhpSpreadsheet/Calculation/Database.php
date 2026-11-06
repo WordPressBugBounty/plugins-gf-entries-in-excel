@@ -9,6 +9,8 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation;
 
 /**
  * @deprecated 1.17.0
+ *
+ * @codeCoverageIgnore
  */
 class Database
 {
@@ -20,10 +22,9 @@ class Database
      * Excel Function:
      *        DAVERAGE(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DAverage::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DAverage class instead
+     * @see Database\DAverage::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -40,7 +41,7 @@ class Database
      *                                        the column label in which you specify a condition for the
      *                                        column.
      *
-     * @return null|float|string
+     * @return float|string
      */
     public static function DAVERAGE($database, $field, $criteria)
     {
@@ -56,10 +57,9 @@ class Database
      * Excel Function:
      *        DCOUNT(database,[field],criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DCount::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DCount class instead
+     * @see Database\DCount::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -76,7 +76,7 @@ class Database
      *                                        the column label in which you specify a condition for the
      *                                        column.
      *
-     * @return int
+     * @return int|string
      *
      * @TODO    The field argument is optional. If field is omitted, DCOUNT counts all records in the
      *            database that match the criteria.
@@ -94,16 +94,15 @@ class Database
      * Excel Function:
      *        DCOUNTA(database,[field],criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DCountA::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DCountA class instead
+     * @see Database\DCountA::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
      *                                        information are records, and columns of data are fields. The
      *                                        first row of the list contains labels for each column.
-     * @param null|int|string $field Indicates which column is used in the function. Enter the
+     * @param int|string $field Indicates which column is used in the function. Enter the
      *                                        column label enclosed between double quotation marks, such as
      *                                        "Age" or "Yield," or a number (without quotation marks) that
      *                                        represents the position of the column within the list: 1 for
@@ -114,7 +113,7 @@ class Database
      *                                        the column label in which you specify a condition for the
      *                                        column.
      *
-     * @return int
+     * @return int|string
      */
     public static function DCOUNTA($database, $field, $criteria)
     {
@@ -130,10 +129,9 @@ class Database
      * Excel Function:
      *        DGET(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DGet::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DGet class instead
+     * @see Database\DGet::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -166,10 +164,9 @@ class Database
      * Excel Function:
      *        DMAX(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DMax::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DMax class instead
+     * @see Database\DMax::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -186,7 +183,7 @@ class Database
      *                                        the column label in which you specify a condition for the
      *                                        column.
      *
-     * @return float
+     * @return null|float|string
      */
     public static function DMAX($database, $field, $criteria)
     {
@@ -202,10 +199,9 @@ class Database
      * Excel Function:
      *        DMIN(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DMin::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DMin class instead
+     * @see Database\DMin::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -222,7 +218,7 @@ class Database
      *                                        the column label in which you specify a condition for the
      *                                        column.
      *
-     * @return float
+     * @return null|float|string
      */
     public static function DMIN($database, $field, $criteria)
     {
@@ -237,10 +233,9 @@ class Database
      * Excel Function:
      *        DPRODUCT(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DProduct::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DProduct class instead
+     * @see Database\DProduct::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -273,10 +268,9 @@ class Database
      * Excel Function:
      *        DSTDEV(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DStDev::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DStDev class instead
+     * @see Database\DStDev::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -309,10 +303,9 @@ class Database
      * Excel Function:
      *        DSTDEVP(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DStDevP::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DStDevP class instead
+     * @see Database\DStDevP::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -344,10 +337,9 @@ class Database
      * Excel Function:
      *        DSUM(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DSum::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DSum class instead
+     * @see Database\DSum::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -364,7 +356,7 @@ class Database
      *                                        the column label in which you specify a condition for the
      *                                        column.
      *
-     * @return float|string
+     * @return null|float|string
      */
     public static function DSUM($database, $field, $criteria)
     {
@@ -380,10 +372,9 @@ class Database
      * Excel Function:
      *        DVAR(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DVar::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DVar class instead
+     * @see Database\DVar::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related
@@ -416,10 +407,9 @@ class Database
      * Excel Function:
      *        DVARP(database,field,criteria)
      *
-     * @Deprecated 1.17.0
-     *
-     * @see Database\DVarP::evaluate()
+     * @deprecated 1.17.0
      *      Use the evaluate() method in the Database\DVarP class instead
+     * @see Database\DVarP::evaluate()
      *
      * @param mixed[] $database The range of cells that makes up the list or database.
      *                                        A database is a list of related data in which rows of related

@@ -9,6 +9,7 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\MathTrig;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Lcm
 {
@@ -109,7 +110,7 @@ class Lcm
     private static function testNonNulls(int $anyNonNulls): void
     {
         if (!$anyNonNulls) {
-            throw new Exception(Functions::VALUE());
+            throw new Exception(ExcelError::VALUE());
         }
     }
 }

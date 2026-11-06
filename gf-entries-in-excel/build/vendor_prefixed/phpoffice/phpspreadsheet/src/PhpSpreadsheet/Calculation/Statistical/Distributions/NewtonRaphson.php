@@ -8,11 +8,13 @@
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Statistical\Distributions;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class NewtonRaphson
 {
     private const MAX_ITERATIONS = 256;
 
+    /** @var callable */
     protected $callback;
 
     public function __construct(callable $callback)
@@ -20,6 +22,7 @@ class NewtonRaphson
         $this->callback = $callback;
     }
 
+    /** @return float|string */
     public function execute(float $probability)
     {
         $xLo = 100;
@@ -59,7 +62,7 @@ class NewtonRaphson
         }
 
         if ($i == self::MAX_ITERATIONS) {
-            return Functions::NA();
+            return ExcelError::NA();
         }
 
         return $x;

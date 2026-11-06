@@ -9,6 +9,7 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\MathTrig;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Gcd
 {
@@ -62,7 +63,7 @@ class Gcd
         }
 
         if (count($arrayArgs) <= 0) {
-            return Functions::VALUE();
+            return ExcelError::VALUE();
         }
         $gcd = (int) array_pop($arrayArgs);
         do {

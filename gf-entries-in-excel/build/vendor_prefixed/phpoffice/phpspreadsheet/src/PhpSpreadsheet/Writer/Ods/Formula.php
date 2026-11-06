@@ -12,6 +12,7 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\DefinedName;
 
 class Formula
 {
+    /** @var array */
     private $definedNames = [];
 
     /**

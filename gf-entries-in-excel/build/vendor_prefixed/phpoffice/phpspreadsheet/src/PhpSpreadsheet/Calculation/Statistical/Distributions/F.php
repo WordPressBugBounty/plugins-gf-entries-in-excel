@@ -7,11 +7,14 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Statistical\Distributions;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class F
 {
+    use ArrayEnabled;
+
     /**
      * F.DIST.
      *
@@ -21,18 +24,23 @@ class F
      *        if the variability in the females is different from that found in the males.
      *
      * @param mixed $value Float value for which we want the probability
+     *                      Or can be an array of values
      * @param mixed $u The numerator degrees of freedom as an integer
+     *                      Or can be an array of values
      * @param mixed $v The denominator degrees of freedom as an integer
+     *                      Or can be an array of values
      * @param mixed $cumulative Boolean value indicating if we want the cdf (true) or the pdf (false)
+     *                      Or can be an array of values
      *
-     * @return float|string
+     * @return array|float|string
+     *         If an array of numbers is passed as an argument, then the returned result will also be an array
+     *            with the same dimensions
      */
     public static function distribution($value, $u, $v, $cumulative)
     {
-        $value = Functions::flattenSingleValue($value);
-        $u = Functions::flattenSingleValue($u);
-        $v = Functions::flattenSingleValue($v);
-        $cumulative = Functions::flattenSingleValue($cumulative);
+        if (is_array($value) || is_array($u) || is_array($v) || is_array($cumulative)) {
+            return self::evaluateArrayArguments([self::class, __FUNCTION__], $value, $u, $v, $cumulative);
+        }
 
         try {
             $value = DistributionValidations::validateFloat($value);
@@ -44,7 +52,7 @@ class F
         }
 
         if ($value < 0 || $u < 1 || $v < 1) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         if ($cumulative) {

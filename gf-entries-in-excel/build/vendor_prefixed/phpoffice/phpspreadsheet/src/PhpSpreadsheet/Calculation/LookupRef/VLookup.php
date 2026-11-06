@@ -7,12 +7,15 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\LookupRef;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\StringHelper;
 
 class VLookup extends LookupBase
 {
+    use ArrayEnabled;
+
     /**
      * VLOOKUP
      * The VLOOKUP function searches for value in the left-most column of lookup_array and returns the value
@@ -28,11 +31,14 @@ class VLookup extends LookupBase
      */
     public static function lookup($lookupValue, $lookupArray, $indexNumber, $notExactMatch = true)
     {
-        $lookupValue = Functions::flattenSingleValue($lookupValue);
-        $indexNumber = Functions::flattenSingleValue($indexNumber);
-        $notExactMatch = ($notExactMatch === null) ? true : Functions::flattenSingleValue($notExactMatch);
+        if (is_array($lookupValue) || is_array($indexNumber)) {
+            return self::evaluateArrayArgumentsIgnore([self::class, __FUNCTION__], 1, $lookupValue, $lookupArray, $indexNumber, $notExactMatch);
+        }
+
+        $notExactMatch = (bool) ($notExactMatch ?? true);
 
         try {
+            self::validateLookupArray($lookupArray);
             $indexNumber = self::validateIndexLookup($lookupArray, $indexNumber);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -41,14 +47,16 @@ class VLookup extends LookupBase
         $f = array_keys($lookupArray);
         $firstRow = array_pop($f);
         if ((!is_array($lookupArray[$firstRow])) || ($indexNumber > count($lookupArray[$firstRow]))) {
-            return Functions::REF();
+            return ExcelError::REF();
         }
         $columnKeys = array_keys($lookupArray[$firstRow]);
         $returnColumn = $columnKeys[--$indexNumber];
-        $firstColumn = array_shift($columnKeys);
+        $firstColumn = array_shift($columnKeys) ?? 1;
 
         if (!$notExactMatch) {
-            uasort($lookupArray, ['self', 'vlookupSort']);
+            /** @var callable */
+            $callable = [self::class, 'vlookupSort'];
+            uasort($lookupArray, $callable);
         }
 
         $rowNumber = self::vLookupSearch($lookupValue, $lookupArray, $firstColumn, $notExactMatch);
@@ -58,15 +66,15 @@ class VLookup extends LookupBase
             return $lookupArray[$rowNumber][$returnColumn];
         }
 
-        return Functions::NA();
+        return ExcelError::NA();
     }
 
-    private static function vlookupSort($a, $b)
+    private static function vlookupSort(array $a, array $b): int
     {
         reset($a);
         $firstColumn = key($a);
-        $aLower = StringHelper::strToLower($a[$firstColumn]);
-        $bLower = StringHelper::strToLower($b[$firstColumn]);
+        $aLower = StringHelper::strToLower((string) $a[$firstColumn]);
+        $bLower = StringHelper::strToLower((string) $b[$firstColumn]);
 
         if ($aLower == $bLower) {
             return 0;
@@ -75,15 +83,19 @@ class VLookup extends LookupBase
         return ($aLower < $bLower) ? -1 : 1;
     }
 
-    private static function vLookupSearch($lookupValue, $lookupArray, $column, $notExactMatch)
+    /**
+     * @param mixed $lookupValue The value that you want to match in lookup_array
+     * @param  int|string $column
+     */
+    private static function vLookupSearch($lookupValue, array $lookupArray, $column, bool $notExactMatch): ?int
     {
-        $lookupLower = StringHelper::strToLower($lookupValue);
+        $lookupLower = StringHelper::strToLower((string) $lookupValue);
 
         $rowNumber = null;
         foreach ($lookupArray as $rowKey => $rowData) {
             $bothNumeric = is_numeric($lookupValue) && is_numeric($rowData[$column]);
             $bothNotNumeric = !is_numeric($lookupValue) && !is_numeric($rowData[$column]);
-            $cellDataLower = StringHelper::strToLower($rowData[$column]);
+            $cellDataLower = StringHelper::strToLower((string) $rowData[$column]);
 
             // break if we have passed possible keys
             if (

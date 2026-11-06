@@ -9,6 +9,9 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Worksheet;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Spreadsheet;
 
+/**
+ * @implements \Iterator<int, Worksheet>
+ */
 class Iterator implements \Iterator
 {
     /**

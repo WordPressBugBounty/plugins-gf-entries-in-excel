@@ -7,7 +7,7 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Database;
 
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class DGet extends DatabaseAbstract
 {
@@ -41,12 +41,12 @@ class DGet extends DatabaseAbstract
     {
         $field = self::fieldExtract($database, $field);
         if ($field === null) {
-            return null;
+            return ExcelError::VALUE();
         }
 
         $columnData = self::getFilteredColumn($database, $field, $criteria);
         if (count($columnData) > 1) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         $row = array_pop($columnData);

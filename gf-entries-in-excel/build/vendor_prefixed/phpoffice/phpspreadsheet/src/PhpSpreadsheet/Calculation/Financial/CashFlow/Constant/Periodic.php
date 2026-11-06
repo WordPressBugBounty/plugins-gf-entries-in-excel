@@ -11,6 +11,7 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\CashFlow\CashFlowValidations;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\Constants as FinancialConstants;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Periodic
 {
@@ -99,7 +100,7 @@ class Periodic
 
         // Validate parameters
         if ($numberOfPeriods < 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         return self::calculatePresentValue($rate, $numberOfPeriods, $payment, $futureValue, $type);
@@ -143,7 +144,7 @@ class Periodic
 
         // Validate parameters
         if ($payment == 0.0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         return self::calculatePeriods($rate, $payment, $presentValue, $futureValue, $type);
@@ -192,7 +193,7 @@ class Periodic
     ) {
         if ($rate != 0.0) {
             if ($presentValue == 0.0) {
-                return Functions::NAN();
+                return ExcelError::NAN();
             }
 
             return log(($payment * (1 + $rate * $type) / $rate - $futureValue) /

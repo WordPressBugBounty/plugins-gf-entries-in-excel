@@ -19,8 +19,6 @@ use GFExcel\Vendor\MyCLabs\Enum\Enum;
  * @method static DEFLATE(): Version
  * @method static ZIP64(): Version
  * @psalm-immutable
- * @psalm-template int
- * @extends Enum<int>
  */
 class Version extends Enum
 {

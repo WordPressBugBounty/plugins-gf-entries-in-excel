@@ -17,8 +17,6 @@ use GFExcel\Vendor\MyCLabs\Enum\Enum;
  * @method static STORE(): Method
  * @method static DEFLATE(): Method
  * @psalm-immutable
- * @psalm-template int
- * @extends Enum<int>
  */
 class Method extends Enum
 {

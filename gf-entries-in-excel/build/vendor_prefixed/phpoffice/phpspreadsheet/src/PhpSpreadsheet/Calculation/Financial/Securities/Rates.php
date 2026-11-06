@@ -11,6 +11,7 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\Constants as FinancialConstants;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Rates
 {
@@ -65,10 +66,10 @@ class Rates
         }
 
         if ($price <= 0.0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
-        $daysBetweenSettlementAndMaturity = DateTimeExcel\YearFrac::fraction($settlement, $maturity, $basis);
+        $daysBetweenSettlementAndMaturity = Functions::scalar(DateTimeExcel\YearFrac::fraction($settlement, $maturity, $basis));
         if (!is_numeric($daysBetweenSettlementAndMaturity)) {
             //    return date error
             return $daysBetweenSettlementAndMaturity;
@@ -128,10 +129,10 @@ class Rates
         }
 
         if ($investment <= 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
-        $daysBetweenSettlementAndMaturity = DateTimeExcel\YearFrac::fraction($settlement, $maturity, $basis);
+        $daysBetweenSettlementAndMaturity = Functions::scalar(DateTimeExcel\YearFrac::fraction($settlement, $maturity, $basis));
         if (!is_numeric($daysBetweenSettlementAndMaturity)) {
             //    return date error
             return $daysBetweenSettlementAndMaturity;

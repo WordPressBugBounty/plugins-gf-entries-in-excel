@@ -9,7 +9,7 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\Securiti
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\FinancialValidations;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class SecurityValidations extends FinancialValidations
 {
@@ -28,7 +28,7 @@ class SecurityValidations extends FinancialValidations
     public static function validateSecurityPeriod($settlement, $maturity): void
     {
         if ($settlement >= $maturity) {
-            throw new Exception(Functions::NAN());
+            throw new Exception(ExcelError::NAN());
         }
     }
 
@@ -39,7 +39,7 @@ class SecurityValidations extends FinancialValidations
     {
         $redemption = self::validateFloat($redemption);
         if ($redemption <= 0.0) {
-            throw new Exception(Functions::NAN());
+            throw new Exception(ExcelError::NAN());
         }
 
         return $redemption;

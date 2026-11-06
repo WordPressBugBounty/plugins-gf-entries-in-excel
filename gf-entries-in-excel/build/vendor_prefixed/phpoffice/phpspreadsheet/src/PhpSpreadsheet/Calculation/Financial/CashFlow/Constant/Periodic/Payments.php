@@ -11,6 +11,7 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\CashFlow\CashFlowValidations;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\Constants as FinancialConstants;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Payments
 {
@@ -102,7 +103,7 @@ class Payments
 
         // Validate parameters
         if ($period <= 0 || $period > $numberOfPeriods) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         // Calculate

@@ -7,11 +7,14 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Engineering;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class BesselI
 {
+    use ArrayEnabled;
+
     /**
      * BESSELI.
      *
@@ -26,17 +29,22 @@ class BesselI
      *
      * @param mixed $x A float value at which to evaluate the function.
      *                                If x is nonnumeric, BESSELI returns the #VALUE! error value.
+     *                      Or can be an array of values
      * @param mixed $ord The integer order of the Bessel function.
      *                                If ord is not an integer, it is truncated.
      *                                If $ord is nonnumeric, BESSELI returns the #VALUE! error value.
      *                                If $ord < 0, BESSELI returns the #NUM! error value.
+     *                      Or can be an array of values
      *
-     * @return float|string Result, or a string containing an error
+     * @return array|float|string Result, or a string containing an error
+     *         If an array of numbers is passed as an argument, then the returned result will also be an array
+     *            with the same dimensions
      */
     public static function BESSELI($x, $ord)
     {
-        $x = Functions::flattenSingleValue($x);
-        $ord = Functions::flattenSingleValue($ord);
+        if (is_array($x) || is_array($ord)) {
+            return self::evaluateArrayArguments([self::class, __FUNCTION__], $x, $ord);
+        }
 
         try {
             $x = EngineeringValidations::validateFloat($x);
@@ -46,12 +54,12 @@ class BesselI
         }
 
         if ($ord < 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         $fResult = self::calculate($x, $ord);
 
-        return (is_nan($fResult)) ? Functions::NAN() : $fResult;
+        return (is_nan($fResult)) ? ExcelError::NAN() : $fResult;
     }
 
     private static function calculate(float $x, int $ord): float
@@ -108,9 +116,16 @@ class BesselI
         return ($x < 0.0) ? -$ans : $ans;
     }
 
+    /**
+     * Sop to Scrutinizer.
+     *
+     * @var float
+     */
+    private static $zeroPointZero = 0.0;
+
     private static function besselI2(float $x, int $ord): float
     {
-        if ($x === 0.0) {
+        if ($x === self::$zeroPointZero) {
             return 0.0;
         }
 

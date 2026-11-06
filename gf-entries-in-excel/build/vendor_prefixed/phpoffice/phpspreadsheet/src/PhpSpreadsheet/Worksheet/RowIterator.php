@@ -7,10 +7,13 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Worksheet;
 
-use Iterator;
+use Iterator as NativeIterator;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Exception as PhpSpreadsheetException;
 
-class RowIterator implements Iterator
+/**
+ * @implements NativeIterator<int, Row>
+ */
+class RowIterator implements NativeIterator
 {
     /**
      * Worksheet to iterate.
@@ -53,6 +56,11 @@ class RowIterator implements Iterator
         $this->subject = $subject;
         $this->resetEnd($endRow);
         $this->resetStart($startRow);
+    }
+
+    public function __destruct()
+    {
+        $this->subject = null; // @phpstan-ignore-line
     }
 
     /**

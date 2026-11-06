@@ -7,6 +7,8 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer;
+
 class BSE
 {
     const BLIPTYPE_ERROR = 0x00;
@@ -22,15 +24,16 @@ class BSE
 
     /**
      * The parent BLIP Store Entry Container.
+     * Property is never currently read.
      *
-     * @var \GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer
+     * @var BstoreContainer
      */
-    private $parent;
+    private $parent; // @phpstan-ignore-line
 
     /**
      * The BLIP (Big Large Image or Picture).
      *
-     * @var BSE\Blip
+     * @var ?BSE\Blip
      */
     private $blip;
 
@@ -43,10 +46,8 @@ class BSE
 
     /**
      * Set parent BLIP Store Entry Container.
-     *
-     * @param \GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer $parent
      */
-    public function setParent($parent): void
+    public function setParent(BstoreContainer $parent): void
     {
         $this->parent = $parent;
     }
@@ -54,7 +55,7 @@ class BSE
     /**
      * Get the BLIP.
      *
-     * @return BSE\Blip
+     * @return ?BSE\Blip
      */
     public function getBlip()
     {
@@ -63,10 +64,8 @@ class BSE
 
     /**
      * Set the BLIP.
-     *
-     * @param BSE\Blip $blip
      */
-    public function setBlip($blip): void
+    public function setBlip(BSE\Blip $blip): void
     {
         $this->blip = $blip;
         $blip->setParent($this);

@@ -7,12 +7,14 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE;
+
 class Blip
 {
     /**
      * The parent BSE.
      *
-     * @var \GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE
+     * @var BSE
      */
     private $parent;
 
@@ -45,20 +47,16 @@ class Blip
 
     /**
      * Set parent BSE.
-     *
-     * @param \GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE $parent
      */
-    public function setParent($parent): void
+    public function setParent(BSE $parent): void
     {
         $this->parent = $parent;
     }
 
     /**
      * Get parent BSE.
-     *
-     * @return \GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DggContainer\BstoreContainer\BSE $parent
      */
-    public function getParent()
+    public function getParent(): BSE
     {
         return $this->parent;
     }

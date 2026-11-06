@@ -7,11 +7,14 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Statistical\Distributions;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Fisher
 {
+    use ArrayEnabled;
+
     /**
      * FISHER.
      *
@@ -20,12 +23,17 @@ class Fisher
      *        testing on the correlation coefficient.
      *
      * @param mixed $value Float value for which we want the probability
+     *                      Or can be an array of values
      *
-     * @return float|string
+     * @return array|float|string
+     *         If an array of numbers is passed as an argument, then the returned result will also be an array
+     *            with the same dimensions
      */
     public static function distribution($value)
     {
-        $value = Functions::flattenSingleValue($value);
+        if (is_array($value)) {
+            return self::evaluateSingleArgumentArray([self::class, __FUNCTION__], $value);
+        }
 
         try {
             DistributionValidations::validateFloat($value);
@@ -34,7 +42,7 @@ class Fisher
         }
 
         if (($value <= -1) || ($value >= 1)) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         return 0.5 * log((1 + $value) / (1 - $value));
@@ -48,12 +56,17 @@ class Fisher
      *        FISHERINV(y) = x.
      *
      * @param mixed $probability Float probability at which you want to evaluate the distribution
+     *                      Or can be an array of values
      *
-     * @return float|string
+     * @return array|float|string
+     *         If an array of numbers is passed as an argument, then the returned result will also be an array
+     *            with the same dimensions
      */
     public static function inverse($probability)
     {
-        $probability = Functions::flattenSingleValue($probability);
+        if (is_array($probability)) {
+            return self::evaluateSingleArgumentArray([self::class, __FUNCTION__], $probability);
+        }
 
         try {
             DistributionValidations::validateFloat($probability);

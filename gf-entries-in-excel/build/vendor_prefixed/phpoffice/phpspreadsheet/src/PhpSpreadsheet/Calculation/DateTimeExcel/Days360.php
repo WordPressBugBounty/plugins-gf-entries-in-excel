@@ -7,12 +7,15 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Date as SharedDateHelper;
 
 class Days360
 {
+    use ArrayEnabled;
+
     /**
      * DAYS360.
      *
@@ -23,11 +26,13 @@ class Days360
      * Excel Function:
      *        DAYS360(startDate,endDate[,method])
      *
-     * @param mixed $startDate Excel date serial value (float), PHP date timestamp (integer),
+     * @param array|mixed $startDate Excel date serial value (float), PHP date timestamp (integer),
      *                                        PHP DateTime object, or a standard date string
-     * @param mixed $endDate Excel date serial value (float), PHP date timestamp (integer),
+     *                         Or can be an array of date values
+     * @param array|mixed $endDate Excel date serial value (float), PHP date timestamp (integer),
      *                                        PHP DateTime object, or a standard date string
-     * @param mixed $method US or European Method as a bool
+     *                         Or can be an array of date values
+     * @param array|mixed $method US or European Method as a bool
      *                                        FALSE or omitted: U.S. (NASD) method. If the starting date is
      *                                        the last day of a month, it becomes equal to the 30th of the
      *                                        same month. If the ending date is the last day of a month and
@@ -38,11 +43,18 @@ class Days360
      *                                        TRUE: European method. Starting dates and ending dates that
      *                                        occur on the 31st of a month become equal to the 30th of the
      *                                        same month.
+     *                         Or can be an array of methods
      *
-     * @return int|string Number of days between start date and end date
+     * @return array|int|string Number of days between start date and end date
+     *         If an array of values is passed for the $startDate or $endDays,arguments, then the returned result
+     *            will also be an array with matching dimensions
      */
     public static function between($startDate = 0, $endDate = 0, $method = false)
     {
+        if (is_array($startDate) || is_array($endDate) || is_array($method)) {
+            return self::evaluateArrayArguments([self::class, __FUNCTION__], $startDate, $endDate, $method);
+        }
+
         try {
             $startDate = Helpers::getDateValue($startDate);
             $endDate = Helpers::getDateValue($endDate);
@@ -51,7 +63,7 @@ class Days360
         }
 
         if (!is_bool($method)) {
-            return Functions::VALUE();
+            return ExcelError::VALUE();
         }
 
         // Execute function

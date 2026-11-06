@@ -14,7 +14,7 @@ class Run extends TextElement implements ITextElement
     /**
      * Font.
      *
-     * @var Font
+     * @var ?Font
      */
     private $font;
 
@@ -63,7 +63,7 @@ class Run extends TextElement implements ITextElement
     {
         return md5(
             $this->getText() .
-            $this->font->getHashCode() .
+            (($this->font === null) ? '' : $this->font->getHashCode()) .
             __CLASS__
         );
     }

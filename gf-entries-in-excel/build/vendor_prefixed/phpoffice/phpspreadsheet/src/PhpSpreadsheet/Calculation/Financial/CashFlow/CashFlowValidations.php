@@ -10,7 +10,7 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\CashFlow
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\Constants as FinancialConstants;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\FinancialValidations;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class CashFlowValidations extends FinancialValidations
 {
@@ -34,7 +34,7 @@ class CashFlowValidations extends FinancialValidations
             $type !== FinancialConstants::PAYMENT_END_OF_PERIOD &&
             $type !== FinancialConstants::PAYMENT_BEGINNING_OF_PERIOD
         ) {
-            throw new Exception(Functions::NAN());
+            throw new Exception(ExcelError::NAN());
         }
 
         return $rate;

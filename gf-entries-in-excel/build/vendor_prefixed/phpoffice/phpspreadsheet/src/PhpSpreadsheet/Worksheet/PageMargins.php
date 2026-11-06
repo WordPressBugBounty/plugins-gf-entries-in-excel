@@ -71,13 +71,13 @@ class PageMargins
     /**
      * Set Left.
      *
-     * @param float $pValue
+     * @param float $left
      *
      * @return $this
      */
-    public function setLeft($pValue)
+    public function setLeft($left)
     {
-        $this->left = $pValue;
+        $this->left = $left;
 
         return $this;
     }
@@ -95,13 +95,13 @@ class PageMargins
     /**
      * Set Right.
      *
-     * @param float $pValue
+     * @param float $right
      *
      * @return $this
      */
-    public function setRight($pValue)
+    public function setRight($right)
     {
-        $this->right = $pValue;
+        $this->right = $right;
 
         return $this;
     }
@@ -119,13 +119,13 @@ class PageMargins
     /**
      * Set Top.
      *
-     * @param float $pValue
+     * @param float $top
      *
      * @return $this
      */
-    public function setTop($pValue)
+    public function setTop($top)
     {
-        $this->top = $pValue;
+        $this->top = $top;
 
         return $this;
     }
@@ -143,13 +143,13 @@ class PageMargins
     /**
      * Set Bottom.
      *
-     * @param float $pValue
+     * @param float $bottom
      *
      * @return $this
      */
-    public function setBottom($pValue)
+    public function setBottom($bottom)
     {
-        $this->bottom = $pValue;
+        $this->bottom = $bottom;
 
         return $this;
     }
@@ -167,13 +167,13 @@ class PageMargins
     /**
      * Set Header.
      *
-     * @param float $pValue
+     * @param float $header
      *
      * @return $this
      */
-    public function setHeader($pValue)
+    public function setHeader($header)
     {
-        $this->header = $pValue;
+        $this->header = $header;
 
         return $this;
     }
@@ -191,30 +191,15 @@ class PageMargins
     /**
      * Set Footer.
      *
-     * @param float $pValue
+     * @param float $footer
      *
      * @return $this
      */
-    public function setFooter($pValue)
+    public function setFooter($footer)
     {
-        $this->footer = $pValue;
+        $this->footer = $footer;
 
         return $this;
-    }
-
-    /**
-     * Implement PHP __clone to create a deep clone, not just a shallow copy.
-     */
-    public function __clone()
-    {
-        $vars = get_object_vars($this);
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $this->$key = clone $value;
-            } else {
-                $this->$key = $value;
-            }
-        }
     }
 
     public static function fromCentimeters(float $value): float

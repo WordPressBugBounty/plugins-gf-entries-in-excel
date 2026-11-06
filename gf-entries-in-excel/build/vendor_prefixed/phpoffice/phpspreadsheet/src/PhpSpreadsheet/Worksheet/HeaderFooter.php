@@ -175,13 +175,13 @@ class HeaderFooter
     /**
      * Set OddHeader.
      *
-     * @param string $pValue
+     * @param string $oddHeader
      *
      * @return $this
      */
-    public function setOddHeader($pValue)
+    public function setOddHeader($oddHeader)
     {
-        $this->oddHeader = $pValue;
+        $this->oddHeader = $oddHeader;
 
         return $this;
     }
@@ -199,13 +199,13 @@ class HeaderFooter
     /**
      * Set OddFooter.
      *
-     * @param string $pValue
+     * @param string $oddFooter
      *
      * @return $this
      */
-    public function setOddFooter($pValue)
+    public function setOddFooter($oddFooter)
     {
-        $this->oddFooter = $pValue;
+        $this->oddFooter = $oddFooter;
 
         return $this;
     }
@@ -223,13 +223,13 @@ class HeaderFooter
     /**
      * Set EvenHeader.
      *
-     * @param string $pValue
+     * @param string $eventHeader
      *
      * @return $this
      */
-    public function setEvenHeader($pValue)
+    public function setEvenHeader($eventHeader)
     {
-        $this->evenHeader = $pValue;
+        $this->evenHeader = $eventHeader;
 
         return $this;
     }
@@ -247,13 +247,13 @@ class HeaderFooter
     /**
      * Set EvenFooter.
      *
-     * @param string $pValue
+     * @param string $evenFooter
      *
      * @return $this
      */
-    public function setEvenFooter($pValue)
+    public function setEvenFooter($evenFooter)
     {
-        $this->evenFooter = $pValue;
+        $this->evenFooter = $evenFooter;
 
         return $this;
     }
@@ -271,13 +271,13 @@ class HeaderFooter
     /**
      * Set FirstHeader.
      *
-     * @param string $pValue
+     * @param string $firstHeader
      *
      * @return $this
      */
-    public function setFirstHeader($pValue)
+    public function setFirstHeader($firstHeader)
     {
-        $this->firstHeader = $pValue;
+        $this->firstHeader = $firstHeader;
 
         return $this;
     }
@@ -295,13 +295,13 @@ class HeaderFooter
     /**
      * Set FirstFooter.
      *
-     * @param string $pValue
+     * @param string $firstFooter
      *
      * @return $this
      */
-    public function setFirstFooter($pValue)
+    public function setFirstFooter($firstFooter)
     {
-        $this->firstFooter = $pValue;
+        $this->firstFooter = $firstFooter;
 
         return $this;
     }
@@ -319,13 +319,13 @@ class HeaderFooter
     /**
      * Set DifferentOddEven.
      *
-     * @param bool $pValue
+     * @param bool $differentOddEvent
      *
      * @return $this
      */
-    public function setDifferentOddEven($pValue)
+    public function setDifferentOddEven($differentOddEvent)
     {
-        $this->differentOddEven = $pValue;
+        $this->differentOddEven = $differentOddEvent;
 
         return $this;
     }
@@ -343,13 +343,13 @@ class HeaderFooter
     /**
      * Set DifferentFirst.
      *
-     * @param bool $pValue
+     * @param bool $differentFirst
      *
      * @return $this
      */
-    public function setDifferentFirst($pValue)
+    public function setDifferentFirst($differentFirst)
     {
-        $this->differentFirst = $pValue;
+        $this->differentFirst = $differentFirst;
 
         return $this;
     }
@@ -367,13 +367,13 @@ class HeaderFooter
     /**
      * Set ScaleWithDocument.
      *
-     * @param bool $pValue
+     * @param bool $scaleWithDocument
      *
      * @return $this
      */
-    public function setScaleWithDocument($pValue)
+    public function setScaleWithDocument($scaleWithDocument)
     {
-        $this->scaleWithDocument = $pValue;
+        $this->scaleWithDocument = $scaleWithDocument;
 
         return $this;
     }
@@ -391,13 +391,13 @@ class HeaderFooter
     /**
      * Set AlignWithMargins.
      *
-     * @param bool $pValue
+     * @param bool $alignWithMargins
      *
      * @return $this
      */
-    public function setAlignWithMargins($pValue)
+    public function setAlignWithMargins($alignWithMargins)
     {
-        $this->alignWithMargins = $pValue;
+        $this->alignWithMargins = $alignWithMargins;
 
         return $this;
     }

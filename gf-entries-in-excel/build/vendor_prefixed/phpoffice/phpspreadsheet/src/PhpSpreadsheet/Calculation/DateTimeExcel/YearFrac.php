@@ -7,12 +7,16 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Date as SharedDateHelper;
 
 class YearFrac
 {
+    use ArrayEnabled;
+
     /**
      * YEARFRAC.
      *
@@ -28,19 +32,28 @@ class YearFrac
      *
      * @param mixed $startDate Excel date serial value (float), PHP date timestamp (integer),
      *                                    PHP DateTime object, or a standard date string
+     *                         Or can be an array of values
      * @param mixed $endDate Excel date serial value (float), PHP date timestamp (integer),
      *                                    PHP DateTime object, or a standard date string
-     * @param int $method Method used for the calculation
+     *                         Or can be an array of methods
+     * @param array|int $method Method used for the calculation
      *                                        0 or omitted    US (NASD) 30/360
      *                                        1                Actual/actual
      *                                        2                Actual/360
      *                                        3                Actual/365
      *                                        4                European 30/360
+     *                         Or can be an array of methods
      *
-     * @return float|string fraction of the year, or a string containing an error
+     * @return array|float|string fraction of the year, or a string containing an error
+     *         If an array of values is passed for the $startDate or $endDays,arguments, then the returned result
+     *            will also be an array with matching dimensions
      */
     public static function fraction($startDate, $endDate, $method = 0)
     {
+        if (is_array($startDate) || is_array($endDate) || is_array($method)) {
+            return self::evaluateArrayArguments([self::class, __FUNCTION__], $startDate, $endDate, $method);
+        }
+
         try {
             $method = (int) Helpers::validateNumericNull($method);
             $sDate = Helpers::getDateValue($startDate);
@@ -55,18 +68,18 @@ class YearFrac
 
         switch ($method) {
             case 0:
-                return Days360::between($startDate, $endDate) / 360;
+                return Functions::scalar(Days360::between($startDate, $endDate)) / 360;
             case 1:
                 return self::method1($startDate, $endDate);
             case 2:
-                return Difference::interval($startDate, $endDate) / 360;
+                return Functions::scalar(Difference::interval($startDate, $endDate)) / 360;
             case 3:
-                return Difference::interval($startDate, $endDate) / 365;
+                return Functions::scalar(Difference::interval($startDate, $endDate)) / 365;
             case 4:
-                return Days360::between($startDate, $endDate, true) / 360;
+                return Functions::scalar(Days360::between($startDate, $endDate, true)) / 360;
         }
 
-        return Functions::NAN();
+        return ExcelError::NAN();
     }
 
     /**
@@ -92,7 +105,7 @@ class YearFrac
 
     private static function method1(float $startDate, float $endDate): float
     {
-        $days = Difference::interval($startDate, $endDate);
+        $days = Functions::scalar(Difference::interval($startDate, $endDate));
         $startYear = (int) DateParts::year($startDate);
         $endYear = (int) DateParts::year($endDate);
         $years = $endYear - $startYear + 1;

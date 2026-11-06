@@ -9,6 +9,7 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\MathTrig;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class SumSquares
 {
@@ -45,7 +46,7 @@ class SumSquares
     {
         $count = count($array1);
         if ($count !== count($array2)) {
-            throw new Exception(Functions::NA());
+            throw new Exception(ExcelError::NA());
         }
 
         return $count;

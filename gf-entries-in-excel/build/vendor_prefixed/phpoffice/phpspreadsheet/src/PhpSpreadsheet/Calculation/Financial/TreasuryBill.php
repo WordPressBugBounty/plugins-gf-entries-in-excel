@@ -11,6 +11,7 @@ use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\DateTimeExcel;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Financial\Constants as FinancialConstants;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class TreasuryBill
 {
@@ -43,17 +44,17 @@ class TreasuryBill
         }
 
         if ($discount <= 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         $daysBetweenSettlementAndMaturity = $maturity - $settlement;
         $daysPerYear = Helpers::daysPerYear(
-            DateTimeExcel\DateParts::year($maturity),
+            Functions::scalar(DateTimeExcel\DateParts::year($maturity)),
             FinancialConstants::BASIS_DAYS_PER_YEAR_ACTUAL
         );
 
         if ($daysBetweenSettlementAndMaturity > $daysPerYear || $daysBetweenSettlementAndMaturity < 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         return (365 * $discount) / (360 - $discount * $daysBetweenSettlementAndMaturity);
@@ -88,22 +89,22 @@ class TreasuryBill
         }
 
         if ($discount <= 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         $daysBetweenSettlementAndMaturity = $maturity - $settlement;
         $daysPerYear = Helpers::daysPerYear(
-            DateTimeExcel\DateParts::year($maturity),
+            Functions::scalar(DateTimeExcel\DateParts::year($maturity)),
             FinancialConstants::BASIS_DAYS_PER_YEAR_ACTUAL
         );
 
         if ($daysBetweenSettlementAndMaturity > $daysPerYear || $daysBetweenSettlementAndMaturity < 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         $price = 100 * (1 - (($discount * $daysBetweenSettlementAndMaturity) / 360));
         if ($price < 0.0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         return $price;
@@ -139,12 +140,12 @@ class TreasuryBill
 
         $daysBetweenSettlementAndMaturity = $maturity - $settlement;
         $daysPerYear = Helpers::daysPerYear(
-            DateTimeExcel\DateParts::year($maturity),
+            Functions::scalar(DateTimeExcel\DateParts::year($maturity)),
             FinancialConstants::BASIS_DAYS_PER_YEAR_ACTUAL
         );
 
         if ($daysBetweenSettlementAndMaturity > $daysPerYear || $daysBetweenSettlementAndMaturity < 0) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         return ((100 - $price) / $price) * (360 / $daysBetweenSettlementAndMaturity);

@@ -7,12 +7,15 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Worksheet;
 
-use Iterator;
+use Iterator as NativeIterator;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Exception;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Exception as PhpSpreadsheetException;
 
-class ColumnIterator implements Iterator
+/**
+ * @implements NativeIterator<string, Column>
+ */
+class ColumnIterator implements NativeIterator
 {
     /**
      * Worksheet to iterate.

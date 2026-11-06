@@ -9,10 +9,10 @@ namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Writer;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Calculation;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Cell\Cell;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\RichText\RichText;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\RichText\Run;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Drawing as SharedDrawing;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Escher\DgContainer\SpgrContainer;
@@ -166,15 +166,18 @@ class Xls extends BaseWriter
 
         // add fonts from rich text eleemnts
         for ($i = 0; $i < $countSheets; ++$i) {
-            foreach ($this->writerWorksheets[$i]->phpSheet->getCoordinates() as $coordinate) {
-                $cell = $this->writerWorksheets[$i]->phpSheet->getCell($coordinate);
+            foreach ($this->writerWorksheets[$i]->phpSheet->getCellCollection()->getCoordinates() as $coordinate) {
+                /** @var Cell $cell */
+                $cell = $this->writerWorksheets[$i]->phpSheet->getCellCollection()->get($coordinate);
                 $cVal = $cell->getValue();
                 if ($cVal instanceof RichText) {
                     $elements = $cVal->getRichTextElements();
                     foreach ($elements as $element) {
                         if ($element instanceof Run) {
                             $font = $element->getFont();
-                            $this->writerWorksheets[$i]->fontHashIndex[$font->getHashCode()] = $this->writerWorkbook->addFont($font);
+                            if ($font !== null) {
+                                $this->writerWorksheets[$i]->fontHashIndex[$font->getHashCode()] = $this->writerWorkbook->addFont($font);
+                            }
                         }
                     }
                 }
@@ -203,14 +206,14 @@ class Xls extends BaseWriter
 
         $this->documentSummaryInformation = $this->writeDocumentSummaryInformation();
         // initialize OLE Document Summary Information
-        if (isset($this->documentSummaryInformation) && !empty($this->documentSummaryInformation)) {
+        if (!empty($this->documentSummaryInformation)) {
             $OLE_DocumentSummaryInformation = new File(OLE::ascToUcs(chr(5) . 'DocumentSummaryInformation'));
             $OLE_DocumentSummaryInformation->append($this->documentSummaryInformation);
         }
 
         $this->summaryInformation = $this->writeSummaryInformation();
         // initialize OLE Summary Information
-        if (isset($this->summaryInformation) && !empty($this->summaryInformation)) {
+        if (!empty($this->summaryInformation)) {
             $OLE_SummaryInformation = new File(OLE::ascToUcs(chr(5) . 'SummaryInformation'));
             $OLE_SummaryInformation->append($this->summaryInformation);
         }
@@ -249,9 +252,7 @@ class Xls extends BaseWriter
 
         foreach ($this->spreadsheet->getAllsheets() as $sheet) {
             // sheet index
-            $sheetIndex = $sheet->getParent()->getIndex($sheet);
-
-            $escher = null;
+            $sheetIndex = $sheet->getParentOrThrow()->getIndex($sheet);
 
             // check if there are any shapes for this sheet
             $filterRange = $sheet->getAutoFilter()->getRange();
@@ -266,7 +267,7 @@ class Xls extends BaseWriter
             $dgContainer = new DgContainer();
 
             // set the drawing index (we use sheet index + 1)
-            $dgId = $sheet->getParent()->getIndex($sheet) + 1;
+            $dgId = $sheet->getParentOrThrow()->getIndex($sheet) + 1;
             $dgContainer->setDgId($dgId);
             $escher->setDgContainer($dgContainer);
 
@@ -278,7 +279,7 @@ class Xls extends BaseWriter
             $spContainer = new SpContainer();
             $spContainer->setSpgr(true);
             $spContainer->setSpType(0);
-            $spContainer->setSpId(($sheet->getParent()->getIndex($sheet) + 1) << 10);
+            $spContainer->setSpId(($sheet->getParentOrThrow()->getIndex($sheet) + 1) << 10);
             $spgrContainer->addChild($spContainer);
 
             // add the shapes
@@ -300,7 +301,7 @@ class Xls extends BaseWriter
 
                 // set the shape index (we combine 1-based sheet index and $countShapes to create unique shape index)
                 $reducedSpId = $countShapes[$sheetIndex];
-                $spId = $reducedSpId | ($sheet->getParent()->getIndex($sheet) + 1) << 10;
+                $spId = $reducedSpId | ($sheet->getParentOrThrow()->getIndex($sheet) + 1) << 10;
                 $spContainer->setSpId($spId);
 
                 // keep track of last reducedSpId
@@ -321,14 +322,16 @@ class Xls extends BaseWriter
 
                 $twoAnchor = \GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Shared\Xls::oneAnchor2twoAnchor($sheet, $coordinates, $offsetX, $offsetY, $width, $height);
 
-                $spContainer->setStartCoordinates($twoAnchor['startCoordinates']);
-                $spContainer->setStartOffsetX($twoAnchor['startOffsetX']);
-                $spContainer->setStartOffsetY($twoAnchor['startOffsetY']);
-                $spContainer->setEndCoordinates($twoAnchor['endCoordinates']);
-                $spContainer->setEndOffsetX($twoAnchor['endOffsetX']);
-                $spContainer->setEndOffsetY($twoAnchor['endOffsetY']);
+                if (is_array($twoAnchor)) {
+                    $spContainer->setStartCoordinates($twoAnchor['startCoordinates']);
+                    $spContainer->setStartOffsetX($twoAnchor['startOffsetX']);
+                    $spContainer->setStartOffsetY($twoAnchor['startOffsetY']);
+                    $spContainer->setEndCoordinates($twoAnchor['endCoordinates']);
+                    $spContainer->setEndOffsetX($twoAnchor['endOffsetX']);
+                    $spContainer->setEndOffsetY($twoAnchor['endOffsetY']);
 
-                $spgrContainer->addChild($spContainer);
+                    $spgrContainer->addChild($spContainer);
+                }
             }
 
             // AutoFilters
@@ -357,7 +360,7 @@ class Xls extends BaseWriter
 
                     // set the shape index (we combine 1-based sheet index and $countShapes to create unique shape index)
                     $reducedSpId = $countShapes[$sheetIndex];
-                    $spId = $reducedSpId | ($sheet->getParent()->getIndex($sheet) + 1) << 10;
+                    $spId = $reducedSpId | ($sheet->getParentOrThrow()->getIndex($sheet) + 1) << 10;
                     $spContainer->setSpId($spId);
 
                     // keep track of last reducedSpId
@@ -420,7 +423,7 @@ class Xls extends BaseWriter
         ob_end_clean();
 
         $blip = new Blip();
-        $blip->setData($blipData);
+        $blip->setData("$blipData");
 
         $BSE = new BSE();
         $BSE->setBlipType($blipType);
@@ -431,17 +434,22 @@ class Xls extends BaseWriter
 
     private function processDrawing(BstoreContainer &$bstoreContainer, Drawing $drawing): void
     {
-        $blipType = null;
+        $blipType = 0;
         $blipData = '';
         $filename = $drawing->getPath();
 
-        [$imagesx, $imagesy, $imageFormat] = getimagesize($filename);
+        $imageSize = getimagesize($filename);
+        $imageFormat = empty($imageSize) ? 0 : ($imageSize[2] ?? 0);
 
         switch ($imageFormat) {
             case 1: // GIF, not supported by BIFF8, we convert to PNG
                 $blipType = BSE::BLIPTYPE_PNG;
+                $newImage = @imagecreatefromgif($filename);
+                if ($newImage === false) {
+                    throw new Exception("Unable to create image from $filename");
+                }
                 ob_start();
-                imagepng(imagecreatefromgif($filename));
+                imagepng($newImage);
                 $blipData = ob_get_contents();
                 ob_end_clean();
 
@@ -458,8 +466,12 @@ class Xls extends BaseWriter
                 break;
             case 6: // Windows DIB (BMP), we convert to PNG
                 $blipType = BSE::BLIPTYPE_PNG;
+                $newImage = @imagecreatefrombmp($filename);
+                if ($newImage === false) {
+                    throw new Exception("Unable to create image from $filename");
+                }
                 ob_start();
-                imagepng(SharedDrawing::imagecreatefrombmp($filename));
+                imagepng($newImage);
                 $blipData = ob_get_contents();
                 ob_end_clean();
 
@@ -479,7 +491,7 @@ class Xls extends BaseWriter
 
     private function processBaseDrawing(BstoreContainer &$bstoreContainer, BaseDrawing $drawing): void
     {
-        if ($drawing instanceof Drawing) {
+        if ($drawing instanceof Drawing && $drawing->getPath() !== '') {
             $this->processDrawing($bstoreContainer, $drawing);
         } elseif ($drawing instanceof MemoryDrawing) {
             $this->processMemoryDrawing($bstoreContainer, $drawing, $drawing->getRenderingFunction());
@@ -735,7 +747,6 @@ class Xls extends BaseWriter
             } elseif ($dataProp['type']['data'] == 0x1E) { // null-terminated string prepended by dword string length
                 // Null-terminated string
                 $dataProp['data']['data'] .= chr(0);
-                // @phpstan-ignore-next-line
                 ++$dataProp['data']['length'];
                 // Complete the string with null string for being a %4
                 $dataProp['data']['length'] = $dataProp['data']['length'] + ((4 - $dataProp['data']['length'] % 4) == 4 ? 0 : (4 - $dataProp['data']['length'] % 4));
@@ -745,15 +756,15 @@ class Xls extends BaseWriter
                 $dataSection_Content .= $dataProp['data']['data'];
 
                 $dataSection_Content_Offset += 4 + 4 + strlen($dataProp['data']['data']);
-            // Condition below can never be true
-            //} elseif ($dataProp['type']['data'] == 0x40) { // Filetime (64-bit value representing the number of 100-nanosecond intervals since January 1, 1601)
-            //    $dataSection_Content .= $dataProp['data']['data'];
+                /* Condition below can never be true
+                } elseif ($dataProp['type']['data'] == 0x40) { // Filetime (64-bit value representing the number of 100-nanosecond intervals since January 1, 1601)
+                    $dataSection_Content .= $dataProp['data']['data'];
 
-            //    $dataSection_Content_Offset += 4 + 8;
+                    $dataSection_Content_Offset += 4 + 8;
+                */
             } else {
                 $dataSection_Content .= $dataProp['data']['data'];
 
-                // @phpstan-ignore-next-line
                 $dataSection_Content_Offset += 4 + $dataProp['data']['length'];
             }
         }

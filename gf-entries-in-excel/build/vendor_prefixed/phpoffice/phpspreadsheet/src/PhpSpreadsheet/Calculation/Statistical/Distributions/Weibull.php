@@ -7,11 +7,14 @@
 
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Statistical\Distributions;
 
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\ArrayEnabled;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Exception;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 
 class Weibull
 {
+    use ArrayEnabled;
+
     /**
      * WEIBULL.
      *
@@ -19,18 +22,23 @@ class Weibull
      * analysis, such as calculating a device's mean time to failure.
      *
      * @param mixed $value Float value for the distribution
+     *                      Or can be an array of values
      * @param mixed $alpha Float alpha Parameter
+     *                      Or can be an array of values
      * @param mixed $beta Float beta Parameter
+     *                      Or can be an array of values
      * @param mixed $cumulative Boolean value indicating if we want the cdf (true) or the pdf (false)
+     *                      Or can be an array of values
      *
-     * @return float|string (string if result is an error)
+     * @return array|float|string (string if result is an error)
+     *         If an array of numbers is passed as an argument, then the returned result will also be an array
+     *            with the same dimensions
      */
     public static function distribution($value, $alpha, $beta, $cumulative)
     {
-        $value = Functions::flattenSingleValue($value);
-        $alpha = Functions::flattenSingleValue($alpha);
-        $beta = Functions::flattenSingleValue($beta);
-        $cumulative = Functions::flattenSingleValue($cumulative);
+        if (is_array($value) || is_array($alpha) || is_array($beta) || is_array($cumulative)) {
+            return self::evaluateArrayArguments([self::class, __FUNCTION__], $value, $alpha, $beta, $cumulative);
+        }
 
         try {
             $value = DistributionValidations::validateFloat($value);
@@ -42,7 +50,7 @@ class Weibull
         }
 
         if (($value < 0) || ($alpha <= 0) || ($beta <= 0)) {
-            return Functions::NAN();
+            return ExcelError::NAN();
         }
 
         if ($cumulative) {

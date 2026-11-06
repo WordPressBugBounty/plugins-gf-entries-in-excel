@@ -8,7 +8,7 @@
 namespace GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Cell;
 
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Calculation;
-use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Functions;
+use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Calculation\Information\ExcelError;
 use GFExcel\Vendor\PhpOffice\PhpSpreadsheet\Exception;
 
 /**
@@ -25,7 +25,7 @@ class DataValidator
      */
     public function isValid(Cell $cell)
     {
-        if (!$cell->hasDataValidation()) {
+        if (!$cell->hasDataValidation() || $cell->getDataValidation()->getType() === DataValidation::TYPE_NONE) {
             return true;
         }
 
@@ -36,13 +36,55 @@ class DataValidator
             return false;
         }
 
-        // TODO: write check on all cases
-        switch ($dataValidation->getType()) {
-            case DataValidation::TYPE_LIST:
-                return $this->isValueInList($cell);
+        $returnValue = false;
+        $type = $dataValidation->getType();
+        if ($type === DataValidation::TYPE_LIST) {
+            $returnValue = $this->isValueInList($cell);
+        } elseif ($type === DataValidation::TYPE_WHOLE) {
+            if (!is_numeric($cellValue) || fmod((float) $cellValue, 1) != 0) {
+                $returnValue = false;
+            } else {
+                $returnValue = $this->numericOperator($dataValidation, (int) $cellValue);
+            }
+        } elseif ($type === DataValidation::TYPE_DECIMAL || $type === DataValidation::TYPE_DATE || $type === DataValidation::TYPE_TIME) {
+            if (!is_numeric($cellValue)) {
+                $returnValue = false;
+            } else {
+                $returnValue = $this->numericOperator($dataValidation, (float) $cellValue);
+            }
+        } elseif ($type === DataValidation::TYPE_TEXTLENGTH) {
+            $returnValue = $this->numericOperator($dataValidation, mb_strlen((string) $cellValue));
         }
 
-        return false;
+        return $returnValue;
+    }
+
+    /** @param float|int $cellValue */
+    private function numericOperator(DataValidation $dataValidation, $cellValue): bool
+    {
+        $operator = $dataValidation->getOperator();
+        $formula1 = $dataValidation->getFormula1();
+        $formula2 = $dataValidation->getFormula2();
+        $returnValue = false;
+        if ($operator === DataValidation::OPERATOR_BETWEEN) {
+            $returnValue = $cellValue >= $formula1 && $cellValue <= $formula2;
+        } elseif ($operator === DataValidation::OPERATOR_NOTBETWEEN) {
+            $returnValue = $cellValue < $formula1 || $cellValue > $formula2;
+        } elseif ($operator === DataValidation::OPERATOR_EQUAL) {
+            $returnValue = $cellValue == $formula1;
+        } elseif ($operator === DataValidation::OPERATOR_NOTEQUAL) {
+            $returnValue = $cellValue != $formula1;
+        } elseif ($operator === DataValidation::OPERATOR_LESSTHAN) {
+            $returnValue = $cellValue < $formula1;
+        } elseif ($operator === DataValidation::OPERATOR_LESSTHANOREQUAL) {
+            $returnValue = $cellValue <= $formula1;
+        } elseif ($operator === DataValidation::OPERATOR_GREATERTHAN) {
+            $returnValue = $cellValue > $formula1;
+        } elseif ($operator === DataValidation::OPERATOR_GREATERTHANOREQUAL) {
+            $returnValue = $cellValue >= $formula1;
+        }
+
+        return $returnValue;
     }
 
     /**
@@ -69,8 +111,11 @@ class DataValidator
 
                 try {
                     $result = $calculation->calculateFormula($matchFormula, $cell->getCoordinate(), $cell);
+                    while (is_array($result)) {
+                        $result = array_pop($result);
+                    }
 
-                    return $result !== Functions::NA();
+                    return $result !== ExcelError::NA();
                 } catch (Exception $ex) {
                     return false;
                 }

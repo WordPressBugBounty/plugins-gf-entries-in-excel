@@ -33,7 +33,7 @@ class DggContainer
     /**
      * BLIP Store Container.
      *
-     * @var DggContainer\BstoreContainer
+     * @var ?DggContainer\BstoreContainer
      */
     private $bstoreContainer;
 
@@ -114,7 +114,7 @@ class DggContainer
     /**
      * Get BLIP Store Container.
      *
-     * @return DggContainer\BstoreContainer
+     * @return ?DggContainer\BstoreContainer
      */
     public function getBstoreContainer()
     {
@@ -171,10 +171,10 @@ class DggContainer
     /**
      * Set identifier clusters. [<drawingId> => <max shape id>, ...].
      *
-     * @param array $pValue
+     * @param array $IDCLs
      */
-    public function setIDCLs($pValue): void
+    public function setIDCLs($IDCLs): void
     {
-        $this->IDCLs = $pValue;
+        $this->IDCLs = $IDCLs;
     }
 }
